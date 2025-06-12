@@ -2,126 +2,281 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Connexion / Inscription - OrdiZen</title>
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <title>Connexion & Inscription - OrdiZen</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;400&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <style>
     body {
       background: #222 url('bg-1.jpg') no-repeat center center fixed;
       background-size: cover;
+      margin: 0;
       font-family: 'Nunito', sans-serif;
-      margin: 0; min-height: 100vh;
-      display: flex; flex-direction: column; align-items: center; justify-content: center;
     }
-    .auth-box {
-      background: rgba(18, 20, 26, 0.94);
-      border-radius: 16px;
-      border: 2px solid #42f8ff;
-      box-shadow: 0 0 18px 2px #42f8ff22;
-      max-width: 350px;
-      width: 96vw;
-      padding: 34px 18px 26px 18px;
-      color: #fff;
-      margin-top: 36px;
+    .navbar {
+      background: rgba(24,24,26, 0.97);
+      width: 100vw;
+      min-height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      z-index: 10;
+      box-shadow: 0 2px 12px 0 rgba(18,18,18,0.11);
+    }
+    .navbar nav {
+      display: flex;
+      gap: 22px;
+      padding: 0 8px;
+      align-items: center;
+    }
+    .navbar a {
+      color: #ececec;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1.09em;
+      padding: 10px 6px 8px 6px;
+      transition: color .18s;
+      letter-spacing: 0.01em;
+      text-shadow: 0 1px 6px #1118;
+      position: relative;
+      cursor: pointer;
+    }
+    .navbar a:hover {
+      color: #42f8ff;
+    }
+    .navbar-separator {
+      width: 100vw;
+      height: 2.7px;
+      background: linear-gradient(
+        to right,
+        #101a20 0%,
+        #42f8ff 15%,
+        #6ffcff 50%,
+        #42f8ff 85%,
+        #101a20 100%
+      );
+      box-shadow: 0 0 8px 2px #42f8ff55, 0 1px 0 #0008;
+      border-bottom-left-radius: 1px;
+      border-bottom-right-radius: 1px;
+      opacity: 1;
+    }
+    .logo {
+      position: absolute;
+      left: 36px;
+      top: 7px;
+      background: linear-gradient(135deg,#34c759 60%,#20926e 100%);
+      border-radius: 50%;
+      width: 42px; height: 42px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.55em; color: white; font-weight: bold;
+      box-shadow: 0 2px 10px rgba(44,199,89,0.18);
+      letter-spacing: -1px;
+      user-select: none;
+      border: 2px solid #ffffff18;
+    }
+    .auth-container {
+      max-width: 400px;
+      margin: 60px auto 0 auto;
+      padding: 36px 32px 26px 32px;
+      background: rgba(28,30,34, 0.89);
+      border-radius: 20px;
+      border: 2px solid #fff;
+      box-shadow: 0 6px 32px 0 #10182022;
+      transition: border-color 0.25s, box-shadow 0.22s;
+    }
+    .auth-container:hover, .auth-container:focus-within {
+      border-color: #42f8ff;
+      box-shadow: 0 0 14px 2px #42f8ff55, 0 6px 32px 0 #10182014;
+    }
+    h1 {
+      color: #42f8ff;
+      font-size: 2em;
       text-align: center;
+      font-weight: 800;
+      margin-bottom: 6px;
+      margin-top: 2px;
+      text-shadow: 0 2px 18px #42f8ff33;
     }
-    .auth-box h2 { color: #42f8ff; margin-bottom: 12px;}
+    .tab-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      margin-bottom: 22px;
+    }
+    .tab-btn {
+      background: none;
+      border: none;
+      font-size: 1.13em;
+      font-weight: 700;
+      color: #fff;
+      padding: 9px 26px;
+      border-radius: 11px 11px 0 0;
+      cursor: pointer;
+      transition: color .13s, background .13s;
+      letter-spacing: 0.03em;
+      outline: none;
+      border-bottom: 2.5px solid transparent;
+    }
+    .tab-btn.active, .tab-btn:hover {
+      color: #42f8ff;
+      border-bottom: 2.5px solid #42f8ff;
+      background: rgba(66,248,255,0.03);
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    label {
+      color: #fff; font-weight: 700; margin-top: 3px;
+    }
     input {
-      background: #15181d;
-      border: 1.5px solid #42f8ff88;
-      color: #fff; font-size: 1.1em; border-radius: 8px;
-      padding: 12px; width: 90%; margin-bottom: 14px;
-      outline: none; transition: border .2s;
+      padding: 12px;
+      border-radius: 8px;
+      border: 1.5px solid #42f8ff44;
+      background: #171b1e;
+      color: #fff;
+      font-size: 1.08em;
+      outline: none;
     }
-    input:focus { border: 1.5px solid #42f8ff; }
-    button {
+    input:focus {
+      border: 1.5px solid #42f8ff;
+    }
+    button[type="submit"] {
       background: linear-gradient(90deg,#34c759,#20926e);
       color: #fff; font-weight: bold; border: none; border-radius: 12px;
-      font-size: 1.1em; padding: 10px 0; width: 92%; cursor: pointer;
-      margin-top: 10px;
+      font-size: 1.12em; padding: 11px 0; margin-top: 8px;
       box-shadow: 0 1px 8px #42f8ff11;
       transition: background .15s;
+      cursor: pointer;
     }
-    button:hover { background: linear-gradient(90deg,#20926e,#34c759);}
-    .switch { color: #42f8ff; cursor: pointer; font-size: 0.98em; margin-top: 12px; display: inline-block;}
-    .switch:hover { text-decoration: underline;}
-    .msg { margin: 10px 0; font-size: 0.96em;}
-    .logout-btn {
-      background: none; border: none; color: #42f8ff; cursor: pointer; font-size: 1.02em; margin-top: 18px;
+    button[type="submit"]:hover {
+      background: linear-gradient(90deg,#20926e,#34c759);
     }
-    .logout-btn:hover { text-decoration: underline;}
+    .msg-feedback {
+      color: #42f8ff;
+      text-align: center;
+      margin: 7px 0 4px 0;
+      font-size: 1em;
+      min-height: 20px;
+    }
+    .already-link {
+      color: #fff;
+      display: block;
+      text-align: center;
+      margin-top: 8px;
+      font-size: 0.99em;
+      text-shadow: 0 1px 5px #000a;
+    }
+    .already-link a {
+      color: #42f8ff;
+      text-decoration: underline;
+      margin-left: 3px;
+    }
+    @media (max-width: 700px) {
+      .auth-container { padding: 16px 3px 8px 3px; }
+      .logo { left: 12px; top: 6px; width: 34px; height: 34px; font-size: 1em;}
+      .navbar nav { gap: 8px; }
+    }
   </style>
 </head>
 <body>
-  <div class="auth-box" id="auth-box">
-    <h2 id="form-title">Connexion</h2>
-    <form id="auth-form">
-      <input type="email" id="email" placeholder="Adresse e-mail" required>
-      <input type="password" id="password" placeholder="Mot de passe" required>
-      <button type="submit" id="submit-btn">Connexion</button>
+  <div class="navbar">
+    <div class="logo">OZ</div>
+    <nav>
+      <a href="index.html">Accueil</a>
+      <a href="shoutbox.html">Shoutbox</a>
+      <a href="services.html">Services</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+  <div class="navbar-separator"></div>
+
+  <div class="auth-container">
+    <h1>Bienvenue sur OrdiZen</h1>
+    <div class="tab-buttons">
+      <button id="tab-login" class="tab-btn active" onclick="showTab('login')">Connexion</button>
+      <button id="tab-signup" class="tab-btn" onclick="showTab('signup')">Inscription</button>
+    </div>
+    <form id="login-form">
+      <label for="login-email">Email</label>
+      <input type="email" id="login-email" required autocomplete="username">
+      <label for="login-password">Mot de passe</label>
+      <input type="password" id="login-password" required autocomplete="current-password">
+      <button type="submit">Se connecter</button>
+      <div class="msg-feedback" id="login-feedback"></div>
+      <div class="already-link">
+        Pas de compte ?
+        <a href="#" onclick="showTab('signup');return false;">Inscription</a>
+      </div>
     </form>
-    <div class="msg" id="msg"></div>
-    <span class="switch" id="switch-mode">Créer un compte</span>
+    <form id="signup-form" style="display:none;">
+      <label for="signup-email">Email</label>
+      <input type="email" id="signup-email" required autocomplete="username">
+      <label for="signup-password">Mot de passe</label>
+      <input type="password" id="signup-password" required autocomplete="new-password" minlength="6">
+      <button type="submit">S'inscrire</button>
+      <div class="msg-feedback" id="signup-feedback"></div>
+      <div class="already-link">
+        Déjà inscrit ?
+        <a href="#" onclick="showTab('login');return false;">Connexion</a>
+      </div>
+    </form>
   </div>
   <script>
-    // ---- CONFIGUREZ ICI VOS CLÉS SUPABASE ----
-    const SUPABASE_URL = 'https://ewsehfkbdsjzbpmxoesw.supabase.co';     // <-- Mets ton Project URL ici
-    const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImV3c2VoZmtiZHNqemJwbXhvZXN3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDk3NjIxMTYsImV4cCI6MjA2NTMzODExNn0.RMS2dRPUokGoyYiwxm1e0lrZa0VFWlgCXAMl5SU6N98';       // <-- Mets ta Anon public key ici
+    // -- CONFIG SUPABASE --
+    const SUPABASE_URL = 'https://ewsehfkbdsjzbpmxoesw.supabase.co'; // <--- Mets ton URL ici
+    const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImV3c2VoZmtiZHNqemJwbXhvZXN3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDk3NjIxMTYsImV4cCI6MjA2NTMzODExNn0.RMS2dRPUokGoyYiwxm1e0lrZa0VFWlgCXAMl5SU6N98'; // <--- Mets ta clé ici
     const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
-    // ------------------------------------------
 
-    let mode = 'login'; // ou 'signup'
-    const form = document.getElementById('auth-form');
-    const msg = document.getElementById('msg');
-    const title = document.getElementById('form-title');
-    const switchBtn = document.getElementById('switch-mode');
-    const submitBtn = document.getElementById('submit-btn');
-    const authBox = document.getElementById('auth-box');
-
-    function switchMode() {
-      mode = mode === 'login' ? 'signup' : 'login';
-      title.textContent = mode === 'login' ? 'Connexion' : 'Inscription';
-      submitBtn.textContent = mode === 'login' ? 'Connexion' : "S'inscrire";
-      switchBtn.textContent = mode === 'login' ? 'Créer un compte' : 'Déjà inscrit ? Se connecter';
-      msg.textContent = '';
+    // Tab switching
+    function showTab(tab) {
+      document.getElementById('login-form').style.display = tab === 'login' ? '' : 'none';
+      document.getElementById('signup-form').style.display = tab === 'signup' ? '' : 'none';
+      document.getElementById('tab-login').classList.toggle('active', tab === 'login');
+      document.getElementById('tab-signup').classList.toggle('active', tab === 'signup');
+      // Clear feedback
+      document.getElementById('login-feedback').textContent = '';
+      document.getElementById('signup-feedback').textContent = '';
     }
-    switchBtn.addEventListener('click', switchMode);
 
-    form.addEventListener('submit', async (e) => {
+    // -- Formulaire de Connexion
+    document.getElementById('login-form').onsubmit = async (e) => {
       e.preventDefault();
-      msg.textContent = '';
-      const email = form.email.value.trim();
-      const password = form.password.value.trim();
-      if (!email || !password) return msg.textContent = 'Remplis tous les champs.';
-      if (mode === 'signup') {
-        // INSCRIPTION
-        const { error } = await supabase.auth.signUp({ email, password });
-        if (error) msg.textContent = error.message;
-        else msg.textContent = "Inscription réussie ! Vérifie tes emails pour valider ton compte.";
+      const email = document.getElementById('login-email').value;
+      const password = document.getElementById('login-password').value;
+      document.getElementById('login-feedback').textContent = "Connexion...";
+      const { error } = await supabase.auth.signInWithPassword({ email, password });
+      if (error) {
+        document.getElementById('login-feedback').textContent = "Erreur : " + error.message;
       } else {
-        // CONNEXION
-        const { error } = await supabase.auth.signInWithPassword({ email, password });
-        if (error) msg.textContent = error.message;
-        else window.location.reload();
+        document.getElementById('login-feedback').textContent = "Connexion réussie ! Redirection...";
+        setTimeout(()=>window.location.href="index.html", 800);
       }
-    });
+    };
 
-    // GESTION SESSION
-    (async function checkSession() {
+    // -- Formulaire d’Inscription
+    document.getElementById('signup-form').onsubmit = async (e) => {
+      e.preventDefault();
+      const email = document.getElementById('signup-email').value;
+      const password = document.getElementById('signup-password').value;
+      document.getElementById('signup-feedback').textContent = "Inscription...";
+      const { error } = await supabase.auth.signUp({ email, password });
+      if (error) {
+        document.getElementById('signup-feedback').textContent = "Erreur : " + error.message;
+      } else {
+        document.getElementById('signup-feedback').textContent = "Inscription réussie ! Vérifiez vos emails pour valider votre compte.";
+        setTimeout(()=>window.location.href="index.html", 1700);
+      }
+    };
+
+    // Si déjà connecté, on redirige
+    (async () => {
       const { data: { user } } = await supabase.auth.getUser();
-      if (user) {
-        authBox.innerHTML = `<h2>Bienvenue !</h2>
-        <p style="color:#42f8ff;font-size:1.1em;">${user.email}</p>
-        <button class="logout-btn" onclick="logout()">Se déconnecter</button>`;
-      }
+      if(user) window.location.href = "index.html";
     })();
-
-    // DECONNEXION
-    async function logout() {
-      await supabase.auth.signOut();
-      window.location.reload();
-    }
-    window.logout = logout;
   </script>
 </body>
 </html>
