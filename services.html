@@ -2,70 +2,270 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>OrdiZen - Services</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;400&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <style>
-    body { margin: 0; padding: 0; font-family: 'Nunito', sans-serif; background: #f6fbf9; color: #222;}
-    header { display: flex; align-items: center; justify-content: center; background: #e2f9ee; padding: 28px 0 8px 0; flex-direction: column;}
-    .logo { background: #34c759; border-radius: 50%; width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; font-size: 2em; color: white; font-weight: bold; margin-bottom: 10px;}
-    nav { margin-top: 10px;}
-    nav a { text-decoration: none; color: #20926e; font-weight: 700; margin: 0 18px; font-size: 1.05em; transition: color .2s;}
-    nav a:hover { color: #34c759;}
-    h1 { font-size: 1.85em; font-weight: 800; margin-top: 4px; margin-bottom: 6px; color: #20926e;}
-    .container { max-width: 850px; margin: 34px auto; background: white; border-radius: 18px; box-shadow: 0 2px 10px rgba(44,106,84,0.08); padding: 28px 18px;}
-    .service-list { margin: 0; padding: 0; list-style: none;}
-    .service-list li { margin: 22px 0; border-bottom: 1px solid #e4e9e8; padding-bottom: 18px;}
-    .service-list li:last-child { border-bottom: none;}
-    .service-title { color: #20926e; font-size: 1.2em; font-weight: 700;}
-    .service-desc { color: #222; margin: 8px 0 0 0;}
-    .price { color: #34c759; font-weight: 600; font-size: 1.1em; margin-top: 6px;}
+    body {
+      background: #222 url('bg-1.jpg') no-repeat center center fixed;
+      background-size: cover;
+      margin: 0;
+      font-family: 'Nunito', sans-serif;
+    }
+    .navbar {
+      background: rgba(24,24,26, 0.97);
+      width: 100vw;
+      min-height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      z-index: 10;
+      box-shadow: 0 2px 12px 0 rgba(18,18,18,0.11);
+    }
+    .navbar nav {
+      display: flex;
+      gap: 22px;
+      padding: 0 8px;
+      align-items: center;
+    }
+    .navbar a, .navbar span.menu-link {
+      color: #ececec;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1.09em;
+      padding: 10px 6px 8px 6px;
+      transition: color .18s;
+      letter-spacing: 0.01em;
+      text-shadow: 0 1px 6px #1118;
+      position: relative;
+      cursor: pointer;
+    }
+    .navbar a:hover, .navbar span.menu-link:hover {
+      color: #42f8ff;
+    }
+    .logout-icon {
+      width: 34px;
+      height: 22px;
+      vertical-align: middle;
+      filter: drop-shadow(0 0 6px #42f8ffcc);
+      margin-left: 6px;
+      margin-right: 3px;
+      opacity: 0.94;
+      cursor: pointer;
+      transition: filter 0.15s, opacity 0.15s;
+      background: transparent;
+      border: none;
+      outline: none;
+      display: inline-block;
+    }
+    .logout-icon:hover {
+      filter: drop-shadow(0 0 15px #42f8ff) brightness(1.3);
+      opacity: 1;
+      background: #1116;
+    }
+    .navbar-separator {
+      width: 100vw;
+      height: 2.7px;
+      background: linear-gradient(
+        to right,
+        #101a20 0%,
+        #42f8ff 15%,
+        #6ffcff 50%,
+        #42f8ff 85%,
+        #101a20 100%
+      );
+      box-shadow: 0 0 8px 2px #42f8ff55, 0 1px 0 #0008;
+      border-bottom-left-radius: 1px;
+      border-bottom-right-radius: 1px;
+      opacity: 1;
+    }
+    .logo {
+      position: absolute;
+      left: 36px;
+      top: 7px;
+      background: linear-gradient(135deg,#34c759 60%,#20926e 100%);
+      border-radius: 50%;
+      width: 42px; height: 42px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.55em; color: white; font-weight: bold;
+      box-shadow: 0 2px 10px rgba(44,199,89,0.18);
+      letter-spacing: -1px;
+      user-select: none;
+      border: 2px solid #ffffff18;
+    }
+    .hero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding-top: 42px;
+      padding-bottom: 30px;
+    }
+    .hero h1 {
+      font-size: 2.2em; font-weight: 800; margin-bottom: 10px; color: #42f8ff;
+      text-align: center; text-shadow: 0 3px 32px #191e21a6, 0 2px 16px #42f8ff77;
+      letter-spacing: -1.2px;
+    }
+    .slogan {
+      font-size: 1.19em;
+      color: #fff;
+      margin-bottom: 12px;
+      text-align: center;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-shadow:
+        0 0 6px #42f8ff99,
+        0 0 14px #42f8ff44,
+        0 2px 18px #111;
+    }
+    .services-box {
+      margin: 0 auto 50px auto;
+      max-width: 950px;
+      padding: 40px 20px 30px 20px;
+      background: rgba(28,30,34, 0.82);
+      border-radius: 18px;
+      border: 2.2px solid #fff;
+      box-shadow: 0 6px 32px 0 #10182014;
+      transition: border-color 0.25s, box-shadow 0.22s;
+      position: relative;
+      overflow: hidden;
+    }
+    .services-box:hover,
+    .services-box:focus-within {
+      border-color: #42f8ff;
+      box-shadow: 0 0 14px 2px #42f8ff55, 0 6px 32px 0 #10182014;
+    }
+    h2 {
+      color:#42f8ff;
+      text-align:center;
+      margin-bottom: 12px;
+      margin-top: 0;
+      font-size:1.35em;
+      letter-spacing: 0.04em;
+      text-shadow:
+        0 0 8px #42f8ff,
+        0 2px 8px #191e21a6;
+    }
+    .services {
+      display: flex; flex-wrap: wrap; gap: 28px; justify-content: center; margin-top: 16px;
+    }
+    .service-card {
+      background: rgba(234,247,241,0.13);
+      border-radius: 16px;
+      box-shadow: 0 2px 6px rgba(44,106,84,0.04);
+      padding: 24px 18px;
+      width: 240px;
+      text-align: center;
+      display: flex; flex-direction: column; align-items: center;
+      transition: transform 0.15s;
+      border: 1px solid #42f8ff44;
+      color: #fff;
+    }
+    .service-card:hover { transform: translateY(-7px) scale(1.035);}
+    .service-card .icon { font-size: 2.1em; margin-bottom: 10px; color: #42f8ff;}
+    .service-card h3 { margin: 0 0 10px 0; font-weight: 700; color: #42f8ff;}
+    .service-card p { color: #fff; text-shadow: 0 1px 10px #222a; }
+    .cta {
+      margin: 38px 0 0 0; text-align: center;
+    }
+    .cta a {
+      display: inline-block; background: linear-gradient(90deg,#34c759,#20926e);
+      color: white; font-weight: 700; text-decoration: none; border-radius: 24px;
+      padding: 14px 32px; font-size: 1.15em; box-shadow: 0 1px 8px rgba(44,106,84,0.09);
+      transition: background .15s;
+    }
+    .cta a:hover { background: linear-gradient(90deg,#20926e,#34c759);}
     @media (max-width: 700px) {
-      .container { padding: 12px 2px;}
+      .services-box { padding: 12px 4px;}
+      .services { flex-direction: column; align-items: center;}
+      .service-card { width: 98%;}
+      .logo { left: 12px; top: 6px; width: 34px; height: 34px; font-size: 1em;}
+      .navbar nav { gap: 8px; }
+      .hero { padding-top: 22px; }
     }
   </style>
 </head>
 <body>
-  <header>
+  <div class="navbar">
     <div class="logo">OZ</div>
-    <h1>Nos services</h1>
-    <nav>
+    <nav id="menu-nav">
       <a href="index.html">Accueil</a>
       <a href="shoutbox.html">Shoutbox</a>
       <a href="services.html">Services</a>
       <a href="contact.html">Contact</a>
     </nav>
-  </header>
-  <main>
-    <section class="container">
-      <ul class="service-list">
-        <li>
-          <span class="service-title">Montage PC complet</span>
-          <div class="service-desc">Assemblage sur-mesure, installation de Windows et des pilotes, optimisation des performances et conseils d’entretien.</div>
-          <div class="price">À partir de 59€</div>
-        </li>
-        <li>
-          <span class="service-title">Dépannage & Réparation</span>
-          <div class="service-desc">Diagnostic, réparation de composants, remplacement, installation de pièces, nettoyage complet (poussière, pâte thermique, etc).</div>
-          <div class="price">Devis rapide selon panne</div>
-        </li>
-        <li>
-          <span class="service-title">Mise à niveau & Upgrade</span>
-          <div class="service-desc">Ajout de RAM, SSD, nouvelle carte graphique ou alimentation, installation de watercooling, amélioration du refroidissement.</div>
-          <div class="price">Sur devis</div>
-        </li>
-        <li>
-          <span class="service-title">Installation et configuration logicielle</span>
-          <div class="service-desc">Installation et configuration de Windows, antivirus, Office, drivers, outils créatifs ou utilitaires selon vos besoins.</div>
-          <div class="price">À partir de 25€</div>
-        </li>
-        <li>
-          <span class="service-title">Conseil & Accompagnement</span>
-          <div class="service-desc">Aide à l’achat de matériel, optimisation d’utilisation, sécurisation, explications personnalisées, installation à domicile.</div>
-          <div class="price">Sur rendez-vous</div>
-        </li>
-      </ul>
-    </section>
-  </main>
+  </div>
+  <div class="navbar-separator"></div>
+
+  <div class="hero">
+    <h1>Nos services</h1>
+    <div class="slogan">Des prestations pour tous vos besoins informatiques</div>
+  </div>
+  <div class="services-box">
+    <h2>Ce que nous proposons</h2>
+    <div class="services">
+      <div class="service-card">
+        <div class="icon">🛠️</div>
+        <h3>Montage PC sur-mesure</h3>
+        <p>Assemblage, configuration et optimisation de votre ordinateur, adapté à vos besoins (gaming, bureautique, création, etc).</p>
+      </div>
+      <div class="service-card">
+        <div class="icon">🔧</div>
+        <h3>Maintenance & Réparation</h3>
+        <p>Dépannage rapide, nettoyage, mise à niveau et optimisation de tous vos appareils informatiques.</p>
+      </div>
+      <div class="service-card">
+        <div class="icon">💡</div>
+        <h3>Conseil & Accompagnement</h3>
+        <p>Aide à l'achat, installation de logiciels, sécurité, mises à jour et tutoriels personnalisés.</p>
+      </div>
+    </div>
+    <div class="cta">
+      <a href="contact.html">Demander un devis gratuit</a>
+    </div>
+  </div>
+  <script>
+    // -- CONFIG SUPABASE --
+    const SUPABASE_URL = 'https://XXXXXXXX.supabase.co'; // <--- Mets ton URL ici
+    const SUPABASE_KEY = 'eyXXXXXXXXXXXXXXXXXXXXXXXXX'; // <--- Mets ta clé ici
+    const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+    // -- MENU DYNAMIQUE (connexion/inscription/logout) --
+    async function updateMenu() {
+      const { data: { user } } = await supabase.auth.getUser();
+      const nav = document.getElementById('menu-nav');
+      while (nav.children.length > 4) nav.removeChild(nav.lastChild);
+
+      if (!user) {
+        let conn = document.createElement('a');
+        conn.href = 'auth.html';
+        conn.textContent = 'Connexion';
+        nav.appendChild(conn);
+
+        let inscr = document.createElement('a');
+        inscr.href = 'auth.html';
+        inscr.textContent = 'Inscription';
+        nav.appendChild(inscr);
+      } else {
+        let deco = document.createElement('span');
+        deco.className = 'menu-link';
+        deco.title = 'Déconnexion';
+        deco.innerHTML = `
+        <svg class="logout-icon" viewBox="0 0 32 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M20 4L28 11L20 18" stroke="#42f8ff" stroke-width="2.7" stroke-linecap="round" stroke-linejoin="round"/>
+          <rect x="2" y="7" width="18" height="8" rx="4" stroke="#42f8ff" stroke-width="2"/>
+        </svg>
+        `;
+        deco.onclick = async () => {
+          await supabase.auth.signOut();
+          window.location.reload();
+        };
+        nav.appendChild(deco);
+      }
+    }
+    updateMenu();
+  </script>
 </body>
 </html>
