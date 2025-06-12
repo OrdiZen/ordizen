@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>OrdiZen - Accueil</title>
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;400&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <style>
     body {
       background: #222 url('bg-1.jpg') no-repeat center center fixed;
@@ -27,8 +28,9 @@
       display: flex;
       gap: 22px;
       padding: 0 8px;
+      align-items: center;
     }
-    .navbar a {
+    .navbar a, .navbar span.menu-link {
       color: #ececec;
       text-decoration: none;
       font-weight: 700;
@@ -38,8 +40,9 @@
       letter-spacing: 0.01em;
       text-shadow: 0 1px 6px #1118;
       position: relative;
+      cursor: pointer;
     }
-    .navbar a:hover {
+    .navbar a:hover, .navbar span.menu-link:hover {
       color: #2dde96;
     }
     .navbar-separator {
@@ -58,7 +61,6 @@
       border-bottom-right-radius: 1px;
       opacity: 1;
     }
-
     .logo {
       position: absolute;
       left: 36px;
@@ -73,7 +75,26 @@
       user-select: none;
       border: 2px solid #ffffff18;
     }
-
+    .logout-icon {
+      width: 30px;
+      height: 22px;
+      vertical-align: middle;
+      filter: drop-shadow(0 0 6px #42f8ffcc);
+      margin-left: 3px;
+      margin-right: 3px;
+      opacity: 0.92;
+      cursor: pointer;
+      transition: filter 0.15s, opacity 0.15s;
+      border-radius: 4px;
+      background: transparent;
+      border: none;
+      outline: none;
+    }
+    .logout-icon:hover {
+      filter: drop-shadow(0 0 9px #42f8ff) brightness(1.2);
+      opacity: 1;
+      background: #1116;
+    }
     .hero {
       display: flex;
       flex-direction: column;
@@ -99,8 +120,6 @@
         0 0 14px #42f8ff44,
         0 2px 18px #111;
     }
-
-    /* Nouveau cadre services façon vote */
     .services-box {
       margin: 0 auto 50px auto;
       max-width: 950px;
@@ -118,7 +137,6 @@
       border-color: #42f8ff;
       box-shadow: 0 0 14px 2px #42f8ff55, 0 6px 32px 0 #10182014;
     }
-
     h2 {
       color:#42f8ff;
       text-align:center;
@@ -173,11 +191,12 @@
   <!-- NAVBAR -->
   <div class="navbar">
     <div class="logo">OZ</div>
-    <nav>
+    <nav id="menu-nav">
       <a href="index.html">Accueil</a>
       <a href="shoutbox.html">Shoutbox</a>
       <a href="services.html">Services</a>
       <a href="contact.html">Contact</a>
+      <!-- Les boutons Connexion/Inscription/Logout sont injectés en JS -->
     </nav>
   </div>
   <div class="navbar-separator"></div>
@@ -189,7 +208,7 @@
   </div>
 
   <div class="services-box">
-    <h2>Nos services phares</h2>
+    <h2>Nos services</h2>
     <div class="services">
       <div class="service-card">
         <div class="icon">🛠️</div>
@@ -211,5 +230,44 @@
       <a href="contact.html">Demander un devis gratuit</a>
     </div>
   </div>
+  <script>
+    // -- CONFIG SUPABASE (utilise tes vraies clés ici) --
+    const SUPABASE_URL = 'https://XXXXXXXX.supabase.co'; // <-- Mets ton URL
+    const SUPABASE_KEY = 'eyXXXXXXXXXXXXXXXXXXXXXXXXX'; // <-- Mets ta key
+    const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+    // -- MENU DYNAMIQUE (connexion/inscription/logout) --
+    async function updateMenu() {
+      const { data: { user } } = await supabase.auth.getUser();
+      const nav = document.getElementById('menu-nav');
+      // Supprime tout ce qui est après "Contact"
+      while (nav.children.length > 4) nav.removeChild(nav.lastChild);
+
+      if (!user) {
+        // Pas connecté
+        let conn = document.createElement('a');
+        conn.href = 'auth.html';
+        conn.textContent = 'Connexion';
+        nav.appendChild(conn);
+
+        let inscr = document.createElement('a');
+        inscr.href = 'auth.html';
+        inscr.textContent = 'Inscription';
+        nav.appendChild(inscr);
+      } else {
+        // Connecté : icône logout
+        let deco = document.createElement('span');
+        deco.className = 'menu-link';
+        deco.title = 'Déconnexion';
+        deco.innerHTML = `<img src="logout.png" alt="Déconnexion" class="logout-icon">`;
+        deco.onclick = async () => {
+          await supabase.auth.signOut();
+          window.location.reload();
+        };
+        nav.appendChild(deco);
+      }
+    }
+    updateMenu();
+  </script>
 </body>
 </html>
