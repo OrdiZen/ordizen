@@ -2,10 +2,17 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Menu OrdiZen avec logout fluo SVG</title>
+  <title>OrdiZen - Accueil</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;400&display=swap" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <style>
-    body { background:#181f24; margin:0; color:#fff; font-family:'Nunito',sans-serif;}
+    body {
+      background: #222 url('bg-1.jpg') no-repeat center center fixed;
+      background-size: cover;
+      margin: 0;
+      font-family: 'Nunito', sans-serif;
+    }
     .navbar {
       background: rgba(24,24,26, 0.97);
       width: 100vw;
@@ -58,10 +65,132 @@
       opacity: 1;
       background: #1116;
     }
+    .navbar-separator {
+      width: 100vw;
+      height: 2.7px;
+      background: linear-gradient(
+        to right,
+        #101a20 0%,
+        #42f8ff 15%,
+        #6ffcff 50%,
+        #42f8ff 85%,
+        #101a20 100%
+      );
+      box-shadow: 0 0 8px 2px #42f8ff55, 0 1px 0 #0008;
+      border-bottom-left-radius: 1px;
+      border-bottom-right-radius: 1px;
+      opacity: 1;
+    }
+    .logo {
+      position: absolute;
+      left: 36px;
+      top: 7px;
+      background: linear-gradient(135deg,#34c759 60%,#20926e 100%);
+      border-radius: 50%;
+      width: 42px; height: 42px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.55em; color: white; font-weight: bold;
+      box-shadow: 0 2px 10px rgba(44,199,89,0.18);
+      letter-spacing: -1px;
+      user-select: none;
+      border: 2px solid #ffffff18;
+    }
+    .hero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding-top: 42px;
+      padding-bottom: 30px;
+    }
+    .hero h1 {
+      font-size: 2.2em; font-weight: 800; margin-bottom: 10px; color: #42f8ff;
+      text-align: center; text-shadow: 0 3px 32px #191e21a6, 0 2px 16px #42f8ff77;
+      letter-spacing: -1.2px;
+    }
+    .slogan {
+      font-size: 1.19em;
+      color: #fff;
+      margin-bottom: 12px;
+      text-align: center;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-shadow:
+        0 0 6px #42f8ff99,
+        0 0 14px #42f8ff44,
+        0 2px 18px #111;
+    }
+    .services-box {
+      margin: 0 auto 50px auto;
+      max-width: 950px;
+      padding: 40px 20px 30px 20px;
+      background: rgba(28,30,34, 0.82);
+      border-radius: 18px;
+      border: 2.2px solid #fff;
+      box-shadow: 0 6px 32px 0 #10182014;
+      transition: border-color 0.25s, box-shadow 0.22s;
+      position: relative;
+      overflow: hidden;
+    }
+    .services-box:hover,
+    .services-box:focus-within {
+      border-color: #42f8ff;
+      box-shadow: 0 0 14px 2px #42f8ff55, 0 6px 32px 0 #10182014;
+    }
+    h2 {
+      color:#42f8ff;
+      text-align:center;
+      margin-bottom: 12px;
+      margin-top: 0;
+      font-size:1.35em;
+      letter-spacing: 0.04em;
+      text-shadow:
+        0 0 8px #42f8ff,
+        0 2px 8px #191e21a6;
+    }
+    .services {
+      display: flex; flex-wrap: wrap; gap: 28px; justify-content: center; margin-top: 16px;
+    }
+    .service-card {
+      background: rgba(234,247,241,0.13);
+      border-radius: 16px;
+      box-shadow: 0 2px 6px rgba(44,106,84,0.04);
+      padding: 24px 18px;
+      width: 240px;
+      text-align: center;
+      display: flex; flex-direction: column; align-items: center;
+      transition: transform 0.15s;
+      border: 1px solid #42f8ff44;
+      color: #fff;
+    }
+    .service-card:hover { transform: translateY(-7px) scale(1.035);}
+    .service-card .icon { font-size: 2.1em; margin-bottom: 10px; color: #42f8ff;}
+    .service-card h3 { margin: 0 0 10px 0; font-weight: 700; color: #42f8ff;}
+    .service-card p { color: #fff; text-shadow: 0 1px 10px #222a; }
+    .cta {
+      margin: 38px 0 0 0; text-align: center;
+    }
+    .cta a {
+      display: inline-block; background: linear-gradient(90deg,#34c759,#20926e);
+      color: white; font-weight: 700; text-decoration: none; border-radius: 24px;
+      padding: 14px 32px; font-size: 1.15em; box-shadow: 0 1px 8px rgba(44,106,84,0.09);
+      transition: background .15s;
+    }
+    .cta a:hover { background: linear-gradient(90deg,#20926e,#34c759);}
+    @media (max-width: 700px) {
+      .services-box { padding: 12px 4px;}
+      .services { flex-direction: column; align-items: center;}
+      .service-card { width: 98%;}
+      .logo { left: 12px; top: 6px; width: 34px; height: 34px; font-size: 1em;}
+      .navbar nav { gap: 8px; }
+      .hero { padding-top: 22px; }
+    }
   </style>
 </head>
 <body>
+  <!-- NAVBAR -->
   <div class="navbar">
+    <div class="logo">OZ</div>
     <nav id="menu-nav">
       <a href="index.html">Accueil</a>
       <a href="shoutbox.html">Shoutbox</a>
@@ -70,7 +199,37 @@
       <!-- Connexion, Inscription, Logout SVG ajoutés dynamiquement -->
     </nav>
   </div>
+  <div class="navbar-separator"></div>
 
+  <!-- HERO ZONE -->
+  <div class="hero">
+    <h1>OrdiZen</h1>
+    <div class="slogan">La sérénité numérique à domicile</div>
+  </div>
+
+  <div class="services-box">
+    <h2>Nos services</h2>
+    <div class="services">
+      <div class="service-card">
+        <div class="icon">🛠️</div>
+        <h3>Montage PC sur-mesure</h3>
+        <p>Assemblage, configuration et optimisation de votre ordinateur, adapté à vos besoins (gaming, bureautique, création, etc).</p>
+      </div>
+      <div class="service-card">
+        <div class="icon">🔧</div>
+        <h3>Maintenance & Réparation</h3>
+        <p>Dépannage rapide, nettoyage, mise à niveau et optimisation de tous vos appareils informatiques.</p>
+      </div>
+      <div class="service-card">
+        <div class="icon">💡</div>
+        <h3>Conseil & Accompagnement</h3>
+        <p>Aide à l'achat, installation de logiciels, sécurité, mises à jour et tutoriels personnalisés.</p>
+      </div>
+    </div>
+    <div class="cta">
+      <a href="contact.html">Demander un devis gratuit</a>
+    </div>
+  </div>
   <script>
     // -- CONFIG SUPABASE --
     const SUPABASE_URL = 'https://ewsehfkbdsjzbpmxoesw.supabase.co'; // <--- Mets ton URL ici
