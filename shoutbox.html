@@ -23,11 +23,12 @@
     .shoutbox-wrapper {
       display: flex; justify-content: center; align-items: center; min-height: 70vh;
       margin: 0 0 36px 0;
+      width: 100%;
     }
     /* Responsive */
     @media (max-width: 900px) {
       .shoutbox-wrapper { min-height: 55vh; }
-      #cid0020000410741550619 { width: 99vw !important; height: 450px !important; }
+      iframe { width: 99vw !important; height: 400px !important; }
     }
   </style>
 </head>
@@ -43,10 +44,14 @@
     </nav>
   </header>
   <div class="shoutbox-wrapper">
-    <!-- Nouveau code Chatango ici -->
-    <script id="cid0020000410741550619" data-cfasync="false" async src="//st.chatango.com/js/gz/emb.js" style="width: 800px;height: 700px;">
-      {"handle":"ordizen-shoutbox","arch":"js","styles":{"a":"0084ef","b":100,"c":"FFFFFF","d":"FFFFFF","k":"0084ef","l":"0084ef","m":"0084ef","n":"FFFFFF","p":"11.25","q":"0084ef","r":100,"t":0,"surl":0,"cnrs":"0.35","fwtickm":1}}
-    </script>
+    <iframe
+      src="https://chatango.com/embed?handle=ordizen-shoutbox&arch=js"
+      style="width:100%;max-width:800px;height:700px;border:1px solid #20926e;border-radius:12px;background:#fff;"
+      frameborder="0"
+      title="Shoutbox OrdiZen"
+      allowtransparency="true">
+    </iframe>
   </div>
+  <p style="text-align:center;color:#20926e;">💬 Si la boîte de discussion ne s’affiche pas, essayez de désactiver Adblock ou d’actualiser la page.</p>
 </body>
 </html>
