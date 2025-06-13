@@ -4,86 +4,278 @@
   <meta charset="UTF-8">
   <title>Contact | OrdiZen</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="logo-ordizen.png">
   <style>
-    body {margin:0;font-family:'Segoe UI',Arial,sans-serif;color:#fff;background:url('bg-1.jpg') no-repeat center center fixed;background-size:cover;min-height:100vh;}
-    .navbar {background:#181b1e;border-bottom:2.5px solid #42f8ff;padding:0;position:sticky;top:0;z-index:10;display:flex;align-items:center;}
-    .logo-oz {height:58px;width:58px;margin:2px 22px 2px 16px;animation:pulse 2.8s infinite alternate;filter:drop-shadow(0 0 12px #42f8ff88);transition:transform 0.2s;background:transparent;border-radius:50%;}
-    .logo-oz:hover {transform:scale(1.07) rotate(-2deg);box-shadow:0 0 18px #42f8ffbb;filter:drop-shadow(0 0 32px #42f8ffcc);}
-    @keyframes pulse {0%{filter:drop-shadow(0 0 8px #42f8ff44);}100%{filter:drop-shadow(0 0 32px #42f8ffcc);}}
-    #menu-nav {display:flex;justify-content:center;align-items:center;gap:38px;flex:1;margin-left:10px;}
-    #menu-nav a,#menu-nav span {color:#fff;text-decoration:none;font-weight:bold;font-size:1.08em;letter-spacing:0.02em;transition:color 0.18s;position:relative;}
-    #menu-nav a:hover {color:#42f8ff;text-shadow:0 0 8px #42f8ff66;}
-    .container {max-width:700px;margin:56px auto 0 auto;padding:32px 24px 24px 24px;background:rgba(28,30,34,0.88);border:2px solid #42f8ff;border-radius:14px;box-shadow:0 6px 44px #000a;text-align:center;}
-    h1 {color:#42f8ff;text-align:center;text-shadow:0 0 12px #42f8ff;margin-bottom:22px;}
-    form {display:flex;flex-direction:column;gap:18px;margin:0 auto;align-items:center;}
-    label {font-weight:bold;color:#eee;text-align:left;align-self:flex-start;margin-bottom:3px;}
-    input,textarea {width:95%;padding:13px;border-radius:8px;border:none;font-size:1em;background:#f0f0f0;color:#222;margin-bottom:6px;resize:vertical;}
-    textarea {min-height:90px;}
-    button {margin-top:10px;padding:13px 38px;font-size:1.13em;font-weight:bold;border:none;border-radius:9px;background:linear-gradient(90deg,#38fff7,#42a2ff);color:#131a20;cursor:pointer;box-shadow:0 0 12px #42f8ff33;transition:background 0.2s;text-shadow:0 0 8px #fff9;}
-    button:hover {background:#42f8ff;box-shadow:0 0 18px #42f8ff88;color:#111c;}
-    .infos-contact {margin:30px auto 0 auto;font-size:1.1em;color:#bbfaff;text-shadow:0 0 8px #222c;opacity:0.87;}
-    @media (max-width:750px) {.container{max-width:99vw;margin:30px 5vw 0 5vw;padding:18px 3vw 14px 3vw;}input,textarea{font-size:1em;padding:9px;}button{padding:10px 18px;}}
+    @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@700;400&display=swap');
+    body {
+      background: #222 url('bg-1.jpg') no-repeat center center fixed;
+      background-size: cover;
+      margin: 0;
+      font-family: 'Nunito', Arial, sans-serif;
+      color: #fff;
+      min-height: 100vh;
+    }
+    .navbar {
+      background: rgba(24,24,26, 0.97);
+      min-height: 52px;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      border-bottom: 2.2px solid #42f8ff;
+      box-shadow: 0 3px 24px 2px #42f8ff24, 0 2px 14px #111a;
+      position: relative;
+      z-index: 3;
+      overflow-x: auto;
+      justify-content: flex-start;
+    }
+    .navbar::after {
+      content: "";
+      position: absolute;
+      left: 0; right: 0; bottom: -5px; height: 8px;
+      pointer-events: none;
+      background: linear-gradient(90deg, rgba(66,248,255,0.13) 0%, rgba(160,230,224,0.18) 60%, rgba(66,248,255,0.09) 100%);
+      border-radius: 0 0 18px 18px;
+      filter: blur(5px);
+      opacity: 0.82;
+    }
+    .logo-title {
+      color: #41ffb8;
+      font-size: 1.22rem;
+      font-weight: 900;
+      letter-spacing: 1.4px;
+      text-shadow: 0 0 5px #42f8ff80, 0 0 1px #1dffbd;
+      margin-left: 28px;
+      margin-right: 34px;
+      user-select: none;
+      min-width: 90px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      filter: brightness(0.91) saturate(0.8);
+      transition: color 0.18s, filter 0.18s;
+    }
+    .logo-title:hover { filter: brightness(1.07) saturate(1.01); color: #4cffd2; }
+    #menu-nav {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 32px;
+      flex: 1;
+    }
+    #menu-nav a, #menu-nav span.menu-link {
+      color: #fff;
+      text-decoration: none;
+      font-size: 1.08rem;
+      transition: color 0.2s, background 0.18s;
+      cursor: pointer;
+      padding: 3px 13px;
+      border-radius: 6px;
+      font-weight: bold;
+      text-align: center;
+      position: relative;
+    }
+    #menu-nav a:hover, #menu-nav span.menu-link:hover {
+      color: #42f8ff;
+      text-shadow: 0 0 7px #42f8ff, 0 0 1px #fff;
+      background: rgba(66,248,255,0.10);
+    }
+    #menu-nav .active {
+      color: #42f8ff;
+      text-shadow: 0 0 9px #42f8ff;
+      background: rgba(66,248,255,0.08);
+    }
+    .container {
+      max-width: 900px;
+      margin: 54px auto 0 auto;
+      padding: 0 36px;
+      text-align: center;
+      position: relative;
+    }
+    .titre-zen {
+      margin: 44px auto 8px auto;
+      color: #42f8ff;
+      font-size: 2.14rem;
+      font-weight: bold;
+      letter-spacing: 1.6px;
+      text-shadow: 0 0 16px #42f8ffcc, 0 2px 14px #222a;
+      filter: drop-shadow(0 0 7px #42f8ff3c);
+      background: none;
+      border: none;
+    }
+    .slogan-zen {
+      font-size: 1.19rem;
+      color: #eafdff;
+      margin-bottom: 28px;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      text-shadow: 0 0 8px #42f8ff88, 0 0 6px #222d;
+      filter: drop-shadow(0 0 7px #42f8ff44);
+    }
+    /* CASE CONTACT */
+    .contact-case {
+      background: rgba(30,33,40,0.94);
+      border: 2.5px solid #fff;
+      border-radius: 14px;
+      box-shadow: 0 6px 44px #000a;
+      margin: 0 auto;
+      max-width: 490px;
+      padding: 32px 20px 29px 20px;
+      transition: border 0.18s, box-shadow 0.20s;
+      position: relative;
+      z-index: 1;
+    }
+    .contact-case:hover {
+      border: 2.5px solid #42f8ff;
+      box-shadow: 0 0 32px #42f8ff99, 0 2px 34px #000a;
+    }
+    .contact-case label {
+      display: block;
+      margin-top: 14px;
+      margin-bottom: 5px;
+      color: #42f8ff;
+      font-weight: bold;
+      letter-spacing: 0.04em;
+      font-size: 1.05em;
+      text-align: left;
+      text-shadow: 0 0 4px #42f8ff40;
+    }
+    .contact-case input, .contact-case textarea {
+      width: 100%;
+      background: #222c;
+      border: 1.5px solid #42f8ff77;
+      border-radius: 8px;
+      padding: 11px 10px;
+      color: #fff;
+      font-size: 1.07em;
+      font-family: inherit;
+      margin-bottom: 11px;
+      outline: none;
+      transition: border 0.15s, box-shadow 0.15s;
+      box-shadow: 0 1px 8px #42f8ff10;
+      resize: vertical;
+      min-height: 44px;
+      max-height: 260px;
+    }
+    .contact-case input:focus, .contact-case textarea:focus {
+      border: 1.5px solid #42f8ff;
+      box-shadow: 0 0 14px #42f8ff70;
+    }
+    .btn-contact {
+      display: inline-block;
+      margin-top: 18px;
+      background: linear-gradient(90deg,#38fff7 0%,#42a2ff 100%);
+      color: #131a20;
+      border: none;
+      border-radius: 12px;
+      font-size: 1.17em;
+      font-weight: bold;
+      padding: 15px 44px;
+      box-shadow: 0 0 18px #42f8ff44;
+      cursor: pointer;
+      transition: background 0.16s, color 0.16s, box-shadow 0.18s;
+      text-shadow: 0 0 12px #fff8;
+      letter-spacing: 0.03em;
+    }
+    .btn-contact:hover {
+      background: #42f8ff;
+      color: #00111a;
+      box-shadow: 0 0 28px #42f8ffbb, 0 0 6px #fff7;
+    }
+    .success-message {
+      color: #58ffc7;
+      margin: 17px 0 0 0;
+      font-weight: bold;
+      text-shadow: 0 0 6px #42f8ff99;
+    }
+    @media (max-width: 900px) {
+      .container, .contact-case { padding: 14px 4vw; }
+      .titre-zen { font-size: 1.3rem; }
+      .contact-case { max-width: 96vw; }
+    }
+    @media (max-width: 650px) {
+      .logo-title { font-size: 1.05rem; min-width: 40px; margin-right: 7px;}
+      #menu-nav { gap: 10px; }
+      .contact-case label { font-size: 0.99em; }
+      .btn-contact { font-size: 0.99em; padding: 9px 8vw; }
+    }
   </style>
 </head>
 <body>
-  <div class="navbar">
-    <img src="logo-ordizen.png" alt="Logo OrdiZen" class="logo-oz" />
-    <nav id="menu-nav">
+  <nav class="navbar">
+    <span class="logo-title">OrdiZen</span>
+    <div id="menu-nav">
       <a href="index.html">Accueil</a>
       <a href="shoutbox.html">Shoutbox</a>
       <a href="services.html">Services</a>
-      <a href="contact.html" style="color:#42f8ff;text-shadow:0 0 8px #42f8ff77;">Contact</a>
-    </nav>
-  </div>
+      <a href="contact.html" class="active">Contact</a>
+    </div>
+  </nav>
   <div class="container">
-    <h1>Contactez OrdiZen</h1>
-    <form>
-      <label for="name">Nom :</label>
-      <input type="text" id="name" name="name" required>
-      <label for="email">Adresse email :</label>
-      <input type="email" id="email" name="email" required>
-      <label for="message">Votre message :</label>
-      <textarea id="message" name="message" rows="5" required></textarea>
-      <button type="submit">Envoyer le message</button>
-    </form>
-    <div class="infos-contact">
-      ✉️ contact-ordizen@proton.me<br>
-      📞 07 00 00 00 00 (exemple)<br>
-      🚀 Intervention rapide sur le secteur
+    <div class="titre-zen">Contactez-nous</div>
+    <div class="slogan-zen">Une question ? Besoin d’un conseil ou d’un devis rapide ?</div>
+    <div class="contact-case">
+      <form id="contact-form" autocomplete="off">
+        <label for="nom">Nom</label>
+        <input type="text" id="nom" name="nom" required maxlength="60" autocomplete="name">
+
+        <label for="email">E-mail</label>
+        <input type="email" id="email" name="email" required maxlength="70" autocomplete="email">
+
+        <label for="message">Votre message</label>
+        <textarea id="message" name="message" required maxlength="700" rows="4"></textarea>
+
+        <button type="submit" class="btn-contact">Envoyer</button>
+        <div id="success-msg" class="success-message" style="display:none;">Votre message a bien été envoyé !</div>
+      </form>
     </div>
   </div>
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
   <script>
-    const SUPABASE_URL = 'https://ewsehfkbdsjzbpmxoesw.supabase.co';
-    const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImV3c2VoZmtiZHNqemJwbXhvZXN3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDk3NjIxMTYsImV4cCI6MjA2NTMzODExNn0.RMS2dRPUokGoyYiwxm1e0lrZa0VFWlgCXAMl5SU6N98';
-    const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+    document.addEventListener('DOMContentLoaded', () => {
+      const SUPABASE_URL = 'https://ewsehfkbdsjzbpmxoesw.supabase.co';
+      const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImV3c2VoZmtiZHNqemJwbXhvZXN3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDk3NjIxMTYsImV4cCI6MjA2NTMzODExNn0.RMS2dRPUokGoyYiwxm1e0lrZa0VFWlgCXAMl5SU6N98';
+      const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
-    async function updateMenu() {
-      const { data: { user } } = await supabase.auth.getUser();
-      const nav = document.getElementById('menu-nav');
-      while (nav.children.length > 4) nav.removeChild(nav.lastChild);
+      // MENU DYNAMIQUE
+      async function updateMenu() {
+        const { data: { user } } = await supabase.auth.getUser();
+        const nav = document.getElementById('menu-nav');
+        while (nav.children.length > 4) nav.removeChild(nav.lastChild);
 
-      if (!user) {
-        let conn = document.createElement('a');
-        conn.href = 'auth.html';
-        conn.textContent = 'Connexion';
-        nav.appendChild(conn);
+        if (!user) {
+          let conn = document.createElement('a');
+          conn.href = 'auth.html';
+          conn.textContent = 'Connexion';
+          nav.appendChild(conn);
 
-        let insc = document.createElement('a');
-        insc.href = 'auth.html#inscription';
-        insc.textContent = 'Inscription';
-        nav.appendChild(insc);
-      } else {
-        let deco = document.createElement('span');
-        deco.className = "menu-link";
-        deco.style.cursor = "pointer";
-        deco.title = "Déconnexion";
-        deco.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="29" height="22" fill="none" viewBox="0 2 20 22"><path d="M20 14.2h-14m11-4 4 4-4 4M4 18.2a4 4 0 1 1 0-8m0 8V8.2" stroke="#42f8ff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" /></svg>`;
-        deco.onclick = async () => { await supabase.auth.signOut(); updateMenu(); };
-        nav.appendChild(deco);
+          let insc = document.createElement('a');
+          insc.href = 'auth.html#inscription';
+          insc.textContent = 'Inscription';
+          nav.appendChild(insc);
+        } else {
+          let deco = document.createElement('span');
+          deco.className = "menu-link";
+          deco.style.cursor = "pointer";
+          deco.title = "Déconnexion";
+          deco.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="29" height="22" fill="none" viewBox="0 2 20 22"><path d="M20 14.2h-14m11-4 4 4-4 4M4 18.2a4 4 0 1 1 0-8m0 8V8.2" stroke="#42f8ff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" /></svg>`;
+          deco.onclick = async () => { await supabase.auth.signOut(); updateMenu(); };
+          nav.appendChild(deco);
+        }
       }
-    }
-    updateMenu();
+      updateMenu();
+
+      // GESTION DU FORMULAIRE (pas d'envoi, message de succès fictif ici)
+      const form = document.getElementById('contact-form');
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        document.getElementById('success-msg').style.display = 'block';
+        setTimeout(() => {
+          document.getElementById('success-msg').style.display = 'none';
+          form.reset();
+        }, 3500);
+      });
+    });
   </script>
 </body>
 </html>
