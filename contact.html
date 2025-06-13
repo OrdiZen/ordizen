@@ -6,12 +6,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" href="logo-ordizen.png">
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@700;400&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap');
     body {
       background: #222 url('bg-1.jpg') no-repeat center center fixed;
       background-size: cover;
       margin: 0;
-      font-family: 'Nunito', Arial, sans-serif;
+      font-family: 'Quicksand', Arial, sans-serif;
       color: #fff;
       min-height: 100vh;
     }
@@ -96,21 +96,23 @@
       margin: 44px auto 8px auto;
       color: #42f8ff;
       font-size: 2.14rem;
-      font-weight: bold;
+      font-weight: 700;
       letter-spacing: 1.6px;
       text-shadow: 0 0 16px #42f8ffcc, 0 2px 14px #222a;
       filter: drop-shadow(0 0 7px #42f8ff3c);
       background: none;
       border: none;
+      font-family: 'Quicksand', Arial, sans-serif;
     }
     .slogan-zen {
-      font-size: 1.19rem;
+      font-size: 1.13rem;
       color: #eafdff;
-      margin-bottom: 28px;
+      margin-bottom: 22px;
       font-weight: 600;
       letter-spacing: 0.03em;
       text-shadow: 0 0 8px #42f8ff88, 0 0 6px #222d;
       filter: drop-shadow(0 0 7px #42f8ff44);
+      font-family: 'Quicksand', Arial, sans-serif;
     }
     .contact-case {
       background: rgba(30,33,40,0.94);
@@ -118,7 +120,7 @@
       border-radius: 14px;
       box-shadow: 0 6px 44px #000a;
       margin: 0 auto;
-      max-width: 490px;
+      max-width: 430px;
       padding: 32px 20px 29px 20px;
       transition: border 0.18s, box-shadow 0.20s;
       position: relative;
@@ -136,79 +138,93 @@
       justify-content: center;
       margin-bottom: 8px;
     }
+    .auth-label {
+      text-align: center;
+      color: #42c7b4;
+      font-size: 1em;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+      margin: 10px 0 2px 0;
+      text-shadow: 0 0 3px #42f8ff28;
+      font-family: 'Quicksand', Arial, sans-serif;
+    }
     .contact-field {
-      width: 100%;
-      background: #f7f8fa;
-      background-image: repeating-linear-gradient(135deg, rgba(230,230,220,0.16) 0 2px, transparent 2px 20px), repeating-linear-gradient(25deg, rgba(250,250,240,0.09) 0 1.5px, transparent 1.5px 15px);
+      width: 245px;
+      background: #f8fafb;
+      background-image: repeating-linear-gradient(135deg, rgba(230,230,220,0.13) 0 2px, transparent 2px 20px), repeating-linear-gradient(25deg, rgba(250,250,240,0.09) 0 1.5px, transparent 1.5px 15px);
       border: 1.5px solid #42f8ff44;
       border-radius: 8px;
-      padding: 12px 10px;
+      padding: 8px 13px;
       color: #1a2d39;
-      font-size: 1.07em;
-      font-family: inherit;
+      font-size: 1em;
+      font-family: 'Quicksand', Arial, sans-serif;
       transition: border 0.15s, box-shadow 0.15s, background 0.2s;
-      box-shadow: 0 1px 8px #42f8ff10;
-      min-height: 44px;
-      max-width: 340px;
+      box-shadow: 0 1px 7px #42f8ff10;
+      min-height: 24px;
       outline: none;
-      margin: 0 auto;
+      margin: 0 0 3px 0;
       appearance: none;
+      text-align: center;
     }
     .contact-field:focus {
       border: 1.5px solid #42f8ff;
-      box-shadow: 0 0 18px #42f8ff60;
+      box-shadow: 0 0 14px #42f8ff60;
       background: #fcfeff;
     }
-    .contact-case label {
-      display: block;
-      margin-top: 16px;
-      margin-bottom: 4px;
-      color: #42c7b4;
-      font-weight: bold;
-      letter-spacing: 0.03em;
-      font-size: 1.03em;
+    textarea.contact-field {
+      min-height: 74px;
+      height: 82px;
+      resize: vertical;
+      width: 260px;
+      padding: 11px 14px;
+      font-size: 1em;
       text-align: left;
-      text-shadow: 0 0 4px #42f8ff28;
-      margin-left: 2px;
+      margin-bottom: 5px;
     }
     .btn-contact {
       display: inline-block;
-      margin-top: 22px;
-      background: linear-gradient(90deg,#38fff7 0%,#42a2ff 100%);
-      color: #131a20;
+      margin-top: 18px;
+      background: linear-gradient(115deg, #ffd86b 0%, #ffe887 54%, #e6b032 98%);
+      color: #5e4300;
       border: none;
-      border-radius: 12px;
-      font-size: 1.17em;
+      border-radius: 13px;
+      font-size: 1.09em;
       font-weight: bold;
-      padding: 15px 44px;
-      box-shadow: 0 0 18px #42f8ff44;
+      padding: 13px 41px;
+      box-shadow: 2px 6px 24px #d4b70019, 2.2px 5.5px 11px #b4912544, 0 2px 14px #fff7, 3px 7px 0 #af8b1e2f;
       cursor: pointer;
-      transition: background 0.16s, color 0.16s, box-shadow 0.18s;
-      text-shadow: 0 0 12px #fff8;
-      letter-spacing: 0.03em;
+      transition: background 0.17s, color 0.16s, box-shadow 0.18s;
+      text-shadow: 0 0 13px #fff4;
+      letter-spacing: 0.025em;
+      position: relative;
+      border-bottom: 2.8px solid #a58e23cc;
     }
     .btn-contact:hover {
-      background: #42f8ff;
-      color: #00111a;
-      box-shadow: 0 0 28px #42f8ffbb, 0 0 6px #fff7;
+      background: linear-gradient(100deg, #fffae5 0%, #ffe173 70%, #fdc230 100%);
+      color: #3e3000;
+      box-shadow: 0 0 36px #ffe66dbe, 0 0 16px #fff7, 4px 10px 0 #8b7d282f;
+      border-bottom: 2.8px solid #947e23;
     }
     .success-message {
       color: #58ffc7;
       margin: 17px 0 0 0;
       font-weight: bold;
       text-shadow: 0 0 6px #42f8ff99;
+      font-family: 'Quicksand', Arial, sans-serif;
     }
     @media (max-width: 900px) {
       .container, .contact-case { padding: 14px 4vw; }
       .titre-zen { font-size: 1.3rem; }
-      .contact-case { max-width: 96vw; }
+      .contact-case { max-width: 97vw; }
+      .contact-field, textarea.contact-field { width: 97vw; max-width: 99vw; }
     }
     @media (max-width: 650px) {
       .logo-title { font-size: 1.05rem; min-width: 40px; margin-right: 7px;}
       #menu-nav { gap: 10px; }
       .contact-case label { font-size: 0.99em; }
-      .btn-contact { font-size: 0.99em; padding: 9px 8vw; }
+      .btn-contact { font-size: 0.97em; padding: 9px 8vw; }
       .contact-field { font-size: 0.97em; max-width: 96vw; }
+      textarea.contact-field { font-size: 0.97em; }
     }
   </style>
 </head>
@@ -228,13 +244,13 @@
     <div class="contact-case">
       <form id="contact-form" autocomplete="off">
         <div class="contact-fields">
-          <label for="nom">Nom</label>
+          <label for="nom" class="auth-label">Nom</label>
           <input type="text" id="nom" name="nom" required maxlength="60" autocomplete="name" class="contact-field">
 
-          <label for="email">E-mail</label>
+          <label for="email" class="auth-label">E-mail</label>
           <input type="email" id="email" name="email" required maxlength="70" autocomplete="email" class="contact-field">
 
-          <label for="message">Votre message</label>
+          <label for="message" class="auth-label">Votre message</label>
           <textarea id="message" name="message" required maxlength="700" rows="4" class="contact-field"></textarea>
         </div>
         <button type="submit" class="btn-contact">Envoyer</button>
