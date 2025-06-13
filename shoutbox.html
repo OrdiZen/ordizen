@@ -119,58 +119,123 @@
       box-shadow: 0 6px 44px #000a;
       margin: 0 auto 0 auto;
       max-width: 670px;
-      padding: 38px 32px 36px 32px;
+      padding: 38px 32px 26px 32px;
       transition: border 0.18s, box-shadow 0.20s;
       position: relative;
       z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
     .shoutbox-case:hover {
       border: 2.5px solid #42f8ff;
       box-shadow: 0 0 32px #42f8ff99, 0 2px 34px #000a;
     }
-
-    .shoutbox-iframe {
+    .shoutbox-messages {
       width: 100%;
-      height: 460px;
-      border: none;
-      background: #f8fafb;
-      border-radius: 12px 12px 8px 8px;
-      box-shadow: 0 2px 14px #42f8ff10;
-      margin-bottom: 12px;
+      max-width: 520px;
+      height: 285px;
+      margin: 0 auto 14px auto;
+      padding: 17px 14px 7px 14px;
+      overflow-y: auto;
+      background: rgba(240,245,250,0.07);
+      border-radius: 8px;
+      border: 1.7px solid #42f8ff22;
+      box-shadow: 0 2px 20px #42f8ff0c;
+      backdrop-filter: blur(2.5px);
+      text-align: left;
+      font-size: 1.07em;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      /* effet fondu transparent */
     }
-    /* STYLE DE LA ZONE DE SAISIE (blanc cassé, texture papier) */
-    .shoutbox-case ::-webkit-input-placeholder { color: #41adc0; opacity: 0.9;}
-    .shoutbox-case ::placeholder { color: #41adc0; opacity: 0.9;}
-    .shoutbox-case input, .shoutbox-case textarea {
+    .shoutbox-message {
+      background: rgba(255,255,255,0.12);
+      color: #1a2227;
+      border-radius: 6px;
+      padding: 7px 14px 7px 10px;
+      margin-right: 18px;
+      margin-left: 0;
+      box-shadow: 0 0 9px #42f8ff0a;
+      word-break: break-word;
+      max-width: 95%;
+      transition: background 0.14s;
+      font-family: inherit;
+      font-size: 1.02em;
+    }
+    .shoutbox-message.me {
+      background: rgba(66,248,255,0.11);
+      color: #018488;
+      font-weight: bold;
+      margin-left: 18px;
+      margin-right: 0;
+      border: 1px solid #42f8ff36;
+    }
+    .shoutbox-form {
+      width: 100%;
+      max-width: 520px;
+      margin: 0 auto 0 auto;
+      display: flex;
+      gap: 7px;
+      align-items: stretch;
+    }
+    .shoutbox-input {
+      flex: 1;
       background: #f8fafb;
-      background-image: repeating-linear-gradient(135deg, rgba(230,230,220,0.11) 0 2px, transparent 2px 20px), repeating-linear-gradient(25deg, rgba(250,250,240,0.08) 0 1.5px, transparent 1.5px 15px);
-      color: #18333c;
-      border: 1.5px solid #42f8ff44;
+      background-image: repeating-linear-gradient(135deg, rgba(230,230,220,0.12) 0 2px, transparent 2px 18px), repeating-linear-gradient(25deg, rgba(250,250,240,0.09) 0 1.5px, transparent 1.5px 12px);
+      color: #1a2d39;
+      border: 1.7px solid #42f8ff44;
       border-radius: 9px;
       font-family: inherit;
-      padding: 11px 10px;
+      padding: 13px 12px;
       font-size: 1.07em;
-      margin-top: 5px;
-      margin-bottom: 8px;
       outline: none;
-      box-shadow: 0 1px 6px #42f8ff14;
-      transition: border 0.16s, box-shadow 0.18s, background 0.15s;
+      box-shadow: 0 1px 6px #42f8ff11;
+      transition: border 0.16s, box-shadow 0.18s, background 0.16s;
+      min-width: 0;
+      min-height: 25px;
     }
-    .shoutbox-case input:focus, .shoutbox-case textarea:focus {
-      border: 1.5px solid #42f8ff;
+    .shoutbox-input:focus {
+      border: 1.7px solid #42f8ff;
       box-shadow: 0 0 14px #42f8ff60;
       background: #fcfeff;
+    }
+    .shoutbox-btn {
+      background: linear-gradient(90deg,#38fff7 0%,#42a2ff 100%);
+      color: #131a20;
+      border: none;
+      border-radius: 9px;
+      font-size: 1.05em;
+      font-weight: bold;
+      padding: 0 23px;
+      box-shadow: 0 0 12px #42f8ff33;
+      cursor: pointer;
+      transition: background 0.14s, color 0.14s, box-shadow 0.18s;
+      letter-spacing: 0.01em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-left: 2px;
+    }
+    .shoutbox-btn:hover {
+      background: #42f8ff;
+      color: #00111a;
+      box-shadow: 0 0 18px #42f8ffaa, 0 0 2px #fff7;
     }
     @media (max-width: 900px) {
       .container, .shoutbox-case { padding: 14px 4vw; }
       .titre-zen { font-size: 1.3rem; }
       .shoutbox-case { max-width: 97vw; }
+      .shoutbox-messages, .shoutbox-form { max-width: 99vw;}
     }
     @media (max-width: 650px) {
       .logo-title { font-size: 1.05rem; min-width: 40px; margin-right: 7px;}
       #menu-nav { gap: 10px; }
       .shoutbox-case { padding: 10px 2vw 20px 2vw;}
-      .shoutbox-iframe { height: 320px; }
+      .shoutbox-messages { height: 180px; font-size: 0.99em;}
+      .shoutbox-form { font-size: 0.97em;}
+      .shoutbox-btn { padding: 0 12px; }
     }
   </style>
 </head>
@@ -188,16 +253,13 @@
     <div class="titre-zen">Shoutbox</div>
     <div class="slogan-zen">Discutez en temps réel avec la communauté OrdiZen&nbsp;!</div>
     <div class="shoutbox-case">
-      <!-- IFRAME ou script d'intégration shoutbox ici, exemple : -->
-      <iframe class="shoutbox-iframe"
-        src="https://st.chatango.com/group?gid=ordizen-shoutbox&arch=js"
-        title="Shoutbox OrdiZen"
-        allowtransparency="true"
-        scrolling="auto"
-        frameborder="0">
-      </iframe>
-      <!-- Ici, la vraie zone de saisie serait intégrée côté service -->
-      <input type="text" placeholder="Votre message..." disabled>
+      <div class="shoutbox-messages" id="messages">
+        <!-- Les messages s'affichent ici -->
+      </div>
+      <form class="shoutbox-form" id="shoutbox-form" autocomplete="off">
+        <input type="text" class="shoutbox-input" id="shoutbox-input" placeholder="Votre message..." maxlength="222" required>
+        <button type="submit" class="shoutbox-btn">Envoyer</button>
+      </form>
     </div>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
@@ -207,6 +269,7 @@
       const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImV3c2VoZmtiZHNqemJwbXhvZXN3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDk3NjIxMTYsImV4cCI6MjA2NTMzODExNn0.RMS2dRPUokGoyYiwxm1e0lrZa0VFWlgCXAMl5SU6N98';
       const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
+      // MENU DYNAMIQUE
       async function updateMenu() {
         const { data: { user } } = await supabase.auth.getUser();
         const nav = document.getElementById('menu-nav');
@@ -233,6 +296,25 @@
         }
       }
       updateMenu();
+
+      // SHOUTBOX (local demo)
+      const messagesDiv = document.getElementById('messages');
+      const form = document.getElementById('shoutbox-form');
+      const input = document.getElementById('shoutbox-input');
+
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const val = input.value.trim();
+        if(val.length > 0) {
+          // Affichage local (remplacer ici par l’envoi Supabase plus tard)
+          const div = document.createElement('div');
+          div.className = 'shoutbox-message me';
+          div.textContent = val;
+          messagesDiv.appendChild(div);
+          messagesDiv.scrollTop = messagesDiv.scrollHeight;
+        }
+        input.value = '';
+      });
     });
   </script>
 </body>
