@@ -2,36 +2,27 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Nos services & Tarifs | OrdiZen</title>
+  <title>Contact | OrdiZen</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', Arial, sans-serif;
-      color: #fff;
-      background: url('bg-1.jpg') no-repeat center center fixed;
-      background-size: cover;
-      min-height: 100vh;
-    }
-    .navbar {background:#181b1e; border-bottom:2.5px solid #42f8ff; padding:0; position:sticky; top:0; z-index:10; display:flex; align-items:center;}
-    .logo-oz {height:58px; width:58px; margin:2px 22px 2px 16px; animation:pulse 2.8s infinite alternate; filter:drop-shadow(0 0 12px #42f8ff88); transition:transform 0.2s; background:transparent; border-radius:50%;}
-    .logo-oz:hover {transform:scale(1.07) rotate(-2deg); box-shadow:0 0 18px #42f8ffbb; filter:drop-shadow(0 0 32px #42f8ffcc);}
+    body {margin:0;font-family:'Segoe UI',Arial,sans-serif;color:#fff;background:url('bg-1.jpg') no-repeat center center fixed;background-size:cover;min-height:100vh;}
+    .navbar {background:#181b1e;border-bottom:2.5px solid #42f8ff;padding:0;position:sticky;top:0;z-index:10;display:flex;align-items:center;}
+    .logo-oz {height:58px;width:58px;margin:2px 22px 2px 16px;animation:pulse 2.8s infinite alternate;filter:drop-shadow(0 0 12px #42f8ff88);transition:transform 0.2s;background:transparent;border-radius:50%;}
+    .logo-oz:hover {transform:scale(1.07) rotate(-2deg);box-shadow:0 0 18px #42f8ffbb;filter:drop-shadow(0 0 32px #42f8ffcc);}
     @keyframes pulse {0%{filter:drop-shadow(0 0 8px #42f8ff44);}100%{filter:drop-shadow(0 0 32px #42f8ffcc);}}
-    #menu-nav {display:flex; justify-content:center; align-items:center; gap:38px; flex:1; margin-left:10px;}
-    #menu-nav a, #menu-nav span {color:#fff; text-decoration:none; font-weight:bold; font-size:1.08em; letter-spacing:0.02em; transition:color 0.18s; position:relative;}
-    #menu-nav a:hover {color:#42f8ff; text-shadow:0 0 8px #42f8ff66;}
-    .services-container {background:rgba(28,30,34,0.88); border:2px solid #42f8ff; border-radius:14px; max-width:760px; margin:54px auto 0 auto; padding:32px 24px 24px 24px; box-shadow:0 6px 48px #000c; transition:border 0.18s;}
-    .services-container:hover {border:2px solid #42f8ff; box-shadow:0 0 22px #42f8ff44;}
-    .services-container h1 {text-align:center; color:#42f8ff; margin-bottom:10px; letter-spacing:0.04em; text-shadow:0 0 18px #42f8ffcc; font-size:2.1em;}
-    .services-container h2 {text-align:center; color:#fff; font-weight:400; font-size:1.14em; margin-top:0; margin-bottom:28px; letter-spacing:0.03em; text-shadow:0 0 12px #222c;}
-    table.services-table {width:100%; border-collapse:collapse; margin:0 auto 16px auto; background:transparent;}
-    table.services-table th, table.services-table td {border:none; padding:14px 12px; font-size:1.07em; text-align:left; background:rgba(46,51,57,0.77);}
-    table.services-table th {color:#42f8ff; font-size:1.08em; letter-spacing:0.04em; background:rgba(46,51,57,0.93); border-bottom:2px solid #42f8ff55;}
-    table.services-table tr {transition:background 0.15s;}
-    table.services-table tr:hover td {background:rgba(66,248,255,0.12);}
-    .tarif {font-weight:bold; color:#53fffa; font-size:1.07em; text-shadow:0 0 6px #42f8ff88;}
-    .info-tarif {text-align:center; font-size:1.04em; color:#fff; margin:22px 0 0 0; opacity:0.8; letter-spacing:0.01em; text-shadow:0 0 8px #000c;}
-    @media (max-width:750px) {.services-container {max-width:99vw; margin:30px 5vw 0 5vw; padding:18px 3vw 14px 3vw;} table.services-table th, table.services-table td {padding:11px 5px; font-size:1em;}}
+    #menu-nav {display:flex;justify-content:center;align-items:center;gap:38px;flex:1;margin-left:10px;}
+    #menu-nav a,#menu-nav span {color:#fff;text-decoration:none;font-weight:bold;font-size:1.08em;letter-spacing:0.02em;transition:color 0.18s;position:relative;}
+    #menu-nav a:hover {color:#42f8ff;text-shadow:0 0 8px #42f8ff66;}
+    .container {max-width:700px;margin:56px auto 0 auto;padding:32px 24px 24px 24px;background:rgba(28,30,34,0.88);border:2px solid #42f8ff;border-radius:14px;box-shadow:0 6px 44px #000a;text-align:center;}
+    h1 {color:#42f8ff;text-align:center;text-shadow:0 0 12px #42f8ff;margin-bottom:22px;}
+    form {display:flex;flex-direction:column;gap:18px;margin:0 auto;align-items:center;}
+    label {font-weight:bold;color:#eee;text-align:left;align-self:flex-start;margin-bottom:3px;}
+    input,textarea {width:95%;padding:13px;border-radius:8px;border:none;font-size:1em;background:#f0f0f0;color:#222;margin-bottom:6px;resize:vertical;}
+    textarea {min-height:90px;}
+    button {margin-top:10px;padding:13px 38px;font-size:1.13em;font-weight:bold;border:none;border-radius:9px;background:linear-gradient(90deg,#38fff7,#42a2ff);color:#131a20;cursor:pointer;box-shadow:0 0 12px #42f8ff33;transition:background 0.2s;text-shadow:0 0 8px #fff9;}
+    button:hover {background:#42f8ff;box-shadow:0 0 18px #42f8ff88;color:#111c;}
+    .infos-contact {margin:30px auto 0 auto;font-size:1.1em;color:#bbfaff;text-shadow:0 0 8px #222c;opacity:0.87;}
+    @media (max-width:750px) {.container{max-width:99vw;margin:30px 5vw 0 5vw;padding:18px 3vw 14px 3vw;}input,textarea{font-size:1em;padding:9px;}button{padding:10px 18px;}}
   </style>
 </head>
 <body>
@@ -40,64 +31,25 @@
     <nav id="menu-nav">
       <a href="index.html">Accueil</a>
       <a href="shoutbox.html">Shoutbox</a>
-      <a href="services.html" style="color:#42f8ff;text-shadow:0 0 8px #42f8ff77;">Services</a>
-      <a href="contact.html">Contact</a>
+      <a href="services.html">Services</a>
+      <a href="contact.html" style="color:#42f8ff;text-shadow:0 0 8px #42f8ff77;">Contact</a>
     </nav>
   </div>
-  <div class="services-container">
-    <h1>Nos services</h1>
-    <h2>Montage, dépannage et accompagnement informatique à domicile<br>Tarifs TTC, transparents et sans surprise</h2>
-    <table class="services-table">
-      <tr>
-        <th>Prestation</th>
-        <th>Détail</th>
-        <th>Prix TTC</th>
-      </tr>
-      <tr>
-        <td><b>Montage PC complet</b></td>
-        <td>Assemblage + installation Windows + tests + conseils personnalisés</td>
-        <td class="tarif">69&nbsp;€</td>
-      </tr>
-      <tr>
-        <td>Mise à niveau (upgrade)</td>
-        <td>Ajout/remplacement de composants : RAM, SSD, carte graphique, etc.</td>
-        <td class="tarif">35&nbsp;€</td>
-      </tr>
-      <tr>
-        <td>Dépannage rapide</td>
-        <td>Diagnostic, réparation express de problèmes courants (hors pièces)</td>
-        <td class="tarif">39&nbsp;€</td>
-      </tr>
-      <tr>
-        <td>Formatage & réinstallation</td>
-        <td>Windows (ou Linux), sauvegarde/restauration de données, configuration</td>
-        <td class="tarif">49&nbsp;€</td>
-      </tr>
-      <tr>
-        <td>Installation & paramétrage logiciel</td>
-        <td>Suite Office, antivirus, logiciels spécialisés, configuration email, etc.</td>
-        <td class="tarif">29&nbsp;€</td>
-      </tr>
-      <tr>
-        <td>Conseil & accompagnement</td>
-        <td>Aide à l'achat, configuration de matériel, sécurité et bonnes pratiques</td>
-        <td class="tarif">25&nbsp;€</td>
-      </tr>
-      <tr>
-        <td>Déplacement à domicile (secteur OrdiZen)</td>
-        <td>Zone urbaine, scooter ou transport en commun</td>
-        <td class="tarif">Inclus</td>
-      </tr>
-      <tr>
-        <td>Devis personnalisé</td>
-        <td>Projet complexe, installation réseau, multi-PC, etc.</td>
-        <td class="tarif">Gratuit</td>
-      </tr>
-    </table>
-    <div class="info-tarif">
-      <b>Besoin d'un service sur-mesure ?</b><br>
-      <span>Contactez-nous pour un devis précis et gratuit.<br>
-      Intervention rapide sur rendez-vous, déplacement offert dans votre secteur.</span>
+  <div class="container">
+    <h1>Contactez OrdiZen</h1>
+    <form>
+      <label for="name">Nom :</label>
+      <input type="text" id="name" name="name" required>
+      <label for="email">Adresse email :</label>
+      <input type="email" id="email" name="email" required>
+      <label for="message">Votre message :</label>
+      <textarea id="message" name="message" rows="5" required></textarea>
+      <button type="submit">Envoyer le message</button>
+    </form>
+    <div class="infos-contact">
+      ✉️ contact-ordizen@proton.me<br>
+      📞 07 00 00 00 00 (exemple)<br>
+      🚀 Intervention rapide sur le secteur
     </div>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
