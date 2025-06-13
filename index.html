@@ -5,176 +5,27 @@
   <title>OrdiZen - La sérénité numérique à domicile</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', Arial, sans-serif;
-      color: #fff;
-      background: url('bg-1.jpg') no-repeat center center fixed;
-      background-size: cover;
-      min-height: 100vh;
-    }
-    .navbar {
-      background: #181b1e;
-      border-bottom: 2.5px solid #42f8ff;
-      padding: 0;
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      display: flex;
-      align-items: center;
-    }
-    .logo-oz {
-      height: 58px;
-      width: 58px;
-      margin: 2px 22px 2px 16px;
-      animation: pulse 2.8s infinite alternate;
-      filter: drop-shadow(0 0 12px #42f8ff88);
-      transition: transform 0.2s;
-      background: transparent;
-      border-radius: 50%;
-    }
-    .logo-oz:hover {
-      transform: scale(1.07) rotate(-2deg);
-      box-shadow: 0 0 18px #42f8ffbb;
-      filter: drop-shadow(0 0 32px #42f8ffcc);
-    }
-    @keyframes pulse {
-      0% { filter: drop-shadow(0 0 8px #42f8ff44); }
-      100% { filter: drop-shadow(0 0 32px #42f8ffcc);}
-    }
-    #menu-nav {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 38px;
-      flex: 1;
-      margin-left: 10px;
-    }
-    #menu-nav a, #menu-nav span {
-      color: #fff;
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 1.08em;
-      letter-spacing: 0.02em;
-      transition: color 0.18s;
-      position: relative;
-    }
-    #menu-nav a:hover {
-      color: #42f8ff;
-      text-shadow: 0 0 8px #42f8ff66;
-    }
-    .container {
-      max-width: 980px;
-      margin: 58px auto 0 auto;
-      padding: 34px 28px 30px 28px;
-      background: rgba(28, 30, 34, 0.86);
-      border: 2.2px solid #42f8ff;
-      border-radius: 14px;
-      box-shadow: 0 6px 44px #000a;
-      text-align: center;
-      position: relative;
-    }
-    .titre-zen {
-      font-size: 2.5em;
-      font-weight: bold;
-      color: #42f8ff;
-      margin-bottom: 10px;
-      margin-top: 4px;
-      letter-spacing: 0.05em;
-      text-shadow: 0 0 18px #42f8ffcc, 0 0 6px #222a;
-    }
-    .slogan-zen {
-      font-size: 1.19em;
-      color: #fff;
-      margin-bottom: 22px;
-      font-weight: 500;
-      letter-spacing: 0.03em;
-      text-shadow: 0 0 14px #42f8ff88, 0 0 8px #222d;
-      filter: drop-shadow(0 0 9px #42f8ff44);
-    }
-    .desc-entreprise {
-      margin: 0 auto 35px auto;
-      color: #ddeeff;
-      background: rgba(44,52,60,0.36);
-      border-radius: 8px;
-      padding: 19px 7vw 18px 7vw;
-      font-size: 1.12em;
-      line-height: 1.67em;
-      box-shadow: 0 0 14px #42f8ff22;
-      max-width: 720px;
-      text-align: center;
-      border-left: 2.5px solid #42f8ff66;
-      border-right: 2.5px solid #42f8ff66;
-    }
-    .services-accueil {
-      display: flex;
-      justify-content: center;
-      gap: 30px;
-      margin-top: 26px;
-      margin-bottom: 8px;
-      flex-wrap: wrap;
-    }
-    .service-card {
-      background: rgba(50, 52, 59, 0.88);
-      border: 1.7px solid #fff;
-      border-radius: 11px;
-      width: 270px;
-      min-height: 146px;
-      padding: 20px 17px 18px 17px;
-      margin: 10px 0;
-      transition: border 0.2s, box-shadow 0.17s;
-      box-shadow: 0 4px 18px #0005;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    .service-card:hover {
-      border: 1.8px solid #42f8ff;
-      box-shadow: 0 0 20px #42f8ff44;
-    }
-    .service-card h3 {
-      color: #42f8ff;
-      margin: 0 0 7px 0;
-      font-size: 1.18em;
-      letter-spacing: 0.01em;
-      text-shadow: 0 0 7px #42f8ff99;
-    }
-    .service-card p {
-      color: #fff;
-      font-size: 1.07em;
-      margin: 0;
-      text-align: center;
-      line-height: 1.32em;
-    }
-    .btn-devis {
-      margin-top: 34px;
-      background: linear-gradient(90deg, #38fff7 0%, #42a2ff 100%);
-      color: #131a20;
-      border: none;
-      border-radius: 9px;
-      font-size: 1.18em;
-      font-weight: bold;
-      padding: 14px 36px;
-      box-shadow: 0 0 20px #42f8ff44;
-      cursor: pointer;
-      transition: background 0.15s, color 0.15s, box-shadow 0.17s;
-      text-shadow: 0 0 10px #fff8;
-    }
-    .btn-devis:hover {
-      background: #42f8ff;
-      color: #00111a;
-      box-shadow: 0 0 32px #42f8ff88;
-    }
-    @media (max-width: 900px) {
-      .container { padding: 12vw 3vw 7vw 3vw; }
-      .services-accueil { flex-direction: column; align-items: center; gap: 15px;}
-    }
-    @media (max-width: 600px) {
-      .service-card { width: 98vw; min-width: unset; }
-      .container { border-width: 1.2px;}
-      .titre-zen { font-size: 1.7em;}
-      .slogan-zen { font-size: 1em;}
-    }
+    body { margin:0; font-family:'Segoe UI', Arial, sans-serif; color:#fff; background:url('bg-1.jpg') no-repeat center center fixed; background-size:cover; min-height:100vh;}
+    .navbar {background:#181b1e; border-bottom:2.5px solid #42f8ff; padding:0; position:sticky; top:0; z-index:10; display:flex; align-items:center;}
+    .logo-oz {height:58px; width:58px; margin:2px 22px 2px 16px; animation:pulse 2.8s infinite alternate; filter:drop-shadow(0 0 12px #42f8ff88); transition:transform 0.2s; background:transparent; border-radius:50%;}
+    .logo-oz:hover {transform:scale(1.07) rotate(-2deg); box-shadow:0 0 18px #42f8ffbb; filter:drop-shadow(0 0 32px #42f8ffcc);}
+    @keyframes pulse {0%{filter:drop-shadow(0 0 8px #42f8ff44);}100%{filter:drop-shadow(0 0 32px #42f8ffcc);}}
+    #menu-nav {display:flex; justify-content:center; align-items:center; gap:38px; flex:1; margin-left:10px;}
+    #menu-nav a, #menu-nav span {color:#fff; text-decoration:none; font-weight:bold; font-size:1.08em; letter-spacing:0.02em; transition:color 0.18s; position:relative;}
+    #menu-nav a:hover {color:#42f8ff; text-shadow:0 0 8px #42f8ff66;}
+    .container {max-width:980px; margin:58px auto 0 auto; padding:34px 28px 30px 28px; background:rgba(28,30,34,0.86); border:2.2px solid #42f8ff; border-radius:14px; box-shadow:0 6px 44px #000a; text-align:center; position:relative;}
+    .titre-zen {font-size:2.5em; font-weight:bold; color:#42f8ff; margin-bottom:10px; margin-top:4px; letter-spacing:0.05em; text-shadow:0 0 18px #42f8ffcc, 0 0 6px #222a;}
+    .slogan-zen {font-size:1.19em; color:#fff; margin-bottom:22px; font-weight:500; letter-spacing:0.03em; text-shadow:0 0 14px #42f8ff88, 0 0 8px #222d; filter:drop-shadow(0 0 9px #42f8ff44);}
+    .desc-entreprise {margin:0 auto 35px auto; color:#ddeeff; background:rgba(44,52,60,0.36); border-radius:8px; padding:19px 7vw 18px 7vw; font-size:1.12em; line-height:1.67em; box-shadow:0 0 14px #42f8ff22; max-width:720px; text-align:center; border-left:2.5px solid #42f8ff66; border-right:2.5px solid #42f8ff66;}
+    .services-accueil {display:flex; justify-content:center; gap:30px; margin-top:26px; margin-bottom:8px; flex-wrap:wrap;}
+    .service-card {background:rgba(50,52,59,0.88); border:1.7px solid #fff; border-radius:11px; width:270px; min-height:146px; padding:20px 17px 18px 17px; margin:10px 0; transition:border 0.2s, box-shadow 0.17s; box-shadow:0 4px 18px #0005; display:flex; flex-direction:column; align-items:center;}
+    .service-card:hover {border:1.8px solid #42f8ff; box-shadow:0 0 20px #42f8ff44;}
+    .service-card h3 {color:#42f8ff; margin:0 0 7px 0; font-size:1.18em; letter-spacing:0.01em; text-shadow:0 0 7px #42f8ff99;}
+    .service-card p {color:#fff; font-size:1.07em; margin:0; text-align:center; line-height:1.32em;}
+    .btn-devis {margin-top:34px; background:linear-gradient(90deg,#38fff7 0%,#42a2ff 100%); color:#131a20; border:none; border-radius:9px; font-size:1.18em; font-weight:bold; padding:14px 36px; box-shadow:0 0 20px #42f8ff44; cursor:pointer; transition:background 0.15s, color 0.15s, box-shadow 0.17s; text-shadow:0 0 10px #fff8;}
+    .btn-devis:hover {background:#42f8ff; color:#00111a; box-shadow:0 0 32px #42f8ff88;}
+    @media (max-width:900px) {.container {padding:12vw 3vw 7vw 3vw;} .services-accueil {flex-direction:column; align-items:center; gap:15px;}}
+    @media (max-width:600px) {.service-card {width:98vw; min-width:unset;} .container {border-width:1.2px;} .titre-zen {font-size:1.7em;} .slogan-zen {font-size:1em;}}
   </style>
 </head>
 <body>
