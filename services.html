@@ -13,140 +13,25 @@
       background-size: cover;
       min-height: 100vh;
     }
-    .navbar {
-      background: #181b1e;
-      border-bottom: 2.5px solid #42f8ff;
-      padding: 0;
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      display: flex;
-      align-items: center;
-    }
-    .logo-oz {
-      height: 58px;
-      width: 58px;
-      margin: 2px 22px 2px 16px;
-      animation: pulse 2.8s infinite alternate;
-      filter: drop-shadow(0 0 12px #42f8ff88);
-      transition: transform 0.2s;
-      background: transparent;
-      border-radius: 50%;
-    }
-    .logo-oz:hover {
-      transform: scale(1.07) rotate(-2deg);
-      box-shadow: 0 0 18px #42f8ffbb;
-      filter: drop-shadow(0 0 32px #42f8ffcc);
-    }
-    @keyframes pulse {
-      0% { filter: drop-shadow(0 0 8px #42f8ff44); }
-      100% { filter: drop-shadow(0 0 32px #42f8ffcc);}
-    }
-    #menu-nav {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 38px;
-      flex: 1;
-      margin-left: 10px;
-    }
-    #menu-nav a, #menu-nav span {
-      color: #fff;
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 1.08em;
-      letter-spacing: 0.02em;
-      transition: color 0.18s;
-      position: relative;
-    }
-    #menu-nav a:hover {
-      color: #42f8ff;
-      text-shadow: 0 0 8px #42f8ff66;
-    }
-    .services-container {
-      background: rgba(28, 30, 34, 0.88);
-      border: 2px solid #fff;
-      border-radius: 14px;
-      max-width: 760px;
-      margin: 54px auto 0 auto;
-      padding: 32px 24px 24px 24px;
-      box-shadow: 0 6px 48px #000c;
-      transition: border 0.18s;
-    }
-    .services-container:hover {
-      border: 2px solid #42f8ff;
-      box-shadow: 0 0 22px #42f8ff44;
-    }
-    .services-container h1 {
-      text-align: center;
-      color: #42f8ff;
-      margin-bottom: 10px;
-      letter-spacing: 0.04em;
-      text-shadow: 0 0 18px #42f8ffcc;
-      font-size: 2.1em;
-    }
-    .services-container h2 {
-      text-align: center;
-      color: #fff;
-      font-weight: 400;
-      font-size: 1.14em;
-      margin-top: 0;
-      margin-bottom: 28px;
-      letter-spacing: 0.03em;
-      text-shadow: 0 0 12px #222c;
-    }
-    table.services-table {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 0 auto 16px auto;
-      background: transparent;
-    }
-    table.services-table th, table.services-table td {
-      border: none;
-      padding: 14px 12px;
-      font-size: 1.07em;
-      text-align: left;
-      background: rgba(46,51,57, 0.77);
-    }
-    table.services-table th {
-      color: #42f8ff;
-      font-size: 1.08em;
-      letter-spacing: 0.04em;
-      background: rgba(46,51,57,0.93);
-      border-bottom: 2px solid #42f8ff55;
-    }
-    table.services-table tr {
-      transition: background 0.15s;
-    }
-    table.services-table tr:hover td {
-      background: rgba(66,248,255,0.12);
-    }
-    .tarif {
-      font-weight: bold;
-      color: #53fffa;
-      font-size: 1.07em;
-      text-shadow: 0 0 6px #42f8ff88;
-    }
-    .info-tarif {
-      text-align: center;
-      font-size: 1.04em;
-      color: #fff;
-      margin: 22px 0 0 0;
-      opacity: 0.8;
-      letter-spacing: 0.01em;
-      text-shadow: 0 0 8px #000c;
-    }
-    @media (max-width: 750px) {
-      .services-container {
-        max-width: 99vw;
-        margin: 30px 5vw 0 5vw;
-        padding: 18px 3vw 14px 3vw;
-      }
-      table.services-table th, table.services-table td {
-        padding: 11px 5px;
-        font-size: 1em;
-      }
-    }
+    .navbar {background:#181b1e; border-bottom:2.5px solid #42f8ff; padding:0; position:sticky; top:0; z-index:10; display:flex; align-items:center;}
+    .logo-oz {height:58px; width:58px; margin:2px 22px 2px 16px; animation:pulse 2.8s infinite alternate; filter:drop-shadow(0 0 12px #42f8ff88); transition:transform 0.2s; background:transparent; border-radius:50%;}
+    .logo-oz:hover {transform:scale(1.07) rotate(-2deg); box-shadow:0 0 18px #42f8ffbb; filter:drop-shadow(0 0 32px #42f8ffcc);}
+    @keyframes pulse {0%{filter:drop-shadow(0 0 8px #42f8ff44);}100%{filter:drop-shadow(0 0 32px #42f8ffcc);}}
+    #menu-nav {display:flex; justify-content:center; align-items:center; gap:38px; flex:1; margin-left:10px;}
+    #menu-nav a, #menu-nav span {color:#fff; text-decoration:none; font-weight:bold; font-size:1.08em; letter-spacing:0.02em; transition:color 0.18s; position:relative;}
+    #menu-nav a:hover {color:#42f8ff; text-shadow:0 0 8px #42f8ff66;}
+    .services-container {background:rgba(28,30,34,0.88); border:2px solid #42f8ff; border-radius:14px; max-width:760px; margin:54px auto 0 auto; padding:32px 24px 24px 24px; box-shadow:0 6px 48px #000c; transition:border 0.18s;}
+    .services-container:hover {border:2px solid #42f8ff; box-shadow:0 0 22px #42f8ff44;}
+    .services-container h1 {text-align:center; color:#42f8ff; margin-bottom:10px; letter-spacing:0.04em; text-shadow:0 0 18px #42f8ffcc; font-size:2.1em;}
+    .services-container h2 {text-align:center; color:#fff; font-weight:400; font-size:1.14em; margin-top:0; margin-bottom:28px; letter-spacing:0.03em; text-shadow:0 0 12px #222c;}
+    table.services-table {width:100%; border-collapse:collapse; margin:0 auto 16px auto; background:transparent;}
+    table.services-table th, table.services-table td {border:none; padding:14px 12px; font-size:1.07em; text-align:left; background:rgba(46,51,57,0.77);}
+    table.services-table th {color:#42f8ff; font-size:1.08em; letter-spacing:0.04em; background:rgba(46,51,57,0.93); border-bottom:2px solid #42f8ff55;}
+    table.services-table tr {transition:background 0.15s;}
+    table.services-table tr:hover td {background:rgba(66,248,255,0.12);}
+    .tarif {font-weight:bold; color:#53fffa; font-size:1.07em; text-shadow:0 0 6px #42f8ff88;}
+    .info-tarif {text-align:center; font-size:1.04em; color:#fff; margin:22px 0 0 0; opacity:0.8; letter-spacing:0.01em; text-shadow:0 0 8px #000c;}
+    @media (max-width:750px) {.services-container {max-width:99vw; margin:30px 5vw 0 5vw; padding:18px 3vw 14px 3vw;} table.services-table th, table.services-table td {padding:11px 5px; font-size:1em;}}
   </style>
 </head>
 <body>
