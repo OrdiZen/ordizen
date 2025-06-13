@@ -18,50 +18,68 @@
     .navbar {
       background: rgba(24,24,26, 0.97);
       width: 100vw;
-      min-height: 48px;
+      min-height: 52px;
       margin: 0;
-      padding: 0;
+      padding: 0 0 0 0;
       display: flex;
       align-items: center;
-      gap: 20px;
       border-bottom: 3px solid #42f8ff;
       box-shadow: 0 2px 8px #0009;
       font-weight: 700;
       position: relative;
       z-index: 3;
+      justify-content: center;
     }
-    .navbar img {
-      height: 42px;
-      margin-left: 18px;
-      margin-right: 12px;
-      filter: drop-shadow(0 0 4px #42f8ffcc);
-      vertical-align: middle;
-    }
-    .navbar span.logo-title {
-      font-size: 1.15rem;
+    .logo-title {
       color: #42f8ff;
-      text-shadow: 0 0 8px #42f8ffcc;
-      letter-spacing: 2px;
-      margin-right: 24px;
-      font-weight: 800;
+      font-size: 1.28rem;
+      font-weight: 900;
+      letter-spacing: 1.7px;
+      text-shadow: 0 0 10px #42f8ffcc, 0 0 2px #fff;
+      margin-right: 32px;
+      margin-left: 10px;
+      user-select: none;
+      min-width: 105px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+    }
+    .navbar-inner {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      max-width: 1150px;
+      justify-content: center;
+      padding: 0;
+    }
+    #menu-nav {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 30px;
+      flex: 1;
     }
     #menu-nav a, #menu-nav span.menu-link {
       color: #fff;
       text-decoration: none;
-      margin: 0 12px;
       font-size: 1.09rem;
       transition: color 0.2s;
       cursor: pointer;
+      padding: 2px 11px;
+      border-radius: 6px;
+      font-weight: bold;
+      text-align: center;
       position: relative;
-      padding: 2px 8px;
     }
     #menu-nav a:hover, #menu-nav span.menu-link:hover {
       color: #42f8ff;
-      text-shadow: 0 0 7px #42f8ff, 0 0 1px #fff;
+      text-shadow: 0 0 8px #42f8ff;
+      background: rgba(66,248,255,0.09);
     }
     #menu-nav .active {
       color: #42f8ff;
-      text-shadow: 0 0 9px #42f8ff;
+      text-shadow: 0 0 10px #42f8ff;
+      background: rgba(66,248,255,0.08);
     }
     .container {
       max-width: 900px;
@@ -108,21 +126,27 @@
       color: #c8fdff;
       text-shadow: 0 0 6px #42f8ff44;
     }
-    @media (max-width: 650px) {
+    @media (max-width: 900px) {
       .container, .descbox { padding: 18px 4vw; }
       .container h1 { font-size: 2rem; }
+      .navbar-inner { max-width: 98vw; }
+    }
+    @media (max-width: 600px) {
+      .logo-title { font-size: 1.07rem; min-width: 60px; margin-right: 13px;}
+      #menu-nav { gap: 14px; }
     }
   </style>
 </head>
 <body>
   <nav class="navbar">
-    <img src="logo-ordizen.png" alt="Logo OrdiZen">
-    <span class="logo-title">OrdiZen</span>
-    <div id="menu-nav">
-      <a href="index.html" class="active">Accueil</a>
-      <a href="shoutbox.html">Shoutbox</a>
-      <a href="services.html">Services</a>
-      <a href="contact.html">Contact</a>
+    <div class="navbar-inner">
+      <span class="logo-title">OrdiZen</span>
+      <div id="menu-nav">
+        <a href="index.html" class="active">Accueil</a>
+        <a href="shoutbox.html">Shoutbox</a>
+        <a href="services.html">Services</a>
+        <a href="contact.html">Contact</a>
+      </div>
     </div>
   </nav>
   <div class="container">
@@ -136,7 +160,6 @@
     </div>
   </div>
 
-  <!-- CDN Supabase AVEC defer -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
@@ -147,6 +170,7 @@
       async function updateMenu() {
         const { data: { user } } = await supabase.auth.getUser();
         const nav = document.getElementById('menu-nav');
+        // On retire tous les liens ajoutés après les 4 premiers (Accueil, Shoutbox, Services, Contact)
         while (nav.children.length > 4) nav.removeChild(nav.lastChild);
 
         if (!user) {
