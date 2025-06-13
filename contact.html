@@ -2,215 +2,146 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>OrdiZen - Contact</title>
+  <title>Contact | OrdiZen</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;400&display=swap" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <style>
     body {
-      background: #222 url('bg-1.jpg') no-repeat center center fixed;
-      background-size: cover;
       margin: 0;
-      font-family: 'Nunito', sans-serif;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: url('bg-1.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
+      min-height: 100vh;
     }
     .navbar {
-      background: rgba(24,24,26, 0.97);
-      width: 100vw;
-      min-height: 48px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
+      background: #181b1e;
+      border-bottom: 2.5px solid #42f8ff;
+      padding: 0;
+      position: sticky;
+      top: 0;
       z-index: 10;
-      box-shadow: 0 2px 12px 0 rgba(18,18,18,0.11);
-    }
-    .navbar nav {
       display: flex;
-      gap: 22px;
-      padding: 0 8px;
       align-items: center;
     }
-    .navbar a, .navbar span.menu-link {
-      color: #ececec;
-      text-decoration: none;
-      font-weight: 700;
-      font-size: 1.09em;
-      padding: 10px 6px 8px 6px;
-      transition: color .18s;
-      letter-spacing: 0.01em;
-      text-shadow: 0 1px 6px #1118;
-      position: relative;
-      cursor: pointer;
-    }
-    .navbar a:hover, .navbar span.menu-link:hover {
-      color: #42f8ff;
-    }
-    .logout-icon {
-      width: 34px;
-      height: 22px;
-      vertical-align: middle;
-      filter: drop-shadow(0 0 6px #42f8ffcc);
-      margin-left: 6px;
-      margin-right: 3px;
-      opacity: 0.94;
-      cursor: pointer;
-      transition: filter 0.15s, opacity 0.15s;
+    .logo-oz {
+      height: 58px;
+      width: 58px;
+      margin: 2px 22px 2px 16px;
+      animation: pulse 2.8s infinite alternate;
+      filter: drop-shadow(0 0 12px #42f8ff88);
+      transition: transform 0.2s;
       background: transparent;
-      border: none;
-      outline: none;
-      display: inline-block;
-    }
-    .logout-icon:hover {
-      filter: drop-shadow(0 0 15px #42f8ff) brightness(1.3);
-      opacity: 1;
-      background: #1116;
-    }
-    .navbar-separator {
-      width: 100vw;
-      height: 2.7px;
-      background: linear-gradient(
-        to right,
-        #101a20 0%,
-        #42f8ff 15%,
-        #6ffcff 50%,
-        #42f8ff 85%,
-        #101a20 100%
-      );
-      box-shadow: 0 0 8px 2px #42f8ff55, 0 1px 0 #0008;
-      border-bottom-left-radius: 1px;
-      border-bottom-right-radius: 1px;
-      opacity: 1;
-    }
-    .logo {
-      position: absolute;
-      left: 36px;
-      top: 7px;
-      background: linear-gradient(135deg,#34c759 60%,#20926e 100%);
       border-radius: 50%;
-      width: 42px; height: 42px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.55em; color: white; font-weight: bold;
-      box-shadow: 0 2px 10px rgba(44,199,89,0.18);
-      letter-spacing: -1px;
-      user-select: none;
-      border: 2px solid #ffffff18;
     }
-    .hero {
+    .logo-oz:hover {
+      transform: scale(1.07) rotate(-2deg);
+      box-shadow: 0 0 18px #42f8ffbb;
+      filter: drop-shadow(0 0 32px #42f8ffcc);
+    }
+    @keyframes pulse {
+      0% { filter: drop-shadow(0 0 8px #42f8ff44); }
+      100% { filter: drop-shadow(0 0 32px #42f8ffcc); }
+    }
+    #menu-nav {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 38px;
+      flex: 1;
+      margin-left: 10px;
+    }
+    #menu-nav a, #menu-nav span {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1.08em;
+      letter-spacing: 0.02em;
+      transition: color 0.18s;
+    }
+    #menu-nav a:hover {
+      color: #42f8ff;
+      text-shadow: 0 0 8px #42f8ff66;
+    }
+    .container {
+      max-width: 800px;
+      margin: 60px auto;
+      padding: 30px;
+      background: rgba(28, 30, 34, 0.86);
+      border: 2.2px solid #42f8ff;
+      border-radius: 14px;
+      box-shadow: 0 6px 44px #000a;
+    }
+    h1 {
+      color: #42f8ff;
+      text-align: center;
+      text-shadow: 0 0 12px #42f8ff;
+      margin-bottom: 25px;
+    }
+    form {
       display: flex;
       flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding-top: 42px;
-      padding-bottom: 30px;
+      gap: 18px;
     }
-    .hero h1 {
-      font-size: 2.2em; font-weight: 800; margin-bottom: 10px; color: #42f8ff;
-      text-align: center; text-shadow: 0 3px 32px #191e21a6, 0 2px 16px #42f8ff77;
-      letter-spacing: -1.2px;
+    label {
+      font-weight: bold;
+      color: #eee;
     }
-    .slogan {
-      font-size: 1.19em;
-      color: #fff;
-      margin-bottom: 12px;
-      text-align: center;
-      font-weight: 600;
-      letter-spacing: 0.04em;
-      text-shadow:
-        0 0 6px #42f8ff99,
-        0 0 14px #42f8ff44,
-        0 2px 18px #111;
-    }
-    .contact-box {
-      background: rgba(28,30,34, 0.82);
-      border-radius: 18px;
-      border: 2.2px solid #fff;
-      box-shadow: 0 6px 32px 0 #10182014;
-      max-width: 480px;
-      margin: 0 auto 40px auto;
-      padding: 32px 22px 24px 22px;
-      transition: border-color 0.25s, box-shadow 0.22s;
-      position: relative;
-    }
-    .contact-box:hover,
-    .contact-box:focus-within {
-      border-color: #42f8ff;
-      box-shadow: 0 0 14px 2px #42f8ff55, 0 6px 32px 0 #10182014;
-    }
-    .contact-box h2 {
-      color: #42f8ff;
-      margin-bottom: 16px;
-      text-align: center;
-    }
-    .contact-box label { color:#fff; font-weight:700;}
-    .contact-box input, .contact-box textarea {
-      width: 97%;
+    input, textarea {
       padding: 12px;
-      margin: 7px 0 18px 0;
       border-radius: 8px;
-      border: 1.5px solid #42f8ff44;
-      background: #171b1e;
-      color: #fff;
-      font-size: 1.08em;
-      resize: vertical;
+      border: none;
+      font-size: 1em;
+      background: #f0f0f0;
+      color: #111;
     }
-    .contact-box input:focus, .contact-box textarea:focus {
-      border: 1.5px solid #42f8ff;
-      outline: none;
+    button {
+      padding: 14px;
+      font-size: 1.1em;
+      font-weight: bold;
+      border: none;
+      border-radius: 9px;
+      background: linear-gradient(90deg, #38fff7, #42a2ff);
+      color: #111;
+      cursor: pointer;
+      transition: background 0.2s;
     }
-    .contact-box button {
-      background: linear-gradient(90deg,#34c759,#20926e);
-      color: #fff; font-weight: bold; border: none; border-radius: 14px;
-      font-size: 1.1em; padding: 10px 0; width: 100%; cursor: pointer;
-      margin-top: 7px;
-      box-shadow: 0 1px 8px #42f8ff11;
-      transition: background .15s;
-    }
-    .contact-box button:hover { background: linear-gradient(90deg,#20926e,#34c759);}
-    .msg-success { color:#42f8ff; text-align:center; margin-top:14px;}
-    @media (max-width: 700px) {
-      .contact-box { padding: 14px 4px;}
-      .logo { left: 12px; top: 6px; width: 34px; height: 34px; font-size: 1em;}
-      .navbar nav { gap: 8px; }
-      .hero { padding-top: 22px; }
+    button:hover {
+      background: #42f8ff;
+      box-shadow: 0 0 18px #42f8ff88;
     }
   </style>
 </head>
 <body>
   <div class="navbar">
-    <div class="logo">OZ</div>
+    <img src="logo-ordizen.png" alt="Logo OrdiZen" class="logo-oz">
     <nav id="menu-nav">
       <a href="index.html">Accueil</a>
       <a href="shoutbox.html">Shoutbox</a>
       <a href="services.html">Services</a>
-      <a href="contact.html">Contact</a>
+      <a href="contact.html" style="color:#42f8ff;text-shadow:0 0 8px #42f8ff77;">Contact</a>
     </nav>
   </div>
-  <div class="navbar-separator"></div>
+  <div class="container">
+    <h1>Contactez-nous</h1>
+    <form>
+      <label for="name">Nom :</label>
+      <input type="text" id="name" name="name" required>
 
-  <div class="hero">
-    <h1>Contact</h1>
-    <div class="slogan">Besoin d'un renseignement ou d'un devis ? Écrivez-nous !</div>
-  </div>
-  <div class="contact-box">
-    <h2>Formulaire de contact</h2>
-    <form id="contact-form">
-      <label for="nom">Nom</label>
-      <input type="text" id="nom" name="nom" required>
-      <label for="email">E-mail</label>
+      <label for="email">Email :</label>
       <input type="email" id="email" name="email" required>
-      <label for="message">Message</label>
+
+      <label for="message">Message :</label>
       <textarea id="message" name="message" rows="5" required></textarea>
-      <button type="submit">Envoyer</button>
-      <div id="msg-form" class="msg-success"></div>
+
+      <button type="submit">Envoyer le message</button>
     </form>
   </div>
   <script>
-    // -- CONFIG SUPABASE --
-    const SUPABASE_URL = 'https://ewsehfkbdsjzbpmxoesw.supabase.co'; // <--- Mets ton URL ici
-    const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImV3c2VoZmtiZHNqemJwbXhvZXN3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDk3NjIxMTYsImV4cCI6MjA2NTMzODExNn0.RMS2dRPUokGoyYiwxm1e0lrZa0VFWlgCXAMl5SU6N98'; // <--- Mets ta clé ici
+    const SUPABASE_URL = 'https://ewsehfkbdsjzbpmxoesw.supabase.co'; // Ton URL
+    const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImV3c2VoZmtiZHNqemJwbXhvZXN3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDk3NjIxMTYsImV4cCI6MjA2NTMzODExNn0.RMS2dRPUokGoyYiwxm1e0lrZa0VFWlgCXAMl5SU6N98'; // Ta clé
     const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
-    // -- MENU DYNAMIQUE (connexion/inscription/logout) --
     async function updateMenu() {
       const { data: { user } } = await supabase.auth.getUser();
       const nav = document.getElementById('menu-nav');
@@ -222,35 +153,20 @@
         conn.textContent = 'Connexion';
         nav.appendChild(conn);
 
-        let inscr = document.createElement('a');
-        inscr.href = 'auth.html';
-        inscr.textContent = 'Inscription';
-        nav.appendChild(inscr);
+        let insc = document.createElement('a');
+        insc.href = 'auth.html#inscription';
+        insc.textContent = 'Inscription';
+        nav.appendChild(insc);
       } else {
         let deco = document.createElement('span');
-        deco.className = 'menu-link';
-        deco.title = 'Déconnexion';
-        deco.innerHTML = `
-        <svg class="logout-icon" viewBox="0 0 32 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M20 4L28 11L20 18" stroke="#42f8ff" stroke-width="2.7" stroke-linecap="round" stroke-linejoin="round"/>
-          <rect x="2" y="7" width="18" height="8" rx="4" stroke="#42f8ff" stroke-width="2"/>
-        </svg>
-        `;
-        deco.onclick = async () => {
-          await supabase.auth.signOut();
-          window.location.reload();
-        };
+        deco.style.cursor = "pointer";
+        deco.title = "Déconnexion";
+        deco.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="29" height="22" fill="none" viewBox="0 2 20 22"><path d="M20 14.2h-14m11-4 4 4-4 4M4 18.2a4 4 0 1 1 0-8m0 8V8.2" stroke="#42f8ff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" /></svg>`;
+        deco.onclick = async () => { await supabase.auth.signOut(); updateMenu(); };
         nav.appendChild(deco);
       }
     }
     updateMenu();
-
-    // -- GESTION FORMULAIRE DE CONTACT (simple feedback) --
-    document.getElementById('contact-form').addEventListener('submit', function(e) {
-      e.preventDefault();
-      document.getElementById('msg-form').textContent = "Message envoyé ! Nous vous répondrons rapidement.";
-      this.reset();
-    });
   </script>
 </body>
 </html>
