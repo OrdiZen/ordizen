@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <title>OrdiZen - La sérénité numérique à domicile</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Supabase Auth Menu Dynamique -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <style>
     body {
@@ -187,9 +186,7 @@
       <a href="shoutbox.html">Shoutbox</a>
       <a href="services.html">Services</a>
       <a href="contact.html">Contact</a>
-      <!-- Menu dynamique Supabase -->
     </nav>
-    <!-- Le menu dynamique Connexion/Inscription/Logout s’ajoute ici automatiquement -->
   </div>
   <div class="container">
     <div class="titre-zen">OrdiZen</div>
@@ -218,7 +215,6 @@
   </div>
   <script>
     // -- Menu Supabase dynamique (Connexion, Inscription, Logout) --
-    // Mets ici tes clés Supabase (copie/colle comme sur index précédemment)
     const SUPABASE_URL = 'https://ewsehfkbdsjzbpmxoesw.supabase.co'; // <-- Ton URL ici
     const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImV3c2VoZmtiZHNqemJwbXhvZXN3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDk3NjIxMTYsImV4cCI6MjA2NTMzODExNn0.RMS2dRPUokGoyYiwxm1e0lrZa0VFWlgCXAMl5SU6N98'; // <-- Ta clé ici
     const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
@@ -241,10 +237,10 @@
         nav.appendChild(insc);
       } else {
         let deco = document.createElement('span');
-        deco.className = "menu-link";
-        deco.style.cursor = "pointer";
-        deco.title = "Déconnexion";
-        deco.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="29" height="22" fill="none" viewBox="0 2 20 22"><path d="M20 14.2h-14m11-4 4 4-4 4M4 18.2a4 4 0 1 1 0-8m0 8V8.2" stroke="#42f8ff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" filter="url(#glow)" /></svg>`;
+        deco.className = \"menu-link\";
+        deco.style.cursor = \"pointer\";
+        deco.title = \"Déconnexion\";
+        deco.innerHTML = `<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"29\" height=\"22\" fill=\"none\" viewBox=\"0 2 20 22\"><path d=\"M20 14.2h-14m11-4 4 4-4 4M4 18.2a4 4 0 1 1 0-8m0 8V8.2\" stroke=\"#42f8ff\" stroke-width=\"2.4\" stroke-linecap=\"round\" stroke-linejoin=\"round\" /></svg>`;
         deco.onclick = async () => { await supabase.auth.signOut(); updateMenu(); };
         nav.appendChild(deco);
       }
