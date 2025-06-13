@@ -221,7 +221,6 @@
     async function updateMenu() {
       const { data: { user } } = await supabase.auth.getUser();
       const nav = document.getElementById('menu-nav');
-      // On retire tout après \"Contact\"
       while (nav.children.length > 4) nav.removeChild(nav.lastChild);
 
       if (!user) {
@@ -236,10 +235,10 @@
         nav.appendChild(insc);
       } else {
         let deco = document.createElement('span');
-        deco.className = \"menu-link\";
-        deco.style.cursor = \"pointer\";
-        deco.title = \"Déconnexion\";
-        deco.innerHTML = `<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"29\\\" height=\\\"22\\\" fill=\\\"none\\\" viewBox=\\\"0 2 20 22\\\"><path d=\\\"M20 14.2h-14m11-4 4 4-4 4M4 18.2a4 4 0 1 1 0-8m0 8V8.2\\\" stroke=\\\"#42f8ff\\\" stroke-width=\\\"2.4\\\" stroke-linecap=\\\"round\\\" stroke-linejoin=\\\"round\\\" /></svg>`;
+        deco.className = "menu-link";
+        deco.style.cursor = "pointer";
+        deco.title = "Déconnexion";
+        deco.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="29" height="22" fill="none" viewBox="0 2 20 22"><path d="M20 14.2h-14m11-4 4 4-4 4M4 18.2a4 4 0 1 1 0-8m0 8V8.2" stroke="#42f8ff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" /></svg>`;
         deco.onclick = async () => { await supabase.auth.signOut(); updateMenu(); };
         nav.appendChild(deco);
       }
