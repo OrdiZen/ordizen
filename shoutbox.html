@@ -4,131 +4,235 @@
   <meta charset="UTF-8">
   <title>Shoutbox | OrdiZen</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="logo-ordizen.png">
   <style>
-    body {margin:0;font-family:'Segoe UI',Arial,sans-serif;color:#fff;background:url('bg-1.jpg') no-repeat center center fixed;background-size:cover;min-height:100vh;}
-    .navbar {background:#181b1e;border-bottom:2.5px solid #42f8ff;padding:0;position:sticky;top:0;z-index:10;display:flex;align-items:center;}
-    .logo-oz {height:58px;width:58px;margin:2px 22px 2px 16px;animation:pulse 2.8s infinite alternate;filter:drop-shadow(0 0 12px #42f8ff88);transition:transform 0.2s;background:transparent;border-radius:50%;}
-    .logo-oz:hover {transform:scale(1.07) rotate(-2deg);box-shadow:0 0 18px #42f8ffbb;filter:drop-shadow(0 0 32px #42f8ffcc);}
-    @keyframes pulse {0%{filter:drop-shadow(0 0 8px #42f8ff44);}100%{filter:drop-shadow(0 0 32px #42f8ffcc);}}
-    #menu-nav {display:flex;justify-content:center;align-items:center;gap:38px;flex:1;margin-left:10px;}
-    #menu-nav a,#menu-nav span {color:#fff;text-decoration:none;font-weight:bold;font-size:1.08em;letter-spacing:0.02em;transition:color 0.18s;position:relative;}
-    #menu-nav a:hover {color:#42f8ff;text-shadow:0 0 8px #42f8ff66;}
-    .shoutbox-container {max-width:700px;margin:50px auto 0 auto;padding:30px 24px 22px 24px;background:rgba(28,30,34,0.88);border:2px solid #42f8ff;border-radius:14px;box-shadow:0 6px 44px #000a;min-height:420px;position:relative;}
-    h1 {color:#42f8ff;text-align:center;text-shadow:0 0 12px #42f8ff;margin-bottom:22px;font-size:2em;letter-spacing:0.04em;}
-    .message-list {height:270px;overflow-y:auto;padding:10px 2px 6px 2px;border-radius:10px;background:rgba(255,255,255,0.04);margin-bottom:22px;border:1.2px solid #42f8ff22;}
-    .message {padding:8px 11px;margin:7px 0;background:#21262b;border-left:3px solid #42f8ff;border-radius:6px;word-break:break-all;font-size:1.08em;box-shadow:0 1px 10px #0004;}
-    .message strong {color:#42f8ff;}
-    .msg-info {text-align:center;color:#53fffa;margin-bottom:11px;font-size:1.01em;letter-spacing:0.01em;text-shadow:0 0 8px #42f8ff99;opacity:0.85;}
-    form {display:flex;gap:10px;margin-top:7px;}
-    input[type="text"] {flex:1;padding:11px;border-radius:8px;border:none;background:#fff;color:#222;font-size:1.04em;}
-    button {padding:11px 26px;border:none;border-radius:8px;font-weight:bold;background:linear-gradient(90deg,#38fff7,#42a2ff);color:#181b1e;cursor:pointer;transition:background 0.15s;box-shadow:0 0 10px #42f8ff33;}
-    button:hover {background:#42f8ff;box-shadow:0 0 18px #42f8ff88;color:#222;}
-    .not-connected {color:#ffb9b9;text-align:center;margin:18px 0 0 0;font-size:1.08em;text-shadow:0 0 8px #9005, 0 0 8px #fff8;}
-    @media (max-width:700px) {.shoutbox-container{max-width:98vw;margin:30px 2vw 0 2vw;}.message-list{height:34vw;min-height:150px;}}
+    @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@700;400&display=swap');
+    body {
+      background: #222 url('bg-1.jpg') no-repeat center center fixed;
+      background-size: cover;
+      margin: 0;
+      font-family: 'Nunito', Arial, sans-serif;
+      color: #fff;
+      min-height: 100vh;
+    }
+    .navbar {
+      background: rgba(24,24,26, 0.97);
+      min-height: 52px;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      border-bottom: 2.2px solid #42f8ff;
+      box-shadow: 0 3px 24px 2px #42f8ff24, 0 2px 14px #111a;
+      position: relative;
+      z-index: 3;
+      overflow-x: auto;
+      justify-content: flex-start;
+    }
+    .navbar::after {
+      content: "";
+      position: absolute;
+      left: 0; right: 0; bottom: -5px; height: 8px;
+      pointer-events: none;
+      background: linear-gradient(90deg, rgba(66,248,255,0.13) 0%, rgba(160,230,224,0.18) 60%, rgba(66,248,255,0.09) 100%);
+      border-radius: 0 0 18px 18px;
+      filter: blur(5px);
+      opacity: 0.82;
+    }
+    .logo-title {
+      color: #41ffb8;
+      font-size: 1.22rem;
+      font-weight: 900;
+      letter-spacing: 1.4px;
+      text-shadow: 0 0 5px #42f8ff80, 0 0 1px #1dffbd;
+      margin-left: 28px;
+      margin-right: 34px;
+      user-select: none;
+      min-width: 90px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      filter: brightness(0.91) saturate(0.8);
+      transition: color 0.18s, filter 0.18s;
+    }
+    .logo-title:hover { filter: brightness(1.07) saturate(1.01); color: #4cffd2; }
+    #menu-nav {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 32px;
+      flex: 1;
+    }
+    #menu-nav a, #menu-nav span.menu-link {
+      color: #fff;
+      text-decoration: none;
+      font-size: 1.08rem;
+      transition: color 0.2s, background 0.18s;
+      cursor: pointer;
+      padding: 3px 13px;
+      border-radius: 6px;
+      font-weight: bold;
+      text-align: center;
+      position: relative;
+    }
+    #menu-nav a:hover, #menu-nav span.menu-link:hover {
+      color: #42f8ff;
+      text-shadow: 0 0 7px #42f8ff, 0 0 1px #fff;
+      background: rgba(66,248,255,0.10);
+    }
+    #menu-nav .active {
+      color: #42f8ff;
+      text-shadow: 0 0 9px #42f8ff;
+      background: rgba(66,248,255,0.08);
+    }
+    .container {
+      max-width: 900px;
+      margin: 54px auto 0 auto;
+      padding: 0 36px;
+      text-align: center;
+      position: relative;
+    }
+    .titre-zen {
+      margin: 44px auto 8px auto;
+      color: #42f8ff;
+      font-size: 2.14rem;
+      font-weight: bold;
+      letter-spacing: 1.6px;
+      text-shadow: 0 0 16px #42f8ffcc, 0 2px 14px #222a;
+      filter: drop-shadow(0 0 7px #42f8ff3c);
+      background: none;
+      border: none;
+    }
+    .slogan-zen {
+      font-size: 1.19rem;
+      color: #eafdff;
+      margin-bottom: 28px;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      text-shadow: 0 0 8px #42f8ff88, 0 0 6px #222d;
+      filter: drop-shadow(0 0 7px #42f8ff44);
+    }
+    .shoutbox-case {
+      background: rgba(30,33,40,0.94);
+      border: 2.5px solid #fff;
+      border-radius: 14px;
+      box-shadow: 0 6px 44px #000a;
+      margin: 0 auto 0 auto;
+      max-width: 670px;
+      padding: 38px 32px 36px 32px;
+      transition: border 0.18s, box-shadow 0.20s;
+      position: relative;
+      z-index: 1;
+    }
+    .shoutbox-case:hover {
+      border: 2.5px solid #42f8ff;
+      box-shadow: 0 0 32px #42f8ff99, 0 2px 34px #000a;
+    }
+
+    .shoutbox-iframe {
+      width: 100%;
+      height: 460px;
+      border: none;
+      background: #f8fafb;
+      border-radius: 12px 12px 8px 8px;
+      box-shadow: 0 2px 14px #42f8ff10;
+      margin-bottom: 12px;
+    }
+    /* STYLE DE LA ZONE DE SAISIE (blanc cassé, texture papier) */
+    .shoutbox-case ::-webkit-input-placeholder { color: #41adc0; opacity: 0.9;}
+    .shoutbox-case ::placeholder { color: #41adc0; opacity: 0.9;}
+    .shoutbox-case input, .shoutbox-case textarea {
+      background: #f8fafb;
+      background-image: repeating-linear-gradient(135deg, rgba(230,230,220,0.11) 0 2px, transparent 2px 20px), repeating-linear-gradient(25deg, rgba(250,250,240,0.08) 0 1.5px, transparent 1.5px 15px);
+      color: #18333c;
+      border: 1.5px solid #42f8ff44;
+      border-radius: 9px;
+      font-family: inherit;
+      padding: 11px 10px;
+      font-size: 1.07em;
+      margin-top: 5px;
+      margin-bottom: 8px;
+      outline: none;
+      box-shadow: 0 1px 6px #42f8ff14;
+      transition: border 0.16s, box-shadow 0.18s, background 0.15s;
+    }
+    .shoutbox-case input:focus, .shoutbox-case textarea:focus {
+      border: 1.5px solid #42f8ff;
+      box-shadow: 0 0 14px #42f8ff60;
+      background: #fcfeff;
+    }
+    @media (max-width: 900px) {
+      .container, .shoutbox-case { padding: 14px 4vw; }
+      .titre-zen { font-size: 1.3rem; }
+      .shoutbox-case { max-width: 97vw; }
+    }
+    @media (max-width: 650px) {
+      .logo-title { font-size: 1.05rem; min-width: 40px; margin-right: 7px;}
+      #menu-nav { gap: 10px; }
+      .shoutbox-case { padding: 10px 2vw 20px 2vw;}
+      .shoutbox-iframe { height: 320px; }
+    }
   </style>
 </head>
 <body>
-  <div class="navbar">
-    <img src="logo-ordizen.png" alt="Logo OrdiZen" class="logo-oz" />
-    <nav id="menu-nav">
+  <nav class="navbar">
+    <span class="logo-title">OrdiZen</span>
+    <div id="menu-nav">
       <a href="index.html">Accueil</a>
-      <a href="shoutbox.html" style="color:#42f8ff;text-shadow:0 0 8px #42f8ff77;">Shoutbox</a>
+      <a href="shoutbox.html" class="active">Shoutbox</a>
       <a href="services.html">Services</a>
       <a href="contact.html">Contact</a>
-    </nav>
-  </div>
-  <div class="shoutbox-container">
-    <h1>Shoutbox</h1>
-    <div class="msg-info">Discutez en direct avec la communauté OrdiZen.<br>Connexion requise pour écrire !</div>
-    <div class="message-list" id="messages"></div>
-    <form id="chat-form" autocomplete="off">
-      <input type="text" id="message-input" placeholder="Votre message..." maxlength="240" required>
-      <button type="submit">Envoyer</button>
-    </form>
-    <div class="not-connected" id="not-connected" style="display:none;">
-      Vous devez être connecté pour envoyer un message.
+    </div>
+  </nav>
+  <div class="container">
+    <div class="titre-zen">Shoutbox</div>
+    <div class="slogan-zen">Discutez en temps réel avec la communauté OrdiZen&nbsp;!</div>
+    <div class="shoutbox-case">
+      <!-- IFRAME ou script d'intégration shoutbox ici, exemple : -->
+      <iframe class="shoutbox-iframe"
+        src="https://st.chatango.com/group?gid=ordizen-shoutbox&arch=js"
+        title="Shoutbox OrdiZen"
+        allowtransparency="true"
+        scrolling="auto"
+        frameborder="0">
+      </iframe>
+      <!-- Ici, la vraie zone de saisie serait intégrée côté service -->
+      <input type="text" placeholder="Votre message..." disabled>
     </div>
   </div>
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
   <script>
-    const SUPABASE_URL = 'https://ewsehfkbdsjzbpmxoesw.supabase.co';
-    const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImV3c2VoZmtiZHNqemJwbXhvZXN3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDk3NjIxMTYsImV4cCI6MjA2NTMzODExNn0.RMS2dRPUokGoyYiwxm1e0lrZa0VFWlgCXAMl5SU6N98';
-    const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+    document.addEventListener('DOMContentLoaded', () => {
+      const SUPABASE_URL = 'https://ewsehfkbdsjzbpmxoesw.supabase.co';
+      const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImV3c2VoZmtiZHNqemJwbXhvZXN3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDk3NjIxMTYsImV4cCI6MjA2NTMzODExNn0.RMS2dRPUokGoyYiwxm1e0lrZa0VFWlgCXAMl5SU6N98';
+      const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
-    async function updateMenu() {
-      const { data: { user } } = await supabase.auth.getUser();
-      const nav = document.getElementById('menu-nav');
-      while (nav.children.length > 4) nav.removeChild(nav.lastChild);
+      async function updateMenu() {
+        const { data: { user } } = await supabase.auth.getUser();
+        const nav = document.getElementById('menu-nav');
+        while (nav.children.length > 4) nav.removeChild(nav.lastChild);
 
-      if (!user) {
-        let conn = document.createElement('a');
-        conn.href = 'auth.html';
-        conn.textContent = 'Connexion';
-        nav.appendChild(conn);
+        if (!user) {
+          let conn = document.createElement('a');
+          conn.href = 'auth.html';
+          conn.textContent = 'Connexion';
+          nav.appendChild(conn);
 
-        let insc = document.createElement('a');
-        insc.href = 'auth.html#inscription';
-        insc.textContent = 'Inscription';
-        nav.appendChild(insc);
-      } else {
-        let deco = document.createElement('span');
-        deco.className = "menu-link";
-        deco.style.cursor = "pointer";
-        deco.title = "Déconnexion";
-        deco.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="29" height="22" fill="none" viewBox="0 2 20 22"><path d="M20 14.2h-14m11-4 4 4-4 4M4 18.2a4 4 0 1 1 0-8m0 8V8.2" stroke="#42f8ff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" /></svg>`;
-        deco.onclick = async () => { await supabase.auth.signOut(); updateMenu(); };
-        nav.appendChild(deco);
+          let insc = document.createElement('a');
+          insc.href = 'auth.html#inscription';
+          insc.textContent = 'Inscription';
+          nav.appendChild(insc);
+        } else {
+          let deco = document.createElement('span');
+          deco.className = "menu-link";
+          deco.style.cursor = "pointer";
+          deco.title = "Déconnexion";
+          deco.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="29" height="22" fill="none" viewBox="0 2 20 22"><path d="M20 14.2h-14m11-4 4 4-4 4M4 18.2a4 4 0 1 1 0-8m0 8V8.2" stroke="#42f8ff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" /></svg>`;
+          deco.onclick = async () => { await supabase.auth.signOut(); updateMenu(); };
+          nav.appendChild(deco);
+        }
       }
-    }
-    updateMenu();
-
-    const messageList = document.getElementById('messages');
-    const form = document.getElementById('chat-form');
-    const input = document.getElementById('message-input');
-    const notConnected = document.getElementById('not-connected');
-    let currentUser = null;
-    async function checkAuth() {
-      const { data: { user } } = await supabase.auth.getUser();
-      currentUser = user;
-      if (!user) {
-        form.style.display = 'none';
-        notConnected.style.display = '';
-      } else {
-        form.style.display = '';
-        notConnected.style.display = 'none';
-      }
-    }
-    checkAuth();
-
-    async function loadMessages() {
-      const { data, error } = await supabase.from('shoutbox').select('*').order('created_at', { ascending: false }).limit(30);
-      if (!error) {
-        messageList.innerHTML = '';
-        data.reverse().forEach(msg => {
-          const div = document.createElement('div');
-          div.classList.add('message');
-          div.innerHTML = `<strong>${msg.user} :</strong> ${msg.text}`;
-          messageList.appendChild(div);
-        });
-        messageList.scrollTop = messageList.scrollHeight;
-      }
-    }
-    loadMessages();
-
-    supabase.channel('shoutbox-channel')
-      .on('postgres_changes', { event: '*', schema: 'public', table: 'shoutbox' }, loadMessages)
-      .subscribe();
-
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      if (!currentUser) {
-        alert("Veuillez vous connecter pour envoyer un message.");
-        return;
-      }
-      const text = input.value.trim();
-      if (!text) return;
-      await supabase.from('shoutbox').insert([{ user: currentUser.email, text }]);
-      input.value = '';
+      updateMenu();
     });
   </script>
 </body>
