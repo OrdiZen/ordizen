@@ -136,13 +136,12 @@
     </div>
   </div>
 
-  <!-- Chargement du CDN SUPABASE en DEFER -->
+  <!-- CDN Supabase AVEC defer -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const SUPABASE_URL = 'https://ewsehfkbdsjzbpmxoesw.supabase.co';
       const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImV3c2VoZmtiZHNqemJwbXhvZXN3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDk3NjIxMTYsImV4cCI6MjA2NTMzODExNn0.RMS2dRPUokGoyYiwxm1e0lrZa0VFWlgCXAMl5SU6N98';
-      // On accède bien à window.supabase
       const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
       async function updateMenu() {
