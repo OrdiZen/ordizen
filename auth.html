@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Connexion | OrdiZen</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: url('bg-1.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
+    }
+    .navbar {
+      background: #181b1e;
+      border-bottom: 2.5px solid #42f8ff;
+      display: flex;
+      align-items: center;
+      padding: 0;
+    }
+    .logo-oz {
+      height: 58px;
+      width: 58px;
+      margin: 2px 22px 2px 16px;
+      animation: pulse 2.8s infinite alternate;
+      filter: drop-shadow(0 0 12px #42f8ff88);
+      transition: transform 0.2s;
+      border-radius: 50%;
+    }
+    .logo-oz:hover {
+      transform: scale(1.07);
+      filter: drop-shadow(0 0 32px #42f8ffcc);
+    }
+    @keyframes pulse {
+      from { filter: drop-shadow(0 0 8px #42f8ff44); }
+      to { filter: drop-shadow(0 0 32px #42f8ffcc); }
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      flex: 1;
+      gap: 38px;
+    }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1.08em;
+    }
+    nav a:hover {
+      color: #42f8ff;
+      text-shadow: 0 0 8px #42f8ff66;
+    }
+    .container {
+      max-width: 500px;
+      margin: 60px auto;
+      background: rgba(28, 30, 34, 0.86);
+      padding: 30px;
+      border: 2px solid #42f8ff;
+      border-radius: 12px;
+    }
+    h1 {
+      color: #42f8ff;
+      text-align: center;
+      text-shadow: 0 0 12px #42f8ff;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+    input {
+      padding: 12px;
+      font-size: 1em;
+      border-radius: 8px;
+      border: none;
+      background: #f0f0f0;
+      color: #111;
+    }
+    button {
+      padding: 12px;
+      font-size: 1.1em;
+      background: linear-gradient(90deg, #38fff7, #42a2ff);
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    button:hover {
+      background: #42f8ff;
+      box-shadow: 0 0 18px #42f8ff88;
+    }
+  </style>
+</head>
+<body>
+  <div class="navbar">
+    <img src="logo-ordizen.png" alt="Logo OrdiZen" class="logo-oz">
+    <nav>
+      <a href="index.html">Accueil</a>
+      <a href="shoutbox.html">Shoutbox</a>
+      <a href="services.html">Services</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+  <div class="container">
+    <h1>Connexion</h1>
+    <form id="login-form">
+      <input type="email" id="login-email" placeholder="Adresse email" required>
+      <input type="password" id="login-password" placeholder="Mot de passe" required>
+      <button type="submit">Se connecter</button>
+    </form>
+    <hr style="margin:30px 0;border:none;border-top:1px solid #42f8ff66">
+    <h1 id="inscription">Inscription</h1>
+    <form id="signup-form">
+      <input type="email" id="signup-email" placeholder="Adresse email" required>
+      <input type="password" id="signup-password" placeholder="Mot de passe" required>
+      <button type="submit">S'inscrire</button>
+    </form>
+  </div>
+
+  <script>
+    const SUPABASE_URL = 'https://ewsehfkbdsjzbpmxoesw.supabase.co'; // à remplacer
+    const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImV3c2VoZmtiZHNqemJwbXhvZXN3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDk3NjIxMTYsImV4cCI6MjA2NTMzODExNn0.RMS2dRPUokGoyYiwxm1e0lrZa0VFWlgCXAMl5SU6N98'; // à remplacer
+    const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+    document.getElementById("login-form").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const email = document.getElementById("login-email").value;
+      const password = document.getElementById("login-password").value;
+      const { error } = await supabase.auth.signInWithPassword({ email, password });
+      if (error) return alert(error.message);
+      alert("Connexion réussie !");
+      window.location.href = "index.html";
+    });
+
+    document.getElementById("signup-form").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const email = document.getElementById("signup-email").value;
+      const password = document.getElementById("signup-password").value;
+      const { error } = await supabase.auth.signUp({ email, password });
+      if (error) return alert(error.message);
+      alert("Inscription réussie ! Veuillez vérifier votre boîte mail.");
+    });
+  </script>
+</body>
+</html>
