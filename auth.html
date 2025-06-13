@@ -5,135 +5,23 @@
   <title>Connexion / Inscription | OrdiZen</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', Arial, sans-serif;
-      color: #fff;
-      background: url('bg-1.jpg') no-repeat center center fixed;
-      background-size: cover;
-      min-height: 100vh;
-    }
-    .navbar {
-      background: #181b1e;
-      border-bottom: 2.5px solid #42f8ff;
-      padding: 0;
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      display: flex;
-      align-items: center;
-    }
-    .logo-oz {
-      height: 58px;
-      width: 58px;
-      margin: 2px 22px 2px 16px;
-      animation: pulse 2.8s infinite alternate;
-      filter: drop-shadow(0 0 12px #42f8ff88);
-      transition: transform 0.2s;
-      background: transparent;
-      border-radius: 50%;
-    }
-    .logo-oz:hover {
-      transform: scale(1.07) rotate(-2deg);
-      box-shadow: 0 0 18px #42f8ffbb;
-      filter: drop-shadow(0 0 32px #42f8ffcc);
-    }
-    @keyframes pulse {
-      0% { filter: drop-shadow(0 0 8px #42f8ff44); }
-      100% { filter: drop-shadow(0 0 32px #42f8ffcc);}
-    }
-    #menu-nav {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 38px;
-      flex: 1;
-      margin-left: 10px;
-    }
-    #menu-nav a, #menu-nav span {
-      color: #fff;
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 1.08em;
-      letter-spacing: 0.02em;
-      transition: color 0.18s;
-      position: relative;
-    }
-    #menu-nav a:hover {
-      color: #42f8ff;
-      text-shadow: 0 0 8px #42f8ff66;
-    }
-    .auth-container {
-      max-width: 410px;
-      margin: 56px auto 0 auto;
-      padding: 30px 25px 23px 25px;
-      background: rgba(28, 30, 34, 0.88);
-      border: 2px solid #42f8ff;
-      border-radius: 14px;
-      box-shadow: 0 6px 44px #000a;
-    }
-    h1 {
-      color: #42f8ff;
-      text-align: center;
-      text-shadow: 0 0 12px #42f8ff;
-      font-size: 1.5em;
-      margin-top: 0;
-      margin-bottom: 26px;
-      letter-spacing: 0.04em;
-    }
-    form {
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-      margin-bottom: 20px;
-    }
-    input {
-      padding: 12px;
-      border-radius: 8px;
-      border: none;
-      font-size: 1em;
-      background: #f0f0f0;
-      color: #111;
-    }
-    button {
-      padding: 12px;
-      font-size: 1.1em;
-      background: linear-gradient(90deg, #38fff7, #42a2ff);
-      border: none;
-      border-radius: 8px;
-      font-weight: bold;
-      cursor: pointer;
-      transition: background 0.2s;
-      margin-top: 10px;
-    }
-    button:hover {
-      background: #42f8ff;
-      box-shadow: 0 0 18px #42f8ff88;
-      color: #222;
-    }
-    .switch-auth {
-      margin: 0 auto 12px auto;
-      text-align: center;
-      color: #fff;
-      opacity: 0.8;
-      font-size: 0.98em;
-    }
-    .switch-auth a {
-      color: #42f8ff;
-      text-decoration: underline;
-      cursor: pointer;
-      margin-left: 5px;
-    }
-    .msg {
-      text-align: center;
-      color: #42f8ff;
-      font-size: 1.07em;
-      margin-top: 10px;
-      margin-bottom: 0;
-      min-height: 30px;
-      letter-spacing: 0.01em;
-      text-shadow: 0 0 9px #42f8ff77;
-    }
+    body {margin:0;font-family:'Segoe UI',Arial,sans-serif;color:#fff;background:url('bg-1.jpg') no-repeat center center fixed;background-size:cover;min-height:100vh;}
+    .navbar {background:#181b1e;border-bottom:2.5px solid #42f8ff;padding:0;position:sticky;top:0;z-index:10;display:flex;align-items:center;}
+    .logo-oz {height:58px;width:58px;margin:2px 22px 2px 16px;animation:pulse 2.8s infinite alternate;filter:drop-shadow(0 0 12px #42f8ff88);transition:transform 0.2s;background:transparent;border-radius:50%;}
+    .logo-oz:hover {transform:scale(1.07) rotate(-2deg);box-shadow:0 0 18px #42f8ffbb;filter:drop-shadow(0 0 32px #42f8ffcc);}
+    @keyframes pulse {0%{filter:drop-shadow(0 0 8px #42f8ff44);}100%{filter:drop-shadow(0 0 32px #42f8ffcc);}}
+    #menu-nav {display:flex;justify-content:center;align-items:center;gap:38px;flex:1;margin-left:10px;}
+    #menu-nav a,#menu-nav span {color:#fff;text-decoration:none;font-weight:bold;font-size:1.08em;letter-spacing:0.02em;transition:color 0.18s;position:relative;}
+    #menu-nav a:hover {color:#42f8ff;text-shadow:0 0 8px #42f8ff66;}
+    .auth-container {max-width:410px;margin:56px auto 0 auto;padding:30px 25px 23px 25px;background:rgba(28,30,34,0.88);border:2px solid #42f8ff;border-radius:14px;box-shadow:0 6px 44px #000a;}
+    h1 {color:#42f8ff;text-align:center;text-shadow:0 0 12px #42f8ff;font-size:1.5em;margin-top:0;margin-bottom:26px;letter-spacing:0.04em;}
+    form {display:flex;flex-direction:column;gap:14px;margin-bottom:20px;}
+    input {padding:12px;border-radius:8px;border:none;font-size:1em;background:#f0f0f0;color:#111;}
+    button {padding:12px;font-size:1.1em;background:linear-gradient(90deg,#38fff7,#42a2ff);border:none;border-radius:8px;font-weight:bold;cursor:pointer;transition:background 0.2s;margin-top:10px;}
+    button:hover {background:#42f8ff;box-shadow:0 0 18px #42f8ff88;color:#222;}
+    .switch-auth {margin:0 auto 12px auto;text-align:center;color:#fff;opacity:0.8;font-size:0.98em;}
+    .switch-auth a {color:#42f8ff;text-decoration:underline;cursor:pointer;margin-left:5px;}
+    .msg {text-align:center;color:#42f8ff;font-size:1.07em;margin-top:10px;margin-bottom:0;min-height:30px;letter-spacing:0.01em;text-shadow:0 0 9px #42f8ff77;}
   </style>
 </head>
 <body>
@@ -158,7 +46,6 @@
     </div>
     <div class="msg" id="login-msg"></div>
   </div>
-
   <div class="auth-container" id="signup" style="display:none;">
     <h1>Créer un compte OrdiZen</h1>
     <form id="signup-form">
@@ -171,10 +58,8 @@
     </div>
     <div class="msg" id="signup-msg"></div>
   </div>
-
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script>
-    // ---------- MENU DYNAMIQUE ----------
     const SUPABASE_URL = 'https://ewsehfkbdsjzbpmxoesw.supabase.co';
     const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImV3c2VoZmtiZHNqemJwbXhvZXN3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDk3NjIxMTYsImV4cCI6MjA2NTMzODExNn0.RMS2dRPUokGoyYiwxm1e0lrZa0VFWlgCXAMl5SU6N98';
     const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
@@ -206,7 +91,6 @@
     }
     updateMenu();
 
-    // --------- GESTION DES FORMULAIRES ----------
     function showInscription() {
       document.getElementById('login').style.display = "none";
       document.getElementById('signup').style.display = "block";
@@ -217,10 +101,8 @@
       document.getElementById('login').style.display = "block";
       window.location.hash = "";
     }
-    // Affichage automatique de la section à l’ouverture
     if (window.location.hash === "#inscription") showInscription();
 
-    // Connexion
     document.getElementById("login-form").addEventListener("submit", async (e) => {
       e.preventDefault();
       const email = document.getElementById("login-email").value;
@@ -235,7 +117,6 @@
       }
     });
 
-    // Inscription
     document.getElementById("signup-form").addEventListener("submit", async (e) => {
       e.preventDefault();
       const email = document.getElementById("signup-email").value;
