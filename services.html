@@ -2,270 +2,198 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>OrdiZen - Services</title>
+  <title>Nos services & Tarifs | OrdiZen</title>
+  <link rel="stylesheet" href="style.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;400&display=swap" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <style>
     body {
-      background: #222 url('bg-1.jpg') no-repeat center center fixed;
-      background-size: cover;
       margin: 0;
-      font-family: 'Nunito', sans-serif;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      color: #fff;
+      background: url('bg-1.jpg') no-repeat center center fixed;
+      background-size: cover;
+      min-height: 100vh;
     }
     .navbar {
-      background: rgba(24,24,26, 0.97);
-      width: 100vw;
-      min-height: 48px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
+      background: #181b1e;
+      border-bottom: 2.5px solid #42f8ff;
+      padding: 0;
+      margin-bottom: 32px;
+      position: sticky;
+      top: 0;
       z-index: 10;
-      box-shadow: 0 2px 12px 0 rgba(18,18,18,0.11);
     }
-    .navbar nav {
+    #menu-nav {
       display: flex;
-      gap: 22px;
-      padding: 0 8px;
-      align-items: center;
-    }
-    .navbar a, .navbar span.menu-link {
-      color: #ececec;
-      text-decoration: none;
-      font-weight: 700;
-      font-size: 1.09em;
-      padding: 10px 6px 8px 6px;
-      transition: color .18s;
-      letter-spacing: 0.01em;
-      text-shadow: 0 1px 6px #1118;
-      position: relative;
-      cursor: pointer;
-    }
-    .navbar a:hover, .navbar span.menu-link:hover {
-      color: #42f8ff;
-    }
-    .logout-icon {
-      width: 34px;
-      height: 22px;
-      vertical-align: middle;
-      filter: drop-shadow(0 0 6px #42f8ffcc);
-      margin-left: 6px;
-      margin-right: 3px;
-      opacity: 0.94;
-      cursor: pointer;
-      transition: filter 0.15s, opacity 0.15s;
-      background: transparent;
-      border: none;
-      outline: none;
-      display: inline-block;
-    }
-    .logout-icon:hover {
-      filter: drop-shadow(0 0 15px #42f8ff) brightness(1.3);
-      opacity: 1;
-      background: #1116;
-    }
-    .navbar-separator {
-      width: 100vw;
-      height: 2.7px;
-      background: linear-gradient(
-        to right,
-        #101a20 0%,
-        #42f8ff 15%,
-        #6ffcff 50%,
-        #42f8ff 85%,
-        #101a20 100%
-      );
-      box-shadow: 0 0 8px 2px #42f8ff55, 0 1px 0 #0008;
-      border-bottom-left-radius: 1px;
-      border-bottom-right-radius: 1px;
-      opacity: 1;
-    }
-    .logo {
-      position: absolute;
-      left: 36px;
-      top: 7px;
-      background: linear-gradient(135deg,#34c759 60%,#20926e 100%);
-      border-radius: 50%;
-      width: 42px; height: 42px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.55em; color: white; font-weight: bold;
-      box-shadow: 0 2px 10px rgba(44,199,89,0.18);
-      letter-spacing: -1px;
-      user-select: none;
-      border: 2px solid #ffffff18;
-    }
-    .hero {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
       justify-content: center;
-      padding-top: 42px;
-      padding-bottom: 30px;
+      align-items: center;
+      padding: 0.6em 0;
+      gap: 38px;
     }
-    .hero h1 {
-      font-size: 2.2em; font-weight: 800; margin-bottom: 10px; color: #42f8ff;
-      text-align: center; text-shadow: 0 3px 32px #191e21a6, 0 2px 16px #42f8ff77;
-      letter-spacing: -1.2px;
-    }
-    .slogan {
-      font-size: 1.19em;
+    #menu-nav a, #menu-nav span {
       color: #fff;
-      margin-bottom: 12px;
-      text-align: center;
-      font-weight: 600;
-      letter-spacing: 0.04em;
-      text-shadow:
-        0 0 6px #42f8ff99,
-        0 0 14px #42f8ff44,
-        0 2px 18px #111;
-    }
-    .services-box {
-      margin: 0 auto 50px auto;
-      max-width: 950px;
-      padding: 40px 20px 30px 20px;
-      background: rgba(28,30,34, 0.82);
-      border-radius: 18px;
-      border: 2.2px solid #fff;
-      box-shadow: 0 6px 32px 0 #10182014;
-      transition: border-color 0.25s, box-shadow 0.22s;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1.08em;
+      letter-spacing: 0.02em;
+      transition: color 0.18s;
       position: relative;
-      overflow: hidden;
     }
-    .services-box:hover,
-    .services-box:focus-within {
-      border-color: #42f8ff;
-      box-shadow: 0 0 14px 2px #42f8ff55, 0 6px 32px 0 #10182014;
+    #menu-nav a:hover {
+      color: #42f8ff;
+      text-shadow: 0 0 8px #42f8ff66;
     }
-    h2 {
-      color:#42f8ff;
-      text-align:center;
-      margin-bottom: 12px;
-      margin-top: 0;
-      font-size:1.35em;
-      letter-spacing: 0.04em;
-      text-shadow:
-        0 0 8px #42f8ff,
-        0 2px 8px #191e21a6;
+    .services-container {
+      background: rgba(28, 30, 34, 0.88);
+      border: 2px solid #fff;
+      border-radius: 14px;
+      max-width: 760px;
+      margin: 54px auto 0 auto;
+      padding: 32px 24px 24px 24px;
+      box-shadow: 0 6px 48px #000c  ;
+      transition: border 0.18s;
     }
-    .services {
-      display: flex; flex-wrap: wrap; gap: 28px; justify-content: center; margin-top: 16px;
+    .services-container:hover {
+      border: 2px solid #42f8ff;
+      box-shadow: 0 0 22px #42f8ff44;
     }
-    .service-card {
-      background: rgba(234,247,241,0.13);
-      border-radius: 16px;
-      box-shadow: 0 2px 6px rgba(44,106,84,0.04);
-      padding: 24px 18px;
-      width: 240px;
+    .services-container h1 {
       text-align: center;
-      display: flex; flex-direction: column; align-items: center;
-      transition: transform 0.15s;
-      border: 1px solid #42f8ff44;
+      color: #42f8ff;
+      margin-bottom: 10px;
+      letter-spacing: 0.04em;
+      text-shadow: 0 0 18px #42f8ffcc;
+      font-size: 2.1em;
+    }
+    .services-container h2 {
+      text-align: center;
       color: #fff;
+      font-weight: 400;
+      font-size: 1.14em;
+      margin-top: 0;
+      margin-bottom: 28px;
+      letter-spacing: 0.03em;
+      text-shadow: 0 0 12px #222c;
     }
-    .service-card:hover { transform: translateY(-7px) scale(1.035);}
-    .service-card .icon { font-size: 2.1em; margin-bottom: 10px; color: #42f8ff;}
-    .service-card h3 { margin: 0 0 10px 0; font-weight: 700; color: #42f8ff;}
-    .service-card p { color: #fff; text-shadow: 0 1px 10px #222a; }
-    .cta {
-      margin: 38px 0 0 0; text-align: center;
+    table.services-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 0 auto 16px auto;
+      background: transparent;
     }
-    .cta a {
-      display: inline-block; background: linear-gradient(90deg,#34c759,#20926e);
-      color: white; font-weight: 700; text-decoration: none; border-radius: 24px;
-      padding: 14px 32px; font-size: 1.15em; box-shadow: 0 1px 8px rgba(44,106,84,0.09);
-      transition: background .15s;
+    table.services-table th, table.services-table td {
+      border: none;
+      padding: 14px 12px;
+      font-size: 1.07em;
+      text-align: left;
+      background: rgba(46,51,57, 0.77);
     }
-    .cta a:hover { background: linear-gradient(90deg,#20926e,#34c759);}
-    @media (max-width: 700px) {
-      .services-box { padding: 12px 4px;}
-      .services { flex-direction: column; align-items: center;}
-      .service-card { width: 98%;}
-      .logo { left: 12px; top: 6px; width: 34px; height: 34px; font-size: 1em;}
-      .navbar nav { gap: 8px; }
-      .hero { padding-top: 22px; }
+    table.services-table th {
+      color: #42f8ff;
+      font-size: 1.08em;
+      letter-spacing: 0.04em;
+      background: rgba(46,51,57,0.93);
+      border-bottom: 2px solid #42f8ff55;
+    }
+    table.services-table tr {
+      transition: background 0.15s;
+    }
+    table.services-table tr:hover td {
+      background: rgba(66,248,255,0.12);
+    }
+    .tarif {
+      font-weight: bold;
+      color: #53fffa;
+      font-size: 1.07em;
+      text-shadow: 0 0 6px #42f8ff88;
+    }
+    .info-tarif {
+      text-align: center;
+      font-size: 1.04em;
+      color: #fff;
+      margin: 22px 0 0 0;
+      opacity: 0.8;
+      letter-spacing: 0.01em;
+      text-shadow: 0 0 8px #000c;
+    }
+    @media (max-width: 750px) {
+      .services-container {
+        max-width: 99vw;
+        margin: 30px 5vw 0 5vw;
+        padding: 18px 3vw 14px 3vw;
+      }
+      table.services-table th, table.services-table td {
+        padding: 11px 5px;
+        font-size: 1em;
+      }
     }
   </style>
 </head>
 <body>
   <div class="navbar">
-    <div class="logo">OZ</div>
     <nav id="menu-nav">
       <a href="index.html">Accueil</a>
       <a href="shoutbox.html">Shoutbox</a>
-      <a href="services.html">Services</a>
+      <a href="services.html" style="color:#42f8ff;text-shadow:0 0 8px #42f8ff77;">Services</a>
       <a href="contact.html">Contact</a>
+      <a href="auth.html">Connexion / Inscription</a>
     </nav>
   </div>
-  <div class="navbar-separator"></div>
-
-  <div class="hero">
+  <div class="services-container">
     <h1>Nos services</h1>
-    <div class="slogan">Des prestations pour tous vos besoins informatiques</div>
-  </div>
-  <div class="services-box">
-    <h2>Ce que nous proposons</h2>
-    <div class="services">
-      <div class="service-card">
-        <div class="icon">🛠️</div>
-        <h3>Montage PC sur-mesure</h3>
-        <p>Assemblage, configuration et optimisation de votre ordinateur, adapté à vos besoins (gaming, bureautique, création, etc).</p>
-      </div>
-      <div class="service-card">
-        <div class="icon">🔧</div>
-        <h3>Maintenance & Réparation</h3>
-        <p>Dépannage rapide, nettoyage, mise à niveau et optimisation de tous vos appareils informatiques.</p>
-      </div>
-      <div class="service-card">
-        <div class="icon">💡</div>
-        <h3>Conseil & Accompagnement</h3>
-        <p>Aide à l'achat, installation de logiciels, sécurité, mises à jour et tutoriels personnalisés.</p>
-      </div>
+    <h2>Montage, dépannage et accompagnement informatique à domicile<br>Tarifs TTC, transparents et sans surprise</h2>
+    <table class="services-table">
+      <tr>
+        <th>Prestation</th>
+        <th>Détail</th>
+        <th>Prix TTC</th>
+      </tr>
+      <tr>
+        <td><b>Montage PC complet</b></td>
+        <td>Assemblage + installation Windows + tests + conseils personnalisés</td>
+        <td class="tarif">69&nbsp;€</td>
+      </tr>
+      <tr>
+        <td>Mise à niveau (upgrade)</td>
+        <td>Ajout/remplacement de composants : RAM, SSD, carte graphique, etc.</td>
+        <td class="tarif">35&nbsp;€</td>
+      </tr>
+      <tr>
+        <td>Dépannage rapide</td>
+        <td>Diagnostic, réparation express de problèmes courants (hors pièces)</td>
+        <td class="tarif">39&nbsp;€</td>
+      </tr>
+      <tr>
+        <td>Formatage & réinstallation</td>
+        <td>Windows (ou Linux), sauvegarde/restauration de données, configuration</td>
+        <td class="tarif">49&nbsp;€</td>
+      </tr>
+      <tr>
+        <td>Installation & paramétrage logiciel</td>
+        <td>Suite Office, antivirus, logiciels spécialisés, configuration email, etc.</td>
+        <td class="tarif">29&nbsp;€</td>
+      </tr>
+      <tr>
+        <td>Conseil & accompagnement</td>
+        <td>Aide à l'achat, configuration de matériel, sécurité et bonnes pratiques</td>
+        <td class="tarif">25&nbsp;€</td>
+      </tr>
+      <tr>
+        <td>Déplacement à domicile (secteur OrdiZen)</td>
+        <td>Zone urbaine, scooter ou transport en commun</td>
+        <td class="tarif">Inclus</td>
+      </tr>
+      <tr>
+        <td>Devis personnalisé</td>
+        <td>Projet complexe, installation réseau, multi-PC, etc.</td>
+        <td class="tarif">Gratuit</td>
+      </tr>
+    </table>
+    <div class="info-tarif">
+      <b>Besoin d'un service sur-mesure ?</b><br>
+      <span>Contactez-nous pour un devis précis et gratuit.<br>
+      Intervention rapide sur rendez-vous, déplacement offert dans votre secteur.</span>
     </div>
-    <div class="cta">
-      <a href="contact.html">Demander un devis gratuit</a>
-    </div>
   </div>
-  <script>
-    // -- CONFIG SUPABASE --
-    const SUPABASE_URL = 'https://ewsehfkbdsjzbpmxoesw.supabase.co'; // <--- Mets ton URL ici
-    const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImV3c2VoZmtiZHNqemJwbXhvZXN3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDk3NjIxMTYsImV4cCI6MjA2NTMzODExNn0.RMS2dRPUokGoyYiwxm1e0lrZa0VFWlgCXAMl5SU6N98'; // <--- Mets ta clé ici
-    const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
-
-    // -- MENU DYNAMIQUE (connexion/inscription/logout) --
-    async function updateMenu() {
-      const { data: { user } } = await supabase.auth.getUser();
-      const nav = document.getElementById('menu-nav');
-      while (nav.children.length > 4) nav.removeChild(nav.lastChild);
-
-      if (!user) {
-        let conn = document.createElement('a');
-        conn.href = 'auth.html';
-        conn.textContent = 'Connexion';
-        nav.appendChild(conn);
-
-        let inscr = document.createElement('a');
-        inscr.href = 'auth.html';
-        inscr.textContent = 'Inscription';
-        nav.appendChild(inscr);
-      } else {
-        let deco = document.createElement('span');
-        deco.className = 'menu-link';
-        deco.title = 'Déconnexion';
-        deco.innerHTML = `
-        <svg class="logout-icon" viewBox="0 0 32 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M20 4L28 11L20 18" stroke="#42f8ff" stroke-width="2.7" stroke-linecap="round" stroke-linejoin="round"/>
-          <rect x="2" y="7" width="18" height="8" rx="4" stroke="#42f8ff" stroke-width="2"/>
-        </svg>
-        `;
-        deco.onclick = async () => {
-          await supabase.auth.signOut();
-          window.location.reload();
-        };
-        nav.appendChild(deco);
-      }
-    }
-    updateMenu();
-  </script>
 </body>
 </html>
