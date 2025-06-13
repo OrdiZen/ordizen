@@ -4,97 +4,174 @@
   <meta charset="UTF-8">
   <title>OrdiZen - La sérénité numérique à domicile</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="logo-ordizen.png">
   <style>
-    body { margin:0; font-family:'Segoe UI', Arial, sans-serif; color:#fff; background:url('bg-1.jpg') no-repeat center center fixed; background-size:cover; min-height:100vh;}
-    .navbar {background:#181b1e; border-bottom:2.5px solid #42f8ff; padding:0; position:sticky; top:0; z-index:10; display:flex; align-items:center;}
-    .logo-oz {height:58px; width:58px; margin:2px 22px 2px 16px; animation:pulse 2.8s infinite alternate; filter:drop-shadow(0 0 12px #42f8ff88); transition:transform 0.2s; background:transparent; border-radius:50%;}
-    .logo-oz:hover {transform:scale(1.07) rotate(-2deg); box-shadow:0 0 18px #42f8ffbb; filter:drop-shadow(0 0 32px #42f8ffcc);}
-    @keyframes pulse {0%{filter:drop-shadow(0 0 8px #42f8ff44);}100%{filter:drop-shadow(0 0 32px #42f8ffcc);}}
-    #menu-nav {display:flex; justify-content:center; align-items:center; gap:38px; flex:1; margin-left:10px;}
-    #menu-nav a, #menu-nav span {color:#fff; text-decoration:none; font-weight:bold; font-size:1.08em; letter-spacing:0.02em; transition:color 0.18s; position:relative;}
-    #menu-nav a:hover {color:#42f8ff; text-shadow:0 0 8px #42f8ff66;}
-    .container {max-width:980px; margin:58px auto 0 auto; padding:34px 28px 30px 28px; background:rgba(28,30,34,0.86); border:2.2px solid #42f8ff; border-radius:14px; box-shadow:0 6px 44px #000a; text-align:center; position:relative;}
-    .titre-zen {font-size:2.5em; font-weight:bold; color:#42f8ff; margin-bottom:10px; margin-top:4px; letter-spacing:0.05em; text-shadow:0 0 18px #42f8ffcc, 0 0 6px #222a;}
-    .slogan-zen {font-size:1.19em; color:#fff; margin-bottom:22px; font-weight:500; letter-spacing:0.03em; text-shadow:0 0 14px #42f8ff88, 0 0 8px #222d; filter:drop-shadow(0 0 9px #42f8ff44);}
-    .desc-entreprise {margin:0 auto 35px auto; color:#ddeeff; background:rgba(44,52,60,0.36); border-radius:8px; padding:19px 7vw 18px 7vw; font-size:1.12em; line-height:1.67em; box-shadow:0 0 14px #42f8ff22; max-width:720px; text-align:center; border-left:2.5px solid #42f8ff66; border-right:2.5px solid #42f8ff66;}
-    .services-accueil {display:flex; justify-content:center; gap:30px; margin-top:26px; margin-bottom:8px; flex-wrap:wrap;}
-    .service-card {background:rgba(50,52,59,0.88); border:1.7px solid #fff; border-radius:11px; width:270px; min-height:146px; padding:20px 17px 18px 17px; margin:10px 0; transition:border 0.2s, box-shadow 0.17s; box-shadow:0 4px 18px #0005; display:flex; flex-direction:column; align-items:center;}
-    .service-card:hover {border:1.8px solid #42f8ff; box-shadow:0 0 20px #42f8ff44;}
-    .service-card h3 {color:#42f8ff; margin:0 0 7px 0; font-size:1.18em; letter-spacing:0.01em; text-shadow:0 0 7px #42f8ff99;}
-    .service-card p {color:#fff; font-size:1.07em; margin:0; text-align:center; line-height:1.32em;}
-    .btn-devis {margin-top:34px; background:linear-gradient(90deg,#38fff7 0%,#42a2ff 100%); color:#131a20; border:none; border-radius:9px; font-size:1.18em; font-weight:bold; padding:14px 36px; box-shadow:0 0 20px #42f8ff44; cursor:pointer; transition:background 0.15s, color 0.15s, box-shadow 0.17s; text-shadow:0 0 10px #fff8;}
-    .btn-devis:hover {background:#42f8ff; color:#00111a; box-shadow:0 0 32px #42f8ff88;}
-    @media (max-width:900px) {.container {padding:12vw 3vw 7vw 3vw;} .services-accueil {flex-direction:column; align-items:center; gap:15px;}}
-    @media (max-width:600px) {.service-card {width:98vw; min-width:unset;} .container {border-width:1.2px;} .titre-zen {font-size:1.7em;} .slogan-zen {font-size:1em;}}
+    @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@700;400&display=swap');
+    body {
+      background: #222 url('bg-1.jpg') no-repeat center center fixed;
+      background-size: cover;
+      margin: 0;
+      font-family: 'Nunito', Arial, sans-serif;
+      color: #fff;
+      min-height: 100vh;
+    }
+    .navbar {
+      background: rgba(24,24,26, 0.97);
+      width: 100vw;
+      min-height: 48px;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      border-bottom: 3px solid #42f8ff;
+      box-shadow: 0 2px 8px #0009;
+      font-weight: 700;
+      position: relative;
+      z-index: 3;
+    }
+    .navbar img {
+      height: 42px;
+      margin-left: 18px;
+      margin-right: 12px;
+      filter: drop-shadow(0 0 4px #42f8ffcc);
+      vertical-align: middle;
+    }
+    .navbar span.logo-title {
+      font-size: 1.15rem;
+      color: #42f8ff;
+      text-shadow: 0 0 8px #42f8ffcc;
+      letter-spacing: 2px;
+      margin-right: 24px;
+      font-weight: 800;
+    }
+    #menu-nav a, #menu-nav span.menu-link {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 12px;
+      font-size: 1.09rem;
+      transition: color 0.2s;
+      cursor: pointer;
+      position: relative;
+      padding: 2px 8px;
+    }
+    #menu-nav a:hover, #menu-nav span.menu-link:hover {
+      color: #42f8ff;
+      text-shadow: 0 0 7px #42f8ff, 0 0 1px #fff;
+    }
+    #menu-nav .active {
+      color: #42f8ff;
+      text-shadow: 0 0 9px #42f8ff;
+    }
+    .container {
+      max-width: 900px;
+      margin: 60px auto 0 auto;
+      background: rgba(28,32,36,0.73);
+      border: 3px solid #42f8ff;
+      border-radius: 16px;
+      box-shadow: 0 0 22px #101d;
+      padding: 44px 36px 38px 36px;
+      text-align: center;
+      position: relative;
+    }
+    .container h1 {
+      color: #42f8ff;
+      text-shadow: 0 0 15px #42f8ff, 0 2px 10px #000a;
+      font-size: 2.8rem;
+      margin: 0 0 12px 0;
+      font-weight: 900;
+      letter-spacing: 1.5px;
+    }
+    .container h2 {
+      margin: 0 0 30px 0;
+      color: #c8fdff;
+      font-size: 1.35rem;
+      font-weight: 600;
+      text-shadow: 0 0 9px #42f8ff88;
+      letter-spacing: 0.5px;
+    }
+    .descbox {
+      margin: 26px auto 0 auto;
+      padding: 38px 26px 32px 26px;
+      background: rgba(36,38,41,0.81);
+      border: 2.2px solid #42f8ff66;
+      border-radius: 13px;
+      box-shadow: 0 0 20px #0009;
+      font-size: 1.12rem;
+      max-width: 740px;
+    }
+    .descbox strong {
+      color: #42f8ff;
+      font-weight: 800;
+    }
+    .descbox em {
+      color: #c8fdff;
+      text-shadow: 0 0 6px #42f8ff44;
+    }
+    @media (max-width: 650px) {
+      .container, .descbox { padding: 18px 4vw; }
+      .container h1 { font-size: 2rem; }
+    }
   </style>
 </head>
 <body>
-  <div class="navbar">
-    <img src="logo-ordizen.png" alt="Logo OrdiZen" class="logo-oz" />
-    <nav id="menu-nav">
-      <a href="index.html" style="color:#42f8ff;text-shadow:0 0 8px #42f8ff77;">Accueil</a>
+  <nav class="navbar">
+    <img src="logo-ordizen.png" alt="Logo OrdiZen">
+    <span class="logo-title">OrdiZen</span>
+    <div id="menu-nav">
+      <a href="index.html" class="active">Accueil</a>
       <a href="shoutbox.html">Shoutbox</a>
       <a href="services.html">Services</a>
       <a href="contact.html">Contact</a>
-    </nav>
-  </div>
+    </div>
+  </nav>
   <div class="container">
-    <div class="titre-zen">OrdiZen</div>
-    <div class="slogan-zen">La sérénité numérique à domicile</div>
-    <div class="desc-entreprise">
+    <h1>OrdiZen</h1>
+    <h2>La sérénité numérique à domicile</h2>
+    <div class="descbox">
       OrdiZen est votre partenaire informatique local, spécialisé dans l’assemblage de PC sur-mesure, le dépannage, la configuration et la maintenance informatique à domicile.<br><br>
       Nous intervenons rapidement sur rendez-vous, avec des tarifs clairs, transparents, et un véritable accompagnement personnalisé, que vous soyez un particulier ou un professionnel.<br><br>
-      Notre objectif : <b>vous offrir la tranquillité d’esprit</b> pour tout ce qui touche à votre univers numérique : conseils, sécurité, optimisation, création…<br>
-      <br><i>Nous mettons la satisfaction et la pédagogie au cœur de chaque prestation, avec un vrai sens du service.</i>
+      Notre objectif : <strong>vous offrir la tranquillité d’esprit</strong> pour tout ce qui touche à votre univers numérique : conseils, sécurité, optimisation, création...<br><br>
+      <em>Nous mettons la satisfaction et la pédagogie au cœur de chaque prestation, avec un vrai sens du service.</em>
     </div>
-    <div class="services-accueil">
-      <div class="service-card">
-        <h3>Montage PC sur-mesure</h3>
-        <p>Assemblage, conseils, installation Windows & logiciels, optimisation selon vos besoins (gaming, bureautique, création…)</p>
-      </div>
-      <div class="service-card">
-        <h3>Dépannage & Maintenance</h3>
-        <p>Diagnostic, réparation, nettoyage, mise à niveau et configuration complète de vos appareils à domicile.</p>
-      </div>
-      <div class="service-card">
-        <h3>Conseil & Accompagnement</h3>
-        <p>Aide à l’achat, sécurité, gestion de vos données, formation personnalisée et astuces numériques.</p>
-      </div>
-    </div>
-    <a href="contact.html" class="btn-devis">Demander un devis gratuit</a>
   </div>
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+  <!-- Chargement du CDN SUPABASE en DEFER -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
   <script>
-    const SUPABASE_URL = 'https://ewsehfkbdsjzbpmxoesw.supabase.co';
-    const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImV3c2VoZmtiZHNqemJwbXhvZXN3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDk3NjIxMTYsImV4cCI6MjA2NTMzODExNn0.RMS2dRPUokGoyYiwxm1e0lrZa0VFWlgCXAMl5SU6N98';
-    const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+    document.addEventListener('DOMContentLoaded', () => {
+      const SUPABASE_URL = 'https://ewsehfkbdsjzbpmxoesw.supabase.co';
+      const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImV3c2VoZmtiZHNqemJwbXhvZXN3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDk3NjIxMTYsImV4cCI6MjA2NTMzODExNn0.RMS2dRPUokGoyYiwxm1e0lrZa0VFWlgCXAMl5SU6N98';
+      // On accède bien à window.supabase
+      const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
-    async function updateMenu() {
-      const { data: { user } } = await supabase.auth.getUser();
-      const nav = document.getElementById('menu-nav');
-      while (nav.children.length > 4) nav.removeChild(nav.lastChild);
+      async function updateMenu() {
+        const { data: { user } } = await supabase.auth.getUser();
+        const nav = document.getElementById('menu-nav');
+        while (nav.children.length > 4) nav.removeChild(nav.lastChild);
 
-      if (!user) {
-        let conn = document.createElement('a');
-        conn.href = 'auth.html';
-        conn.textContent = 'Connexion';
-        nav.appendChild(conn);
+        if (!user) {
+          let conn = document.createElement('a');
+          conn.href = 'auth.html';
+          conn.textContent = 'Connexion';
+          nav.appendChild(conn);
 
-        let insc = document.createElement('a');
-        insc.href = 'auth.html#inscription';
-        insc.textContent = 'Inscription';
-        nav.appendChild(insc);
-      } else {
-        let deco = document.createElement('span');
-        deco.className = "menu-link";
-        deco.style.cursor = "pointer";
-        deco.title = "Déconnexion";
-        deco.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="29" height="22" fill="none" viewBox="0 2 20 22"><path d="M20 14.2h-14m11-4 4 4-4 4M4 18.2a4 4 0 1 1 0-8m0 8V8.2" stroke="#42f8ff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" /></svg>`;
-        deco.onclick = async () => { await supabase.auth.signOut(); updateMenu(); };
-        nav.appendChild(deco);
+          let insc = document.createElement('a');
+          insc.href = 'auth.html#inscription';
+          insc.textContent = 'Inscription';
+          nav.appendChild(insc);
+        } else {
+          let deco = document.createElement('span');
+          deco.className = "menu-link";
+          deco.style.cursor = "pointer";
+          deco.title = "Déconnexion";
+          deco.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="29" height="22" fill="none" viewBox="0 2 20 22"><path d="M20 14.2h-14m11-4 4 4-4 4M4 18.2a4 4 0 1 1 0-8m0 8V8.2" stroke="#42f8ff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" /></svg>`;
+          deco.onclick = async () => { await supabase.auth.signOut(); updateMenu(); };
+          nav.appendChild(deco);
+        }
       }
-    }
-    updateMenu();
+      updateMenu();
+    });
   </script>
 </body>
 </html>
