@@ -129,41 +129,53 @@
       border: 2.5px solid #42f8ff;
       box-shadow: 0 0 32px #42f8ff99, 0 2px 34px #000a;
     }
-    .contact-case label {
-      display: block;
-      margin-top: 14px;
-      margin-bottom: 5px;
-      color: #42f8ff;
-      font-weight: bold;
-      letter-spacing: 0.04em;
-      font-size: 1.05em;
-      text-align: left;
-      text-shadow: 0 0 4px #42f8ff40;
+    .contact-fields {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 8px;
     }
-    .contact-case input, .contact-case textarea {
+    .contact-field {
       width: 100%;
-      background: #222c;
-      border: 1.5px solid #42f8ff77;
+      background: #f7f8fa;
+      /* texture papier subtil */
+      background-image: repeating-linear-gradient(135deg, rgba(230,230,220,0.16) 0 2px, transparent 2px 20px), repeating-linear-gradient(25deg, rgba(250,250,240,0.09) 0 1.5px, transparent 1.5px 15px);
+      border: 1.5px solid #42f8ff44;
       border-radius: 8px;
-      padding: 11px 10px;
-      color: #fff;
+      padding: 12px 10px;
+      color: #1a2d39;
       font-size: 1.07em;
       font-family: inherit;
-      margin-bottom: 11px;
-      outline: none;
-      transition: border 0.15s, box-shadow 0.15s;
+      transition: border 0.15s, box-shadow 0.15s, background 0.2s;
       box-shadow: 0 1px 8px #42f8ff10;
-      resize: vertical;
       min-height: 44px;
-      max-height: 260px;
+      max-width: 340px;
+      outline: none;
+      margin: 0 auto;
+      appearance: none;
     }
-    .contact-case input:focus, .contact-case textarea:focus {
+    .contact-field:focus {
       border: 1.5px solid #42f8ff;
-      box-shadow: 0 0 14px #42f8ff70;
+      box-shadow: 0 0 18px #42f8ff60;
+      background: #fcfeff;
+    }
+    .contact-case label {
+      display: block;
+      margin-top: 16px;
+      margin-bottom: 4px;
+      color: #42c7b4;
+      font-weight: bold;
+      letter-spacing: 0.03em;
+      font-size: 1.03em;
+      text-align: left;
+      text-shadow: 0 0 4px #42f8ff28;
+      margin-left: 2px;
     }
     .btn-contact {
       display: inline-block;
-      margin-top: 18px;
+      margin-top: 22px;
       background: linear-gradient(90deg,#38fff7 0%,#42a2ff 100%);
       color: #131a20;
       border: none;
@@ -198,6 +210,7 @@
       #menu-nav { gap: 10px; }
       .contact-case label { font-size: 0.99em; }
       .btn-contact { font-size: 0.99em; padding: 9px 8vw; }
+      .contact-field { font-size: 0.97em; max-width: 96vw; }
     }
   </style>
 </head>
@@ -216,15 +229,16 @@
     <div class="slogan-zen">Une question ? Besoin d’un conseil ou d’un devis rapide ?</div>
     <div class="contact-case">
       <form id="contact-form" autocomplete="off">
-        <label for="nom">Nom</label>
-        <input type="text" id="nom" name="nom" required maxlength="60" autocomplete="name">
+        <div class="contact-fields">
+          <label for="nom">Nom</label>
+          <input type="text" id="nom" name="nom" required maxlength="60" autocomplete="name" class="contact-field">
 
-        <label for="email">E-mail</label>
-        <input type="email" id="email" name="email" required maxlength="70" autocomplete="email">
+          <label for="email">E-mail</label>
+          <input type="email" id="email" name="email" required maxlength="70" autocomplete="email" class="contact-field">
 
-        <label for="message">Votre message</label>
-        <textarea id="message" name="message" required maxlength="700" rows="4"></textarea>
-
+          <label for="message">Votre message</label>
+          <textarea id="message" name="message" required maxlength="700" rows="4" class="contact-field"></textarea>
+        </div>
         <button type="submit" class="btn-contact">Envoyer</button>
         <div id="success-msg" class="success-message" style="display:none;">Votre message a bien été envoyé !</div>
       </form>
