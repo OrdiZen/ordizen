@@ -5,9 +5,179 @@
   <title>Nos services & Tarifs | OrdiZen</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" href="logo-ordizen.png">
-  <!-- ... [le même style et contenu que ta version, non modifié] ... -->
   <style>
-    /* ... [ton CSS actuel, inchangé] ... */
+    @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@700;400&display=swap');
+    body {
+      background: #222 url('bg-1.jpg') no-repeat center center fixed;
+      background-size: cover;
+      margin: 0;
+      font-family: 'Nunito', Arial, sans-serif;
+      color: #fff;
+      min-height: 100vh;
+    }
+    .navbar {
+      background: rgba(24,24,26, 0.97);
+      min-height: 52px;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      border-bottom: 2.2px solid #42f8ff;
+      box-shadow: 0 3px 24px 2px #42f8ff24, 0 2px 14px #111a;
+      position: relative;
+      z-index: 3;
+      overflow-x: auto;
+      justify-content: flex-start;
+    }
+    .navbar::after {
+      content: "";
+      position: absolute;
+      left: 0; right: 0; bottom: -5px; height: 8px;
+      pointer-events: none;
+      background: linear-gradient(90deg, rgba(66,248,255,0.13) 0%, rgba(160,230,224,0.18) 60%, rgba(66,248,255,0.09) 100%);
+      border-radius: 0 0 18px 18px;
+      filter: blur(5px);
+      opacity: 0.82;
+    }
+    .logo-title {
+      color: #41ffb8;
+      font-size: 1.22rem;
+      font-weight: 900;
+      letter-spacing: 1.4px;
+      text-shadow: 0 0 5px #42f8ff80, 0 0 1px #1dffbd;
+      margin-left: 28px;
+      margin-right: 34px;
+      user-select: none;
+      min-width: 90px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      filter: brightness(0.91) saturate(0.8);
+      transition: color 0.18s, filter 0.18s;
+    }
+    .logo-title:hover { filter: brightness(1.07) saturate(1.01); color: #4cffd2; }
+    #menu-nav {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 32px;
+      flex: 1;
+    }
+    #menu-nav a, #menu-nav span.menu-link {
+      color: #fff;
+      text-decoration: none;
+      font-size: 1.08rem;
+      transition: color 0.2s, background 0.18s;
+      cursor: pointer;
+      padding: 3px 13px;
+      border-radius: 6px;
+      font-weight: bold;
+      text-align: center;
+      position: relative;
+    }
+    #menu-nav a:hover, #menu-nav span.menu-link:hover {
+      color: #42f8ff;
+      text-shadow: 0 0 7px #42f8ff, 0 0 1px #fff;
+      background: rgba(66,248,255,0.10);
+    }
+    #menu-nav .active {
+      color: #42f8ff;
+      text-shadow: 0 0 9px #42f8ff;
+      background: rgba(66,248,255,0.08);
+    }
+    .container {
+      max-width: 900px;
+      margin: 54px auto 0 auto;
+      padding: 0 36px;
+      text-align: center;
+      position: relative;
+    }
+    .titre-zen {
+      margin: 44px auto 8px auto;
+      color: #42f8ff;
+      font-size: 2.14rem;
+      font-weight: bold;
+      letter-spacing: 1.6px;
+      text-shadow: 0 0 16px #42f8ffcc, 0 2px 14px #222a;
+      filter: drop-shadow(0 0 7px #42f8ff3c);
+      background: none;
+      border: none;
+    }
+    .slogan-zen {
+      font-size: 1.19rem;
+      color: #eafdff;
+      margin-bottom: 28px;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      text-shadow: 0 0 8px #42f8ff88, 0 0 6px #222d;
+      filter: drop-shadow(0 0 7px #42f8ff44);
+    }
+    .services-container {
+      background: rgba(30,33,40,0.94);
+      border: 2.5px solid #fff;
+      border-radius: 14px;
+      box-shadow: 0 6px 44px #000a;
+      margin: 0 auto 0 auto;
+      max-width: 665px;
+      padding: 38px 34px 36px 34px;
+      transition: border 0.18s, box-shadow 0.20s;
+      position: relative;
+      z-index: 1;
+      margin-bottom: 42px;
+    }
+    .services-container:hover {
+      border: 2.5px solid #42f8ff;
+      box-shadow: 0 0 32px #42f8ff99, 0 2px 34px #000a;
+    }
+    .tarif-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 0;
+      background: rgba(36,38,41,0.81);
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 0 18px #0007;
+    }
+    .tarif-table th, .tarif-table td {
+      border: 1px solid #42f8ff55;
+      padding: 12px 10px;
+      font-size: 1.05rem;
+      color: #fff;
+    }
+    .tarif-table th {
+      background: rgba(66,248,255,0.13);
+      color: #42f8ff;
+      font-size: 1.08rem;
+      letter-spacing: 0.8px;
+      font-weight: 900;
+      text-shadow: 0 0 5px #42f8ff77;
+    }
+    .tarif-table tr:nth-child(even) td {
+      background: rgba(50,60,70,0.32);
+    }
+    .tarif-table td.price {
+      color: #58ffc7;
+      font-weight: bold;
+      text-shadow: 0 0 6px #1fffd8, 0 1px 2px #000b;
+    }
+    .note-tarif {
+      margin: 14px auto 0 auto;
+      color: #c8fdff;
+      font-size: 1.03rem;
+      opacity: 0.89;
+    }
+    @media (max-width: 900px) {
+      .container, .services-container { padding: 14px 4vw; }
+      .container h1 { font-size: 2rem; }
+      .navbar-inner { max-width: 98vw; }
+      .titre-zen { font-size: 1.3rem; }
+      .services-container { max-width: 97vw; }
+    }
+    @media (max-width: 650px) {
+      .logo-title { font-size: 1.05rem; min-width: 40px; margin-right: 7px;}
+      #menu-nav { gap: 10px; }
+      .tarif-table th, .tarif-table td { font-size: 0.99rem; padding: 6px 4px; }
+    }
   </style>
 </head>
 <body>
@@ -21,11 +191,9 @@
     </div>
   </nav>
   <div class="container">
-    <!-- ... [contenu central inchangé] ... -->
     <div class="titre-zen">Nos services &amp; tarifs TTC</div>
     <div class="slogan-zen">Transparence, expertise, et accompagnement à chaque étape</div>
     <div class="services-container">
-      <!-- ... [tableau, contenu et styles, inchangés] ... -->
       <table class="tarif-table">
         <tr>
           <th>Prestations</th>
