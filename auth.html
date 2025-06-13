@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Contact | OrdiZen</title>
+  <title>Connexion / Inscription | OrdiZen</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" href="logo-ordizen.png">
   <style>
@@ -112,103 +112,31 @@
       text-shadow: 0 0 8px #42f8ff88, 0 0 6px #222d;
       filter: drop-shadow(0 0 7px #42f8ff44);
     }
-    .contact-case {
+    .auth-case {
       background: rgba(30,33,40,0.94);
       border: 2.5px solid #fff;
       border-radius: 14px;
       box-shadow: 0 6px 44px #000a;
-      margin: 0 auto;
-      max-width: 490px;
-      padding: 32px 20px 29px 20px;
+      margin: 0 auto 0 auto;
+      max-width: 410px;
+      padding: 34px 26px 26px 26px;
       transition: border 0.18s, box-shadow 0.20s;
       position: relative;
       z-index: 1;
     }
-    .contact-case:hover {
+    .auth-case:hover {
       border: 2.5px solid #42f8ff;
       box-shadow: 0 0 32px #42f8ff99, 0 2px 34px #000a;
     }
-    .contact-fields {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 8px;
-    }
-    .contact-field {
-      width: 100%;
-      background: #f7f8fa;
-      background-image: repeating-linear-gradient(135deg, rgba(230,230,220,0.16) 0 2px, transparent 2px 20px), repeating-linear-gradient(25deg, rgba(250,250,240,0.09) 0 1.5px, transparent 1.5px 15px);
-      border: 1.5px solid #42f8ff44;
-      border-radius: 8px;
-      padding: 12px 10px;
-      color: #1a2d39;
-      font-size: 1.07em;
-      font-family: inherit;
-      transition: border 0.15s, box-shadow 0.15s, background 0.2s;
-      box-shadow: 0 1px 8px #42f8ff10;
-      min-height: 44px;
-      max-width: 340px;
-      outline: none;
-      margin: 0 auto;
-      appearance: none;
-    }
-    .contact-field:focus {
-      border: 1.5px solid #42f8ff;
-      box-shadow: 0 0 18px #42f8ff60;
-      background: #fcfeff;
-    }
-    .contact-case label {
-      display: block;
-      margin-top: 16px;
-      margin-bottom: 4px;
-      color: #42c7b4;
-      font-weight: bold;
-      letter-spacing: 0.03em;
-      font-size: 1.03em;
-      text-align: left;
-      text-shadow: 0 0 4px #42f8ff28;
-      margin-left: 2px;
-    }
-    .btn-contact {
-      display: inline-block;
-      margin-top: 22px;
-      background: linear-gradient(90deg,#38fff7 0%,#42a2ff 100%);
-      color: #131a20;
-      border: none;
-      border-radius: 12px;
-      font-size: 1.17em;
-      font-weight: bold;
-      padding: 15px 44px;
-      box-shadow: 0 0 18px #42f8ff44;
-      cursor: pointer;
-      transition: background 0.16s, color 0.16s, box-shadow 0.18s;
-      text-shadow: 0 0 12px #fff8;
-      letter-spacing: 0.03em;
-    }
-    .btn-contact:hover {
-      background: #42f8ff;
-      color: #00111a;
-      box-shadow: 0 0 28px #42f8ffbb, 0 0 6px #fff7;
-    }
-    .success-message {
-      color: #58ffc7;
-      margin: 17px 0 0 0;
-      font-weight: bold;
-      text-shadow: 0 0 6px #42f8ff99;
-    }
     @media (max-width: 900px) {
-      .container, .contact-case { padding: 14px 4vw; }
+      .container, .auth-case { padding: 14px 4vw; }
       .titre-zen { font-size: 1.3rem; }
-      .contact-case { max-width: 96vw; }
+      .auth-case { max-width: 97vw; }
     }
     @media (max-width: 650px) {
       .logo-title { font-size: 1.05rem; min-width: 40px; margin-right: 7px;}
       #menu-nav { gap: 10px; }
-      .contact-case label { font-size: 0.99em; }
-      .btn-contact { font-size: 0.99em; padding: 9px 8vw; }
-      .contact-field { font-size: 0.97em; max-width: 96vw; }
+      .auth-case { padding: 10px 2vw 18px 2vw;}
     }
   </style>
 </head>
@@ -219,26 +147,22 @@
       <a href="index.html">Accueil</a>
       <a href="shoutbox.html">Shoutbox</a>
       <a href="services.html">Services</a>
-      <a href="contact.html" class="active">Contact</a>
+      <a href="contact.html">Contact</a>
     </div>
   </nav>
   <div class="container">
-    <div class="titre-zen">Contactez-nous</div>
-    <div class="slogan-zen">Une question ? Besoin d’un conseil ou d’un devis rapide ?</div>
-    <div class="contact-case">
-      <form id="contact-form" autocomplete="off">
-        <div class="contact-fields">
-          <label for="nom">Nom</label>
-          <input type="text" id="nom" name="nom" required maxlength="60" autocomplete="name" class="contact-field">
+    <div class="titre-zen">Connexion / Inscription</div>
+    <div class="slogan-zen">Gérez votre compte OrdiZen pour profiter du chat et des services personnalisés</div>
+    <div class="auth-case">
+      <form id="auth-form" autocomplete="off">
+        <label for="email">Adresse e-mail :</label>
+        <input type="email" id="email" name="email" required maxlength="70" autocomplete="email">
 
-          <label for="email">E-mail</label>
-          <input type="email" id="email" name="email" required maxlength="70" autocomplete="email" class="contact-field">
+        <label for="password">Mot de passe :</label>
+        <input type="password" id="password" name="password" required minlength="6">
 
-          <label for="message">Votre message</label>
-          <textarea id="message" name="message" required maxlength="700" rows="4" class="contact-field"></textarea>
-        </div>
-        <button type="submit" class="btn-contact">Envoyer</button>
-        <div id="success-msg" class="success-message" style="display:none;">Votre message a bien été envoyé !</div>
+        <button type="submit" class="btn-contact">Connexion / Inscription</button>
+        <div id="auth-message" style="margin-top:13px;color:#42f8ff;"></div>
       </form>
     </div>
   </div>
@@ -249,6 +173,7 @@
       const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImV3c2VoZmtiZHNqemJwbXhvZXN3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDk3NjIxMTYsImV4cCI6MjA2NTMzODExNn0.RMS2dRPUokGoyYiwxm1e0lrZa0VFWlgCXAMl5SU6N98';
       const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
+      // MENU DYNAMIQUE (Connexion UNIQUEMENT)
       async function updateMenu() {
         const { data: { user } } = await supabase.auth.getUser();
         const nav = document.getElementById('menu-nav');
@@ -271,15 +196,31 @@
       }
       updateMenu();
 
-      // GESTION DU FORMULAIRE (pas d'envoi, message de succès fictif ici)
-      const form = document.getElementById('contact-form');
-      form.addEventListener('submit', function(e) {
+      // Exemple de gestion simple du formulaire (à adapter selon ta logique)
+      const form = document.getElementById('auth-form');
+      const msg = document.getElementById('auth-message');
+      form.addEventListener('submit', async function(e) {
         e.preventDefault();
-        document.getElementById('success-msg').style.display = 'block';
-        setTimeout(() => {
-          document.getElementById('success-msg').style.display = 'none';
-          form.reset();
-        }, 3500);
+        const email = document.getElementById('email').value.trim();
+        const password = document.getElementById('password').value;
+        msg.textContent = "Traitement en cours...";
+        try {
+          let { error } = await supabase.auth.signInWithPassword({ email, password });
+          if (!error) {
+            msg.textContent = "Connexion réussie ! Redirection...";
+            setTimeout(()=>window.location.href="index.html",1500);
+          } else {
+            // Si l’utilisateur n’existe pas encore, on crée le compte
+            let { error: signUpError } = await supabase.auth.signUp({ email, password });
+            if (!signUpError) {
+              msg.textContent = "Compte créé, vérifiez vos emails puis reconnectez-vous !";
+            } else {
+              msg.textContent = "Erreur : " + (signUpError.message || error.message);
+            }
+          }
+        } catch (e) {
+          msg.textContent = "Erreur technique : " + e.message;
+        }
       });
     });
   </script>
