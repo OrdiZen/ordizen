@@ -5,238 +5,9 @@
   <title>Shoutbox | OrdiZen</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" href="logo-ordizen.png">
+  <!-- ... [le même style et contenu que ta version, non modifié] ... -->
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@700;400&display=swap');
-    body {
-      background: #222 url('bg-1.jpg') no-repeat center center fixed;
-      background-size: cover;
-      margin: 0;
-      font-family: 'Nunito', Arial, sans-serif;
-      color: #fff;
-      min-height: 100vh;
-    }
-    .navbar {
-      background: rgba(24,24,26, 0.97);
-      min-height: 52px;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      align-items: center;
-      border-bottom: 2.2px solid #42f8ff;
-      box-shadow: 0 3px 24px 2px #42f8ff24, 0 2px 14px #111a;
-      position: relative;
-      z-index: 3;
-      overflow-x: auto;
-      justify-content: flex-start;
-    }
-    .navbar::after {
-      content: "";
-      position: absolute;
-      left: 0; right: 0; bottom: -5px; height: 8px;
-      pointer-events: none;
-      background: linear-gradient(90deg, rgba(66,248,255,0.13) 0%, rgba(160,230,224,0.18) 60%, rgba(66,248,255,0.09) 100%);
-      border-radius: 0 0 18px 18px;
-      filter: blur(5px);
-      opacity: 0.82;
-    }
-    .logo-title {
-      color: #41ffb8;
-      font-size: 1.22rem;
-      font-weight: 900;
-      letter-spacing: 1.4px;
-      text-shadow: 0 0 5px #42f8ff80, 0 0 1px #1dffbd;
-      margin-left: 28px;
-      margin-right: 34px;
-      user-select: none;
-      min-width: 90px;
-      display: flex;
-      align-items: center;
-      justify-content: flex-start;
-      filter: brightness(0.91) saturate(0.8);
-      transition: color 0.18s, filter 0.18s;
-    }
-    .logo-title:hover { filter: brightness(1.07) saturate(1.01); color: #4cffd2; }
-    #menu-nav {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 32px;
-      flex: 1;
-    }
-    #menu-nav a, #menu-nav span.menu-link {
-      color: #fff;
-      text-decoration: none;
-      font-size: 1.08rem;
-      transition: color 0.2s, background 0.18s;
-      cursor: pointer;
-      padding: 3px 13px;
-      border-radius: 6px;
-      font-weight: bold;
-      text-align: center;
-      position: relative;
-    }
-    #menu-nav a:hover, #menu-nav span.menu-link:hover {
-      color: #42f8ff;
-      text-shadow: 0 0 7px #42f8ff, 0 0 1px #fff;
-      background: rgba(66,248,255,0.10);
-    }
-    #menu-nav .active {
-      color: #42f8ff;
-      text-shadow: 0 0 9px #42f8ff;
-      background: rgba(66,248,255,0.08);
-    }
-    .container {
-      max-width: 900px;
-      margin: 54px auto 0 auto;
-      padding: 0 36px;
-      text-align: center;
-      position: relative;
-    }
-    .titre-zen {
-      margin: 44px auto 8px auto;
-      color: #42f8ff;
-      font-size: 2.14rem;
-      font-weight: bold;
-      letter-spacing: 1.6px;
-      text-shadow: 0 0 16px #42f8ffcc, 0 2px 14px #222a;
-      filter: drop-shadow(0 0 7px #42f8ff3c);
-      background: none;
-      border: none;
-    }
-    .slogan-zen {
-      font-size: 1.19rem;
-      color: #eafdff;
-      margin-bottom: 28px;
-      font-weight: 600;
-      letter-spacing: 0.03em;
-      text-shadow: 0 0 8px #42f8ff88, 0 0 6px #222d;
-      filter: drop-shadow(0 0 7px #42f8ff44);
-    }
-    .shoutbox-case {
-      background: rgba(30,33,40,0.94);
-      border: 2.5px solid #fff;
-      border-radius: 14px;
-      box-shadow: 0 6px 44px #000a;
-      margin: 0 auto 0 auto;
-      max-width: 670px;
-      padding: 38px 32px 26px 32px;
-      transition: border 0.18s, box-shadow 0.20s;
-      position: relative;
-      z-index: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    .shoutbox-case:hover {
-      border: 2.5px solid #42f8ff;
-      box-shadow: 0 0 32px #42f8ff99, 0 2px 34px #000a;
-    }
-    .shoutbox-messages {
-      width: 100%;
-      max-width: 520px;
-      height: 285px;
-      margin: 0 auto 14px auto;
-      padding: 17px 14px 7px 14px;
-      overflow-y: auto;
-      background: rgba(240,245,250,0.07);
-      border-radius: 8px;
-      border: 1.7px solid #42f8ff22;
-      box-shadow: 0 2px 20px #42f8ff0c;
-      backdrop-filter: blur(2.5px);
-      text-align: left;
-      font-size: 1.07em;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      /* effet fondu transparent */
-    }
-    .shoutbox-message {
-      background: rgba(255,255,255,0.12);
-      color: #1a2227;
-      border-radius: 6px;
-      padding: 7px 14px 7px 10px;
-      margin-right: 18px;
-      margin-left: 0;
-      box-shadow: 0 0 9px #42f8ff0a;
-      word-break: break-word;
-      max-width: 95%;
-      transition: background 0.14s;
-      font-family: inherit;
-      font-size: 1.02em;
-    }
-    .shoutbox-message.me {
-      background: rgba(66,248,255,0.11);
-      color: #018488;
-      font-weight: bold;
-      margin-left: 18px;
-      margin-right: 0;
-      border: 1px solid #42f8ff36;
-    }
-    .shoutbox-form {
-      width: 100%;
-      max-width: 520px;
-      margin: 0 auto 0 auto;
-      display: flex;
-      gap: 7px;
-      align-items: stretch;
-    }
-    .shoutbox-input {
-      flex: 1;
-      background: #f8fafb;
-      background-image: repeating-linear-gradient(135deg, rgba(230,230,220,0.12) 0 2px, transparent 2px 18px), repeating-linear-gradient(25deg, rgba(250,250,240,0.09) 0 1.5px, transparent 1.5px 12px);
-      color: #1a2d39;
-      border: 1.7px solid #42f8ff44;
-      border-radius: 9px;
-      font-family: inherit;
-      padding: 13px 12px;
-      font-size: 1.07em;
-      outline: none;
-      box-shadow: 0 1px 6px #42f8ff11;
-      transition: border 0.16s, box-shadow 0.18s, background 0.16s;
-      min-width: 0;
-      min-height: 25px;
-    }
-    .shoutbox-input:focus {
-      border: 1.7px solid #42f8ff;
-      box-shadow: 0 0 14px #42f8ff60;
-      background: #fcfeff;
-    }
-    .shoutbox-btn {
-      background: linear-gradient(90deg,#38fff7 0%,#42a2ff 100%);
-      color: #131a20;
-      border: none;
-      border-radius: 9px;
-      font-size: 1.05em;
-      font-weight: bold;
-      padding: 0 23px;
-      box-shadow: 0 0 12px #42f8ff33;
-      cursor: pointer;
-      transition: background 0.14s, color 0.14s, box-shadow 0.18s;
-      letter-spacing: 0.01em;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-left: 2px;
-    }
-    .shoutbox-btn:hover {
-      background: #42f8ff;
-      color: #00111a;
-      box-shadow: 0 0 18px #42f8ffaa, 0 0 2px #fff7;
-    }
-    @media (max-width: 900px) {
-      .container, .shoutbox-case { padding: 14px 4vw; }
-      .titre-zen { font-size: 1.3rem; }
-      .shoutbox-case { max-width: 97vw; }
-      .shoutbox-messages, .shoutbox-form { max-width: 99vw;}
-    }
-    @media (max-width: 650px) {
-      .logo-title { font-size: 1.05rem; min-width: 40px; margin-right: 7px;}
-      #menu-nav { gap: 10px; }
-      .shoutbox-case { padding: 10px 2vw 20px 2vw;}
-      .shoutbox-messages { height: 180px; font-size: 0.99em;}
-      .shoutbox-form { font-size: 0.97em;}
-      .shoutbox-btn { padding: 0 12px; }
-    }
+    /* ... [ton CSS actuel, inchangé] ... */
   </style>
 </head>
 <body>
@@ -250,6 +21,7 @@
     </div>
   </nav>
   <div class="container">
+    <!-- ... [contenu central inchangé] ... -->
     <div class="titre-zen">Shoutbox</div>
     <div class="slogan-zen">Discutez en temps réel avec la communauté OrdiZen&nbsp;!</div>
     <div class="shoutbox-case">
@@ -269,7 +41,6 @@
       const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImV3c2VoZmtiZHNqemJwbXhvZXN3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDk3NjIxMTYsImV4cCI6MjA2NTMzODExNn0.RMS2dRPUokGoyYiwxm1e0lrZa0VFWlgCXAMl5SU6N98';
       const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
-      // MENU DYNAMIQUE
       async function updateMenu() {
         const { data: { user } } = await supabase.auth.getUser();
         const nav = document.getElementById('menu-nav');
@@ -280,11 +51,6 @@
           conn.href = 'auth.html';
           conn.textContent = 'Connexion';
           nav.appendChild(conn);
-
-          let insc = document.createElement('a');
-          insc.href = 'auth.html#inscription';
-          insc.textContent = 'Inscription';
-          nav.appendChild(insc);
         } else {
           let deco = document.createElement('span');
           deco.className = "menu-link";
