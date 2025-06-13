@@ -86,7 +86,7 @@
       background: rgba(66,248,255,0.08);
     }
     .container {
-      max-width: 900px;
+      max-width: 950px;
       margin: 54px auto 0 auto;
       padding: 0 36px;
       text-align: center;
@@ -113,30 +113,123 @@
       filter: drop-shadow(0 0 7px #42f8ff44);
     }
     .auth-case {
-      background: rgba(30,33,40,0.94);
+      background: rgba(30,33,40,0.97);
       border: 2.5px solid #fff;
-      border-radius: 14px;
+      border-radius: 16px;
       box-shadow: 0 6px 44px #000a;
       margin: 0 auto 0 auto;
-      max-width: 410px;
-      padding: 34px 26px 26px 26px;
+      max-width: 540px;
+      min-width: 320px;
+      padding: 48px 38px 34px 38px;
       transition: border 0.18s, box-shadow 0.20s;
       position: relative;
       z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
     .auth-case:hover {
       border: 2.5px solid #42f8ff;
-      box-shadow: 0 0 32px #42f8ff99, 0 2px 34px #000a;
+      box-shadow: 0 0 38px #42f8ff99, 0 2px 34px #000a;
+    }
+    .auth-case label {
+      display: block;
+      margin-top: 18px;
+      margin-bottom: 8px;
+      color: #42c7b4;
+      font-weight: bold;
+      letter-spacing: 0.03em;
+      font-size: 1.17em;
+      text-align: left;
+      text-shadow: 0 0 4px #42f8ff28;
+      margin-left: 2px;
+    }
+    .auth-field {
+      width: 100%;
+      background: #f7f8fa;
+      background-image: repeating-linear-gradient(135deg, rgba(230,230,220,0.16) 0 2px, transparent 2px 20px), repeating-linear-gradient(25deg, rgba(250,250,240,0.09) 0 1.5px, transparent 1.5px 15px);
+      border: 2px solid #42f8ff44;
+      border-radius: 10px;
+      padding: 19px 13px;
+      color: #1a2d39;
+      font-size: 1.22em;
+      font-family: inherit;
+      transition: border 0.15s, box-shadow 0.15s, background 0.2s;
+      box-shadow: 0 1px 12px #42f8ff16;
+      min-height: 49px;
+      max-width: 380px;
+      outline: none;
+      margin: 0 auto;
+      appearance: none;
+      margin-bottom: 5px;
+    }
+    .auth-field:focus {
+      border: 2px solid #42f8ff;
+      box-shadow: 0 0 19px #42f8ff60;
+      background: #fcfeff;
+    }
+    .btn-contact {
+      display: inline-block;
+      margin-top: 26px;
+      background: linear-gradient(90deg,#38fff7 0%,#42a2ff 100%);
+      color: #131a20;
+      border: none;
+      border-radius: 12px;
+      font-size: 1.23em;
+      font-weight: bold;
+      padding: 19px 56px;
+      box-shadow: 0 0 18px #42f8ff44;
+      cursor: pointer;
+      transition: background 0.16s, color 0.16s, box-shadow 0.18s;
+      text-shadow: 0 0 12px #fff8;
+      letter-spacing: 0.03em;
+    }
+    .btn-contact:hover {
+      background: #42f8ff;
+      color: #00111a;
+      box-shadow: 0 0 28px #42f8ffbb, 0 0 6px #fff7;
+    }
+    .auth-extra {
+      margin-top: 29px;
+      color: #fff;
+      font-size: 1.07em;
+      text-align: center;
+      opacity: 0.85;
+      letter-spacing: 0.01em;
+      user-select: none;
+    }
+    .auth-extra a {
+      color: #42f8ff;
+      font-weight: bold;
+      text-decoration: none;
+      margin-left: 6px;
+      transition: color 0.16s, text-shadow 0.17s;
+      cursor: pointer;
+      text-shadow: 0 0 10px #42f8ff33;
+    }
+    .auth-extra a:hover {
+      color: #18ffb7;
+      text-shadow: 0 0 22px #42f8ffbb;
+    }
+    #auth-message {
+      margin-top: 17px;
+      color: #42f8ff;
+      font-size: 1.09em;
+      font-weight: 600;
+      min-height: 18px;
+      text-shadow: 0 0 7px #42f8ff35;
     }
     @media (max-width: 900px) {
-      .container, .auth-case { padding: 14px 4vw; }
+      .container, .auth-case { padding: 12px 3vw; }
       .titre-zen { font-size: 1.3rem; }
-      .auth-case { max-width: 97vw; }
+      .auth-case { max-width: 99vw; }
     }
     @media (max-width: 650px) {
       .logo-title { font-size: 1.05rem; min-width: 40px; margin-right: 7px;}
       #menu-nav { gap: 10px; }
-      .auth-case { padding: 10px 2vw 18px 2vw;}
+      .auth-case { padding: 9px 2vw 12px 2vw; }
+      .btn-contact { font-size: 0.97em; padding: 9px 7vw; }
+      .auth-field { font-size: 1em; max-width: 99vw; padding: 11px 7px; }
     }
   </style>
 </head>
@@ -156,14 +249,18 @@
     <div class="auth-case">
       <form id="auth-form" autocomplete="off">
         <label for="email">Adresse e-mail :</label>
-        <input type="email" id="email" name="email" required maxlength="70" autocomplete="email">
+        <input type="email" id="email" name="email" required maxlength="70" autocomplete="email" class="auth-field">
 
         <label for="password">Mot de passe :</label>
-        <input type="password" id="password" name="password" required minlength="6">
+        <input type="password" id="password" name="password" required minlength="6" class="auth-field">
 
         <button type="submit" class="btn-contact">Connexion / Inscription</button>
-        <div id="auth-message" style="margin-top:13px;color:#42f8ff;"></div>
+        <div id="auth-message"></div>
       </form>
+      <div class="auth-extra">
+        Vous n'avez pas de compte ?
+        <a href="#" id="create-account-link">Créer un compte</a>
+      </div>
     </div>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
@@ -196,7 +293,14 @@
       }
       updateMenu();
 
-      // Exemple de gestion simple du formulaire (à adapter selon ta logique)
+      // "Créer un compte" focus automatique sur email + password
+      document.getElementById('create-account-link').onclick = function(e) {
+        e.preventDefault();
+        document.getElementById('email').focus();
+        setTimeout(() => { document.getElementById('password').focus(); }, 200);
+      };
+
+      // Auth formulaire
       const form = document.getElementById('auth-form');
       const msg = document.getElementById('auth-message');
       form.addEventListener('submit', async function(e) {
