@@ -5,9 +5,211 @@
   <title>Contact | OrdiZen</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" href="logo-ordizen.png">
-  <!-- ... [le même style et contenu que ta version, non modifié] ... -->
   <style>
-    /* ... [ton CSS actuel, inchangé] ... */
+    @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@700;400&display=swap');
+    body {
+      background: #222 url('bg-1.jpg') no-repeat center center fixed;
+      background-size: cover;
+      margin: 0;
+      font-family: 'Nunito', Arial, sans-serif;
+      color: #fff;
+      min-height: 100vh;
+    }
+    .navbar {
+      background: rgba(24,24,26, 0.97);
+      min-height: 52px;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      border-bottom: 2.2px solid #42f8ff;
+      box-shadow: 0 3px 24px 2px #42f8ff24, 0 2px 14px #111a;
+      position: relative;
+      z-index: 3;
+      overflow-x: auto;
+      justify-content: flex-start;
+    }
+    .navbar::after {
+      content: "";
+      position: absolute;
+      left: 0; right: 0; bottom: -5px; height: 8px;
+      pointer-events: none;
+      background: linear-gradient(90deg, rgba(66,248,255,0.13) 0%, rgba(160,230,224,0.18) 60%, rgba(66,248,255,0.09) 100%);
+      border-radius: 0 0 18px 18px;
+      filter: blur(5px);
+      opacity: 0.82;
+    }
+    .logo-title {
+      color: #41ffb8;
+      font-size: 1.22rem;
+      font-weight: 900;
+      letter-spacing: 1.4px;
+      text-shadow: 0 0 5px #42f8ff80, 0 0 1px #1dffbd;
+      margin-left: 28px;
+      margin-right: 34px;
+      user-select: none;
+      min-width: 90px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      filter: brightness(0.91) saturate(0.8);
+      transition: color 0.18s, filter 0.18s;
+    }
+    .logo-title:hover { filter: brightness(1.07) saturate(1.01); color: #4cffd2; }
+    #menu-nav {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 32px;
+      flex: 1;
+    }
+    #menu-nav a, #menu-nav span.menu-link {
+      color: #fff;
+      text-decoration: none;
+      font-size: 1.08rem;
+      transition: color 0.2s, background 0.18s;
+      cursor: pointer;
+      padding: 3px 13px;
+      border-radius: 6px;
+      font-weight: bold;
+      text-align: center;
+      position: relative;
+    }
+    #menu-nav a:hover, #menu-nav span.menu-link:hover {
+      color: #42f8ff;
+      text-shadow: 0 0 7px #42f8ff, 0 0 1px #fff;
+      background: rgba(66,248,255,0.10);
+    }
+    #menu-nav .active {
+      color: #42f8ff;
+      text-shadow: 0 0 9px #42f8ff;
+      background: rgba(66,248,255,0.08);
+    }
+    .container {
+      max-width: 900px;
+      margin: 54px auto 0 auto;
+      padding: 0 36px;
+      text-align: center;
+      position: relative;
+    }
+    .titre-zen {
+      margin: 44px auto 8px auto;
+      color: #42f8ff;
+      font-size: 2.14rem;
+      font-weight: bold;
+      letter-spacing: 1.6px;
+      text-shadow: 0 0 16px #42f8ffcc, 0 2px 14px #222a;
+      filter: drop-shadow(0 0 7px #42f8ff3c);
+      background: none;
+      border: none;
+    }
+    .slogan-zen {
+      font-size: 1.19rem;
+      color: #eafdff;
+      margin-bottom: 28px;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      text-shadow: 0 0 8px #42f8ff88, 0 0 6px #222d;
+      filter: drop-shadow(0 0 7px #42f8ff44);
+    }
+    .contact-case {
+      background: rgba(30,33,40,0.94);
+      border: 2.5px solid #fff;
+      border-radius: 14px;
+      box-shadow: 0 6px 44px #000a;
+      margin: 0 auto;
+      max-width: 490px;
+      padding: 32px 20px 29px 20px;
+      transition: border 0.18s, box-shadow 0.20s;
+      position: relative;
+      z-index: 1;
+    }
+    .contact-case:hover {
+      border: 2.5px solid #42f8ff;
+      box-shadow: 0 0 32px #42f8ff99, 0 2px 34px #000a;
+    }
+    .contact-fields {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 8px;
+    }
+    .contact-field {
+      width: 100%;
+      background: #f7f8fa;
+      background-image: repeating-linear-gradient(135deg, rgba(230,230,220,0.16) 0 2px, transparent 2px 20px), repeating-linear-gradient(25deg, rgba(250,250,240,0.09) 0 1.5px, transparent 1.5px 15px);
+      border: 1.5px solid #42f8ff44;
+      border-radius: 8px;
+      padding: 12px 10px;
+      color: #1a2d39;
+      font-size: 1.07em;
+      font-family: inherit;
+      transition: border 0.15s, box-shadow 0.15s, background 0.2s;
+      box-shadow: 0 1px 8px #42f8ff10;
+      min-height: 44px;
+      max-width: 340px;
+      outline: none;
+      margin: 0 auto;
+      appearance: none;
+    }
+    .contact-field:focus {
+      border: 1.5px solid #42f8ff;
+      box-shadow: 0 0 18px #42f8ff60;
+      background: #fcfeff;
+    }
+    .contact-case label {
+      display: block;
+      margin-top: 16px;
+      margin-bottom: 4px;
+      color: #42c7b4;
+      font-weight: bold;
+      letter-spacing: 0.03em;
+      font-size: 1.03em;
+      text-align: left;
+      text-shadow: 0 0 4px #42f8ff28;
+      margin-left: 2px;
+    }
+    .btn-contact {
+      display: inline-block;
+      margin-top: 22px;
+      background: linear-gradient(90deg,#38fff7 0%,#42a2ff 100%);
+      color: #131a20;
+      border: none;
+      border-radius: 12px;
+      font-size: 1.17em;
+      font-weight: bold;
+      padding: 15px 44px;
+      box-shadow: 0 0 18px #42f8ff44;
+      cursor: pointer;
+      transition: background 0.16s, color 0.16s, box-shadow 0.18s;
+      text-shadow: 0 0 12px #fff8;
+      letter-spacing: 0.03em;
+    }
+    .btn-contact:hover {
+      background: #42f8ff;
+      color: #00111a;
+      box-shadow: 0 0 28px #42f8ffbb, 0 0 6px #fff7;
+    }
+    .success-message {
+      color: #58ffc7;
+      margin: 17px 0 0 0;
+      font-weight: bold;
+      text-shadow: 0 0 6px #42f8ff99;
+    }
+    @media (max-width: 900px) {
+      .container, .contact-case { padding: 14px 4vw; }
+      .titre-zen { font-size: 1.3rem; }
+      .contact-case { max-width: 96vw; }
+    }
+    @media (max-width: 650px) {
+      .logo-title { font-size: 1.05rem; min-width: 40px; margin-right: 7px;}
+      #menu-nav { gap: 10px; }
+      .contact-case label { font-size: 0.99em; }
+      .btn-contact { font-size: 0.99em; padding: 9px 8vw; }
+      .contact-field { font-size: 0.97em; max-width: 96vw; }
+    }
   </style>
 </head>
 <body>
@@ -21,7 +223,6 @@
     </div>
   </nav>
   <div class="container">
-    <!-- ... [contenu central inchangé] ... -->
     <div class="titre-zen">Contactez-nous</div>
     <div class="slogan-zen">Une question ? Besoin d’un conseil ou d’un devis rapide ?</div>
     <div class="contact-case">
