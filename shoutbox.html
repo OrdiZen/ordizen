@@ -5,155 +5,26 @@
   <title>Shoutbox | OrdiZen</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', Arial, sans-serif;
-      color: #fff;
-      background: url('bg-1.jpg') no-repeat center center fixed;
-      background-size: cover;
-      min-height: 100vh;
-    }
-    .navbar {
-      background: #181b1e;
-      border-bottom: 2.5px solid #42f8ff;
-      padding: 0;
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      display: flex;
-      align-items: center;
-    }
-    .logo-oz {
-      height: 58px;
-      width: 58px;
-      margin: 2px 22px 2px 16px;
-      animation: pulse 2.8s infinite alternate;
-      filter: drop-shadow(0 0 12px #42f8ff88);
-      transition: transform 0.2s;
-      background: transparent;
-      border-radius: 50%;
-    }
-    .logo-oz:hover {
-      transform: scale(1.07) rotate(-2deg);
-      box-shadow: 0 0 18px #42f8ffbb;
-      filter: drop-shadow(0 0 32px #42f8ffcc);
-    }
-    @keyframes pulse {
-      0% { filter: drop-shadow(0 0 8px #42f8ff44); }
-      100% { filter: drop-shadow(0 0 32px #42f8ffcc);}
-    }
-    #menu-nav {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 38px;
-      flex: 1;
-      margin-left: 10px;
-    }
-    #menu-nav a, #menu-nav span {
-      color: #fff;
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 1.08em;
-      letter-spacing: 0.02em;
-      transition: color 0.18s;
-      position: relative;
-    }
-    #menu-nav a:hover {
-      color: #42f8ff;
-      text-shadow: 0 0 8px #42f8ff66;
-    }
-    .shoutbox-container {
-      max-width: 700px;
-      margin: 50px auto 0 auto;
-      padding: 30px 24px 22px 24px;
-      background: rgba(28, 30, 34, 0.88);
-      border: 2px solid #42f8ff;
-      border-radius: 14px;
-      box-shadow: 0 6px 44px #000a;
-      min-height: 420px;
-      position: relative;
-    }
-    h1 {
-      color: #42f8ff;
-      text-align: center;
-      text-shadow: 0 0 12px #42f8ff;
-      margin-bottom: 22px;
-      font-size: 2em;
-      letter-spacing: 0.04em;
-    }
-    .message-list {
-      height: 270px;
-      overflow-y: auto;
-      padding: 10px 2px 6px 2px;
-      border-radius: 10px;
-      background: rgba(255,255,255,0.04);
-      margin-bottom: 22px;
-      border: 1.2px solid #42f8ff22;
-    }
-    .message {
-      padding: 8px 11px;
-      margin: 7px 0;
-      background: #21262b;
-      border-left: 3px solid #42f8ff;
-      border-radius: 6px;
-      word-break: break-all;
-      font-size: 1.08em;
-      box-shadow: 0 1px 10px #0004;
-    }
-    .message strong {
-      color: #42f8ff;
-    }
-    .msg-info {
-      text-align: center;
-      color: #53fffa;
-      margin-bottom: 11px;
-      font-size: 1.01em;
-      letter-spacing: 0.01em;
-      text-shadow: 0 0 8px #42f8ff99;
-      opacity: 0.85;
-    }
-    form {
-      display: flex;
-      gap: 10px;
-      margin-top: 7px;
-    }
-    input[type="text"] {
-      flex: 1;
-      padding: 11px;
-      border-radius: 8px;
-      border: none;
-      background: #fff;
-      color: #222;
-      font-size: 1.04em;
-    }
-    button {
-      padding: 11px 26px;
-      border: none;
-      border-radius: 8px;
-      font-weight: bold;
-      background: linear-gradient(90deg, #38fff7, #42a2ff);
-      color: #181b1e;
-      cursor: pointer;
-      transition: background 0.15s;
-      box-shadow: 0 0 10px #42f8ff33;
-    }
-    button:hover {
-      background: #42f8ff;
-      box-shadow: 0 0 18px #42f8ff88;
-      color: #222;
-    }
-    .not-connected {
-      color: #ffb9b9;
-      text-align: center;
-      margin: 18px 0 0 0;
-      font-size: 1.08em;
-      text-shadow: 0 0 8px #9005, 0 0 8px #fff8;
-    }
-    @media (max-width: 700px) {
-      .shoutbox-container { max-width: 98vw; margin: 30px 2vw 0 2vw; }
-      .message-list { height: 34vw; min-height: 150px;}
-    }
+    body {margin:0;font-family:'Segoe UI',Arial,sans-serif;color:#fff;background:url('bg-1.jpg') no-repeat center center fixed;background-size:cover;min-height:100vh;}
+    .navbar {background:#181b1e;border-bottom:2.5px solid #42f8ff;padding:0;position:sticky;top:0;z-index:10;display:flex;align-items:center;}
+    .logo-oz {height:58px;width:58px;margin:2px 22px 2px 16px;animation:pulse 2.8s infinite alternate;filter:drop-shadow(0 0 12px #42f8ff88);transition:transform 0.2s;background:transparent;border-radius:50%;}
+    .logo-oz:hover {transform:scale(1.07) rotate(-2deg);box-shadow:0 0 18px #42f8ffbb;filter:drop-shadow(0 0 32px #42f8ffcc);}
+    @keyframes pulse {0%{filter:drop-shadow(0 0 8px #42f8ff44);}100%{filter:drop-shadow(0 0 32px #42f8ffcc);}}
+    #menu-nav {display:flex;justify-content:center;align-items:center;gap:38px;flex:1;margin-left:10px;}
+    #menu-nav a,#menu-nav span {color:#fff;text-decoration:none;font-weight:bold;font-size:1.08em;letter-spacing:0.02em;transition:color 0.18s;position:relative;}
+    #menu-nav a:hover {color:#42f8ff;text-shadow:0 0 8px #42f8ff66;}
+    .shoutbox-container {max-width:700px;margin:50px auto 0 auto;padding:30px 24px 22px 24px;background:rgba(28,30,34,0.88);border:2px solid #42f8ff;border-radius:14px;box-shadow:0 6px 44px #000a;min-height:420px;position:relative;}
+    h1 {color:#42f8ff;text-align:center;text-shadow:0 0 12px #42f8ff;margin-bottom:22px;font-size:2em;letter-spacing:0.04em;}
+    .message-list {height:270px;overflow-y:auto;padding:10px 2px 6px 2px;border-radius:10px;background:rgba(255,255,255,0.04);margin-bottom:22px;border:1.2px solid #42f8ff22;}
+    .message {padding:8px 11px;margin:7px 0;background:#21262b;border-left:3px solid #42f8ff;border-radius:6px;word-break:break-all;font-size:1.08em;box-shadow:0 1px 10px #0004;}
+    .message strong {color:#42f8ff;}
+    .msg-info {text-align:center;color:#53fffa;margin-bottom:11px;font-size:1.01em;letter-spacing:0.01em;text-shadow:0 0 8px #42f8ff99;opacity:0.85;}
+    form {display:flex;gap:10px;margin-top:7px;}
+    input[type="text"] {flex:1;padding:11px;border-radius:8px;border:none;background:#fff;color:#222;font-size:1.04em;}
+    button {padding:11px 26px;border:none;border-radius:8px;font-weight:bold;background:linear-gradient(90deg,#38fff7,#42a2ff);color:#181b1e;cursor:pointer;transition:background 0.15s;box-shadow:0 0 10px #42f8ff33;}
+    button:hover {background:#42f8ff;box-shadow:0 0 18px #42f8ff88;color:#222;}
+    .not-connected {color:#ffb9b9;text-align:center;margin:18px 0 0 0;font-size:1.08em;text-shadow:0 0 8px #9005, 0 0 8px #fff8;}
+    @media (max-width:700px) {.shoutbox-container{max-width:98vw;margin:30px 2vw 0 2vw;}.message-list{height:34vw;min-height:150px;}}
   </style>
 </head>
 <body>
@@ -184,7 +55,6 @@
     const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImV3c2VoZmtiZHNqemJwbXhvZXN3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDk3NjIxMTYsImV4cCI6MjA2NTMzODExNn0.RMS2dRPUokGoyYiwxm1e0lrZa0VFWlgCXAMl5SU6N98';
     const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
-    // ----- MENU DYNAMIQUE -----
     async function updateMenu() {
       const { data: { user } } = await supabase.auth.getUser();
       const nav = document.getElementById('menu-nav');
@@ -212,12 +82,10 @@
     }
     updateMenu();
 
-    // ----- SHOUTBOX -----
     const messageList = document.getElementById('messages');
     const form = document.getElementById('chat-form');
     const input = document.getElementById('message-input');
     const notConnected = document.getElementById('not-connected');
-
     let currentUser = null;
     async function checkAuth() {
       const { data: { user } } = await supabase.auth.getUser();
