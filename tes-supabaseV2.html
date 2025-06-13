@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Test Supabase Menu (fonctionnel)</title>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+  <div class="navbar">
+    <nav id="menu-nav">
+      <a href="index.html">Accueil</a>
+    </nav>
+  </div>
+  <div class="info" id="user-status">
+    Vérification du statut utilisateur...
+  </div>
+  <script>
+    // Mets bien ton URL/clé ici
+    const SUPABASE_URL = 'https://xxxx.supabase.co';
+    const SUPABASE_KEY = 'eyJ...';
+    // CRÉATION ICI !
+    const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+    async function updateMenu() {
+      const { data: { user }, error } = await supabase.auth.getUser();
+      const nav = document.getElementById('menu-nav');
+      while (nav.children.length > 1) nav.removeChild(nav.lastChild);
+
+      if (!user) {
+        let conn = document.createElement('a');
+        conn.href = 'auth.html';
+        conn.textContent = 'Connexion';
+        nav.appendChild(conn);
+
+        let inscr = document.createElement('a');
+        inscr.href = 'auth.html';
+        inscr.textContent = 'Inscription';
+        nav.appendChild(inscr);
+
+        document.getElementById('user-status').textContent = "Vous n'êtes PAS connecté (Test Supabase OK)";
+      } else {
+        let deco = document.createElement('span');
+        deco.className = 'menu-link';
+        deco.title = 'Déconnexion';
+        deco.innerHTML = `
+        <svg class="logout-icon" viewBox="0 0 32 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M20 4L28 11L20 18" stroke="#42f8ff" stroke-width="2.7" stroke-linecap="round" stroke-linejoin="round"/>
+          <rect x="2" y="7" width="18" height="8" rx="4" stroke="#42f8ff" stroke-width="2"/>
+        </svg>
+        `;
+        deco.onclick = async () => {
+          await supabase.auth.signOut();
+          window.location.reload();
+        };
+        nav.appendChild(deco);
+
+        document.getElementById('user-status').textContent = "Vous êtes CONNECTÉ à Supabase.";
+      }
+    }
+    // ATTENTION : APPELER APRÈS la déclaration !
+    updateMenu();
+  </script>
+</body>
+</html>
